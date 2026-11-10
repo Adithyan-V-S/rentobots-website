@@ -1,6 +1,6 @@
 # Rentobots website
 
-The complete Rentobots website: 14 pages, light design, mobile-friendly.
+The complete Rentobots website: 14 pages, dark design, mobile-friendly.
 Plain HTML, CSS and a tiny script — **no packages, no build step, no install.**
 
 ## Pages
