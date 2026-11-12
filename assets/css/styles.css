@@ -77,3 +77,4 @@ input{color-scheme:dark}
 input:focus,button:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none !important}}
 @media (max-width: 760px){footer h2{font-size:12px !important;line-height:1.4 !important}footer > div{padding-left:20px !important;padding-right:20px !important}}
+@media (max-width: 760px){.rb-stats{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px !important}.rb-stats li span:first-child{font-size:17px !important;line-height:1.2}.rb-stats li span:last-child{font-size:12px !important;line-height:1.35}}
