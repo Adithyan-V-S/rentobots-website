@@ -78,3 +78,30 @@ input:focus,button:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none !important}}
 @media (max-width: 760px){footer h2{font-size:12px !important;line-height:1.4 !important}footer > div{padding-left:20px !important;padding-right:20px !important}}
 @media (max-width: 760px){.rb-stats{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px !important}.rb-stats li span:first-child{font-size:17px !important;line-height:1.2}.rb-stats li span:last-child{font-size:12px !important;line-height:1.35}}
+/* ---- Animations (motion only when the visitor hasn't asked to reduce it) ---- */
+@media (prefers-reduced-motion: no-preference){
+@keyframes rbUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes rbFade{from{opacity:0}to{opacity:1}}
+@keyframes rbZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+#top:not(.rb-hero) > *{animation:rbUp .8s cubic-bezier(.2,.7,.2,1) both}
+#top:not(.rb-hero) > :nth-child(2){animation-delay:.08s}
+#top:not(.rb-hero) > :nth-child(3){animation-delay:.16s}
+#top:not(.rb-hero) > :nth-child(4){animation-delay:.24s}
+#top:not(.rb-hero) > :nth-child(n+5){animation-delay:.32s}
+.rb-hero > div:first-child > *{animation:rbUp .8s cubic-bezier(.2,.7,.2,1) both}
+.rb-hero > div:first-child > :nth-child(2){animation-delay:.1s}
+.rb-hero > div:first-child > :nth-child(3){animation-delay:.45s}
+.rb-hero > div:first-child > :nth-child(4){animation-delay:.55s}
+.rb-hero > div:first-child > :nth-child(n+5){animation-delay:.65s}
+.rb-hero h1 .rb-grad{display:inline-block;animation:rbUp .8s .3s cubic-bezier(.2,.7,.2,1) both}
+.rb-hero > div:last-child{animation:rbFade 1s .15s ease-out both}
+.rb-hero > div:last-child > img{animation:rbZoom 1.8s .15s cubic-bezier(.2,.7,.2,1) both}
+.rb-rv{opacity:0;transform:translateY(28px)}
+.rb-rv.rb-in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1) var(--rb-d,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--rb-d,0ms)}
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference){
+.rb-card,.rb-tile,.rb-door,[style*="display: grid"] > article,[style*="display: grid"] > div[style*="border-radius: 18px"],[style*="display: grid"] > a[style*="border-radius: 18px"]{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .2s ease}
+.rb-card:hover,.rb-tile:hover,.rb-door:hover,[style*="display: grid"] > article:hover,[style*="display: grid"] > div[style*="border-radius: 18px"]:hover,[style*="display: grid"] > a[style*="border-radius: 18px"]:hover{transform:translateY(-4px);box-shadow:0 18px 40px -14px rgba(0,0,0,.7),0 0 0 1px rgba(63,193,255,.28),0 0 36px -10px rgba(63,193,255,.35)}
+[style*="overflow: hidden"] > img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.rb-card[style*="overflow: hidden"]:hover > img,[style*="display: grid"] > article[style*="overflow: hidden"]:hover > img,[style*="display: grid"] > div[style*="overflow: hidden"]:hover > img{transform:scale(1.05)}
+}

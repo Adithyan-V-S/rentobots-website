@@ -32,6 +32,7 @@ index.html … china-tour.html   the pages (fully pre-rendered HTML, good for Go
 404.html                       page-not-found
 assets/css/styles.css          shared styles + mobile layout (below 760 px)
 assets/js/rb.js                small (≈3 KB gzipped) runtime that powers the interactive sections
+assets/js/anim.js              scroll fade-up reveals and number count-ups (hero entrance + card hover are CSS)
 assets/img/                    robot photos and favicon
 sitemap.xml, robots.txt        for search engines
 vercel.json / netlify.toml     hosting settings (clean URLs, image caching)
