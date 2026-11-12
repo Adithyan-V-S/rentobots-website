@@ -23,7 +23,7 @@ Plain HTML, CSS and a tiny script — **no packages, no build step, no install.*
 | Deep Robotics Supply Chain Tour (ad landing page) | `china-tour.html` | Enquiry form → WhatsApp |
 | Not found | `404.html` | — |
 
-Every form sends a pre-filled message to WhatsApp **+91 80754 20928**. No server or database is needed.
+Every form sends a pre-filled message to WhatsApp **+91 70122 30818**. No server or database is needed.
 
 ## Folder structure
 
@@ -57,7 +57,7 @@ To preview on your computer: open `index.html` in a browser, or run `python3 -m 
   The live version comes from the `<template id="rb-view">` block and the `Component` script at the bottom of the same file.
   Edit **both**, or edit only the template — the page re-renders from it on load.
 - **Colours, buttons, mobile rules:** `assets/css/styles.css`.
-- **WhatsApp number:** search all files for `918075420928`.
+- **WhatsApp number:** search all files for `917012230818`.
 
 ## Before launch — fill in or confirm
 
