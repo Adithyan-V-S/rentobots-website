@@ -57,6 +57,7 @@ To preview on your computer: open `index.html` in a browser, or run `python3 -m 
   The live version comes from the `<template id="rb-view">` block and the `Component` script at the bottom of the same file.
   Edit **both**, or edit only the template — the page re-renders from it on load.
 - **Colours, buttons, mobile rules:** `assets/css/styles.css`.
+  After editing `styles.css` or `rb.js`, bump the `?v=` number in every page's link to it (e.g. `?v=2` → `?v=3`) so visitors' browsers fetch the new file instead of a cached copy.
 - **WhatsApp number:** search all files for `917012230818`.
 
 ## Before launch — fill in or confirm
