@@ -110,6 +110,13 @@
  ]
 }
 </script>
+<style>
+/* Hero photo crossfade */
+.rb-slide{opacity:0;transition:opacity 1.4s ease}
+.rb-slide.is-on{opacity:1}
+#rb-sk,#rb-st,#rb-sg{transition:opacity .5s ease}
+.rb-cap-out{opacity:0 !important}
+</style>
 </head>
 <body>
 <div style="background: #040506; color: #FFFFFF; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh">
@@ -164,14 +171,19 @@
 </ul>
 </div>
 <div style="flex: 1 1 420px; min-width: 0; height: 600px; border-radius: 24px; border: 1px solid #1b1c1e; background-color: #07080a; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; box-sizing: border-box; position: relative; overflow: hidden">
-<img fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu the humanoid robot walking through a mall in a traditional Kerala costume" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+<img class="rb-slide is-on" fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu the humanoid robot walking through a mall in a traditional Kerala costume" data-k="Now booking" data-t="Meet Pachu" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/kuttappan.webp" alt="" aria-hidden="true" data-k="Now booking" data-t="Meet Kuttappan" data-g="Robot dog" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-kerala.webp" alt="" aria-hidden="true" data-k="Custom costumes" data-t="Festival-ready" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/robot-dog-yellow.webp" alt="" aria-hidden="true" data-k="Quadrupeds" data-t="Robot dogs" data-g="Robot dog" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-suit.webp" alt="" aria-hidden="true" data-k="Corporate events" data-t="Suited up" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-jersey.webp" alt="" aria-hidden="true" data-k="Sports events" data-t="Match-day ready" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
 <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 45%; background: linear-gradient(180deg, rgba(4,5,6,0) 0%, rgba(4,5,6,0.9) 100%)"></div>
 <div style="position: relative; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap">
 <div style="display: flex; flex-direction: column; gap: 4px">
-<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E6E6E6">Now booking</span>
-<span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 26px">Meet Pachu</span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E6E6E6" id="rb-sk">Now booking</span>
+<span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 26px" id="rb-st">Meet Pachu</span>
 </div>
-<span style="font-size: 13px; padding: 8px 14px; border: 1px solid #363739; border-radius: 999px; color: #9C9C9D">Humanoid</span>
+<span style="font-size: 13px; padding: 8px 14px; border: 1px solid #363739; border-radius: 999px; color: #9C9C9D" id="rb-sg">Humanoid</span>
 </div>
 </div>
 </section>
@@ -386,6 +398,25 @@
 
 </div>
 
+<script>
+/* Hero photo crossfade: each photo shows ~5 s, caption changes with it. */
+(function () {
+  var imgs = document.querySelectorAll('.rb-slide');
+  if (imgs.length < 2) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var cap = [document.getElementById('rb-sk'), document.getElementById('rb-st'), document.getElementById('rb-sg')];
+  var keys = ['k', 't', 'g'], i = 0;
+  setInterval(function () {
+    if (document.hidden) return;
+    var prev = imgs[i]; i = (i + 1) % imgs.length; var next = imgs[i];
+    prev.classList.remove('is-on'); next.classList.add('is-on');
+    cap.forEach(function (c) { if (c) c.classList.add('rb-cap-out'); });
+    setTimeout(function () {
+      cap.forEach(function (c, n) { if (c) { c.textContent = next.getAttribute('data-' + keys[n]); c.classList.remove('rb-cap-out'); } });
+    }, 500);
+  }, 5000);
+})();
+</script>
 <script src="assets/js/anim.js?v=3" defer></script>
 </body>
 </html>
