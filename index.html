@@ -21,7 +21,7 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=5">
+<link rel="stylesheet" href="assets/css/styles.css?v=6">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -156,7 +156,7 @@
 <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
 <div style="display: flex; align-items: center; gap: 12px">
 <span class="rb-rule" style="width: 36px; height: 3px; border-radius: 2px; display: inline-block"></span>
-<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6">Robot hire for events</span>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6" class="rb-type" aria-label="Robot hire for events">Robot hire for events</span>
 </div>
 <h1 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(44px, 6.4vw, 88px); line-height: 0.98; letter-spacing: 0">Hire a robot.<br><span class="rb-grad">Own the room.</span></h1>
 <p style="margin: 0; font-size: 19px; line-height: 1.65; color: #9C9C9D; max-width: 560px">Book Pachu the humanoid or Kuttappan the robot dog for your launch, wedding, expo or party. Our operators bring the robot, run the show and pack up after — from Kozhikode to anywhere in India.</p>
@@ -170,7 +170,7 @@
 <li style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px">Pan-India</span><span style="font-size: 14px; color: #8B8C8D">Based in Kozhikode, Kerala</span></li>
 </ul>
 </div>
-<div style="flex: 1 1 420px; min-width: 0; height: 600px; border-radius: 24px; border: 1px solid #1b1c1e; background-color: #07080a; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; box-sizing: border-box; position: relative; overflow: hidden">
+<div style="flex: 1 1 420px; min-width: 0; height: 600px; border-radius: 24px; border: 1px solid #1b1c1e; background-color: #07080a; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; box-sizing: border-box; position: relative; overflow: hidden" class="rb-scan">
 <img class="rb-slide is-on" fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu the humanoid robot walking through a mall in a traditional Kerala costume" data-k="Now booking" data-t="Meet Pachu" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
 <img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/kuttappan.webp" alt="" aria-hidden="true" data-k="Now booking" data-t="Meet Kuttappan" data-g="Robot dog" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%">
 <img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-kerala.webp" alt="" aria-hidden="true" data-k="Custom costumes" data-t="Festival-ready" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%">
@@ -398,6 +398,22 @@
 
 </div>
 
+<script>
+/* Typing effect for the hero label (text stays readable to screen readers via aria-label). */
+(function () {
+  var el = document.querySelector('.rb-type');
+  if (!el) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.classList.remove('rb-type'); return; }
+  var full = el.textContent, n = 0;
+  el.style.minHeight = el.offsetHeight + 'px';
+  el.textContent = '';
+  setTimeout(function step() {
+    el.textContent = full.slice(0, ++n);
+    if (n < full.length) setTimeout(step, 55 + Math.random() * 45);
+    else el.classList.add('rb-typed');
+  }, 450);
+})();
+</script>
 <script>
 /* Hero photo crossfade: each photo shows ~5 s, caption changes with it. */
 (function () {
