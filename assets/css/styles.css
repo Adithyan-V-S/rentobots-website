@@ -122,7 +122,7 @@ input:focus,button:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
 #rb-sg{animation:rbTagGlow 2.8s ease-in-out infinite}
 /* 2. Scanning line over the hero photo */
 @keyframes rbScan{0%{transform:translateY(-100%);opacity:0}8%{opacity:1}55%{transform:translateY(0);opacity:1}62%,100%{transform:translateY(0);opacity:0}}
-.rb-scan::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(63,193,255,0) 72%,rgba(63,193,255,.10) 94%,rgba(140,225,255,.85) 99.6%,rgba(140,225,255,0) 100%);animation:rbScan 6.5s cubic-bezier(.45,0,.55,1) 2.2s infinite both}
+.rb-scan::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(63,193,255,0) 92%,rgba(63,193,255,.05) 98.6%,rgba(140,225,255,.7) 99.8%,rgba(140,225,255,0) 100%);animation:rbScan 6.5s cubic-bezier(.45,0,.55,1) 2.2s infinite both}
 /* 3. Typing label cursor */
 @keyframes rbBlink{50%{opacity:0}}
 .rb-type::after{content:"";display:inline-block;width:.55em;height:1.05em;margin-left:.25em;vertical-align:-.15em;background:#3FC1FF;animation:rbBlink .8s steps(1) infinite}
