@@ -117,6 +117,46 @@
 #rb-sk,#rb-st,#rb-sg{transition:opacity .5s ease}
 .rb-cap-out{opacity:0 !important}
 </style>
+<style>
+/* "Book in minutes" background: robot picks up a ball that lights up like a lamp (loops every 10 s) */
+.rb-kick{position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:calc(50% + 20px);width:min(620px,48vw);
+-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
+.rb-kick svg{width:100%;height:100%;display:block;overflow:visible;transform:scaleX(-1)}
+.rb-kick g,.rb-kick ellipse,.rb-kick circle{transform-box:view-box}
+.rb-kick::after{content:"";position:absolute;inset:-20px;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.rb-kick .o-glow{mix-blend-mode:screen}
+.rb-kick .o-glow,.rb-kick .o-core,.rb-kick .o-pool,.rb-kick .o-dust,.rb-kick .o-hball{opacity:0}
+@media (max-width:760px){.rb-kick{left:auto;right:-80px;width:360px;top:auto;height:300px;opacity:.55}}
+@media (prefers-reduced-motion: reduce){.rb-kick .o-fball{opacity:1}}
+@media (prefers-reduced-motion: no-preference){
+.rb-kick .o-all{animation:oAll 10s ease-in-out infinite}
+.rb-kick .o-upper{transform-origin:200px 210px;animation:oUpper 10s ease-in-out infinite}
+.rb-kick .o-thigh{transform-origin:200px 210px;animation:oThigh 10s ease-in-out infinite}
+.rb-kick .o-shin{transform-origin:200px 276px;animation:oShin 10s ease-in-out infinite}
+.rb-kick .o-up{transform-origin:200px 115px;animation:oUp 10s ease-in-out infinite}
+.rb-kick .o-fore{transform-origin:200px 168px;animation:oFore 10s ease-in-out infinite}
+.rb-kick .o-head{transform-origin:200px 95px;animation:oHead 10s ease-in-out infinite}
+.rb-kick .o-fball{animation:oFball 10s linear infinite}
+.rb-kick .o-hball{animation:oHball 10s linear infinite}
+.rb-kick .o-glow,.rb-kick .o-core,.rb-kick .o-pool{animation:oLight 10s linear infinite}
+.rb-kick .o-dust{animation:oDust 10s linear infinite}
+.rb-kick::after{animation:oGrain .6s steps(3) infinite}
+.rb-lit{animation:oText 10s linear infinite}
+@keyframes oText{0%,41%{filter:brightness(.55)}42%{filter:brightness(.9)}43%{filter:brightness(.6)}44%{filter:brightness(1)}45%{filter:brightness(.75)}47%,74%{filter:brightness(1.18) drop-shadow(0 0 22px rgba(255,214,150,.28))}80%,100%{filter:brightness(.55)}}
+@keyframes oAll{0%,6%{transform:translateY(0)}20%,26%{transform:translateY(50px)}40%,80%{transform:translateY(0)}92%{transform:translateY(50px)}97%,100%{transform:translateY(0)}}
+@keyframes oUpper{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(65deg)}40%,80%{transform:rotate(0)}92%{transform:rotate(65deg)}97%,100%{transform:rotate(0)}}
+@keyframes oThigh{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(-50deg)}40%,80%{transform:rotate(0)}92%{transform:rotate(-50deg)}97%,100%{transform:rotate(0)}}
+@keyframes oShin{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(100deg)}40%,80%{transform:rotate(0)}92%{transform:rotate(100deg)}97%,100%{transform:rotate(0)}}
+@keyframes oUp{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(-65deg)}40%{transform:rotate(-60deg)}58%,64%{transform:rotate(-80deg)}74%,80%{transform:rotate(-60deg)}92%{transform:rotate(-65deg)}97%,100%{transform:rotate(0)}}
+@keyframes oFore{0%,26%{transform:rotate(0)}40%{transform:rotate(-50deg)}58%,64%{transform:rotate(-40deg)}74%,80%{transform:rotate(-50deg)}92%,100%{transform:rotate(0)}}
+@keyframes oHead{0%,8%{transform:rotate(0)}20%,26%{transform:rotate(-10deg)}40%,50%{transform:rotate(14deg)}58%,64%{transform:rotate(2deg)}74%,80%{transform:rotate(14deg)}92%{transform:rotate(-10deg)}97%,100%{transform:rotate(0)}}
+@keyframes oFball{0%,22.9%{opacity:1}23%,91.9%{opacity:0}92%,100%{opacity:1}}
+@keyframes oHball{0%,22.9%{opacity:0}23%,91.9%{opacity:1}92%,100%{opacity:0}}
+@keyframes oLight{0%,41%{opacity:0}42%{opacity:.7}43%{opacity:.15}44%{opacity:.85}45%{opacity:.4}47%,74%{opacity:1}80%,100%{opacity:0}}
+@keyframes oDust{0%,45%{opacity:0;transform:translateY(0)}52%{opacity:.8}74%{opacity:.6;transform:translateY(-30px)}80%,100%{opacity:0;transform:translateY(-38px)}}
+@keyframes oGrain{0%{transform:translate(0,0)}33%{transform:translate(-7px,5px)}66%{transform:translate(6px,-4px)}}
+}
+</style>
 </head>
 <body>
 <div style="background: #040506; color: #FFFFFF; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh">
@@ -188,14 +228,42 @@
 </div>
 </section>
 
-<section id="hire" style="border-top: 1px solid #1b1c1e; background: #040506">
+<section id="hire" style="border-top: 1px solid #1b1c1e; background: #040506; position: relative; overflow: hidden; isolation: isolate">
 <div style="max-width: 1280px; margin: 0 auto; padding: 96px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px">
-<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div class="rb-kick" aria-hidden="true">
+<svg viewBox="0 -60 600 460" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="rbMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3e44"/><stop offset="1" stop-color="#121417"/></linearGradient>
+<linearGradient id="rbMetalD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#24272b"/><stop offset="1" stop-color="#0b0c0e"/></linearGradient>
+<radialGradient id="rbGlow"><stop offset="0" stop-color="rgba(255,246,226,.75)"/><stop offset=".08" stop-color="rgba(255,240,210,.45)"/><stop offset=".3" stop-color="rgba(255,232,200,.14)"/><stop offset="1" stop-color="rgba(255,232,200,0)"/></radialGradient>
+<radialGradient id="rbCore" cx="45%" cy="40%"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#fff3d6"/><stop offset="1" stop-color="#ffd99a"/></radialGradient>
+<radialGradient id="rbBallD" cx="40%" cy="35%"><stop offset="0" stop-color="#55595f"/><stop offset="1" stop-color="#16181b"/></radialGradient>
+<radialGradient id="rbPool"><stop offset="0" stop-color="rgba(255,240,215,.5)"/><stop offset="1" stop-color="rgba(255,240,215,0)"/></radialGradient>
+</defs>
+<line x1="0" y1="358" x2="600" y2="358" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+<ellipse class="o-pool" cx="300" cy="360" rx="190" ry="18" fill="url(#rbPool)"/>
+<g class="o-fball"><circle cx="286" cy="344" r="14" fill="url(#rbBallD)" stroke="rgba(255,255,255,.25)" stroke-width="1"/></g>
+<g class="o-all">
+<g transform="translate(-8 0)"><g class="o-thigh o-legF"><rect x="191" y="205" width="18" height="72" rx="9" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><g class="o-shin"><rect x="192" y="272" width="16" height="76" rx="8" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><path d="M192 346 h32 a6 6 0 0 1 0 12 h-32 z" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/></g></g></g>
+<g class="o-thigh o-legN"><rect x="191" y="205" width="18" height="72" rx="9" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><g class="o-shin"><rect x="192" y="272" width="16" height="76" rx="8" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><path d="M192 346 h32 a6 6 0 0 1 0 12 h-32 z" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/></g></g>
+<g class="o-upper">
+<g class="o-arm o-far2" transform="translate(-7 0)"><g class="o-up"><rect x="193" y="110" width="14" height="58" rx="7" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><g class="o-fore"><rect x="194" y="164" width="12" height="52" rx="6" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><circle cx="200" cy="222" r="8" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/></g></g></g>
+<path d="M178 112 Q200 100 222 112 L216 206 Q200 214 184 206 Z" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
+<path d="M186 140 h28 M188 170 h24" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+<rect x="193" y="92" width="14" height="14" rx="4" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
+<g class="o-head"><ellipse cx="204" cy="70" rx="24" ry="27" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><rect x="190" y="58" width="34" height="22" rx="10" fill="#050608" stroke="rgba(110,190,255,.55)" stroke-width="1.6"/></g>
+<g class="o-arm o-near" transform="translate(0 0)"><g class="o-up"><rect x="193" y="110" width="14" height="58" rx="7" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><g class="o-fore"><rect x="194" y="164" width="12" height="52" rx="6" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><circle cx="200" cy="222" r="8" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><g class="o-hball"><circle class="o-glow" cx="200" cy="241" r="240" fill="url(#rbGlow)"/><circle cx="200" cy="241" r="14" fill="url(#rbBallD)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><circle class="o-core" cx="200" cy="241" r="14" fill="url(#rbCore)"/></g></g></g></g>
+</g>
+</g>
+<g class="o-dust" fill="#fff4dc"><circle cx="270" cy="150" r="1.4"/><circle cx="320" cy="120" r="1"/><circle cx="345" cy="170" r="1.6"/><circle cx="295" cy="95" r="1.1"/><circle cx="250" cy="120" r="1"/><circle cx="330" cy="70" r="1.3"/></g>
+</svg>
+</div>
+<div class="rb-lit" style="flex: 1 1 520px; min-width: 0; max-width: 640px; display: flex; flex-direction: column; gap: 18px">
 <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6">Book in minutes</span>
 <h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; letter-spacing: 0">Pick a robot. Tell us the date. <span class="rb-grad">We handle the rest.</span></h2>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #9C9C9D; max-width: 560px">Build your booking in about two minutes and send it to us on WhatsApp. We'll confirm availability and your quote.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; flex-basis: 100%; margin-top: -12px">
 <a class="rb-btn" href="hire.html" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Start your booking</a>
 <a class="rb-ghost" href="robot-models.html" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; border: 1px solid #363739; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Compare robots</a>
 </div>
