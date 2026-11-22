@@ -23,7 +23,21 @@ export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   admin: {
     user: Users.slug,
-    meta: { titleSuffix: ' — Rentobots admin' },
+    // Rentobots branding instead of Payload's.
+    meta: {
+      title: 'Admin',
+      titleSuffix: ' — Rentobots',
+      description: 'Rentobots website admin',
+      icons: [{ rel: 'icon', type: 'image/svg+xml', url: '/assets/img/favicon.svg' }],
+      openGraph: { title: 'Rentobots Admin', description: 'Rentobots website admin', siteName: 'Rentobots' },
+    },
+    components: {
+      graphics: {
+        Logo: '/components/admin/Logo',
+        Icon: '/components/admin/Icon',
+      },
+    },
+    theme: 'dark',
     importMap: {
       baseDir: path.resolve(dirname),
     },
