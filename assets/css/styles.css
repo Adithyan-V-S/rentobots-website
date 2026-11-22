@@ -135,3 +135,5 @@ input:focus,button:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
 background:linear-gradient(#3FC1FF,#3FC1FF) left top/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) left top/2px 16px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right top/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right top/2px 16px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) left bottom/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) left bottom/2px 16px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right bottom/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right bottom/2px 16px no-repeat}
 .rb-card:hover::after,.rb-tile:hover::after,.rb-door:hover::after,[style*="display: grid"] > article:hover::after,[style*="display: grid"] > div[style*="border-radius: 18px"]:hover::after,[style*="display: grid"] > a[style*="border-radius: 18px"]:hover::after{opacity:1;transform:scale(1)}
 }
+/* Dropdown lists are drawn by the browser: keep them dark so options are readable */
+select option{background-color:#111214;color:#FFFFFF}
