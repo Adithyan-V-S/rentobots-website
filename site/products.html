@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Products — Humanoids, Quadrupeds &amp; Cobots | Rentobots</title>
-<meta name="description" content="Humanoids, quadrupeds and robotic arms from Unitree — G1, H1, R1, Go2 and more. Enquire with Rentobots for robots in Kerala and across India.">
+<title>Products — Humanoids, Robot Dogs, Cobots &amp; Service Robots | Rentobots</title>
+<meta name="description" content="Humanoids, robot dogs, cobots, cleaning, delivery, lawn-mowing and companion robots from Unitree, Dobot, PUDU and more. Enquire with Rentobots for robots across India.">
 <link rel="canonical" href="https://www.rentobots.com/products">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Rentobots">
-<meta property="og:title" content="Products — Humanoids, Quadrupeds &amp; Cobots | Rentobots">
-<meta property="og:description" content="Humanoids, quadrupeds and robotic arms from Unitree — G1, H1, R1, Go2 and more. Enquire with Rentobots for robots in Kerala and across India.">
+<meta property="og:title" content="Products — Humanoids, Robot Dogs, Cobots &amp; Service Robots | Rentobots">
+<meta property="og:description" content="Humanoids, robot dogs, cobots, cleaning, delivery, lawn-mowing and companion robots from Unitree, Dobot, PUDU and more. Enquire with Rentobots for robots across India.">
 <meta property="og:url" content="https://www.rentobots.com/products">
 <meta property="og:image" content="https://www.rentobots.com/assets/img/og-share.jpg">
 <meta property="og:image:width" content="1200">
@@ -28,6 +28,16 @@
 .rb-filter[aria-pressed="true"]{background:#E6E6E6;border-color:#E6E6E6;color:#040506}
 .rb-filter[aria-pressed="true"] span{color:#454647 !important}
 .rb-prod[hidden]{display:none !important}
+.rb-search{position:relative;display:flex;align-items:center}
+.rb-search svg{position:absolute;left:16px;color:#8B8C8D;pointer-events:none}
+.rb-search input{width:100%;height:56px;box-sizing:border-box;padding:0 96px 0 48px;border:1px solid #2F3031;border-radius:12px !important;color:#FFFFFF;font:400 16px 'Inter',system-ui,sans-serif}
+.rb-search input::placeholder{color:#8B8C8D}
+.rb-search input::-webkit-search-cancel-button{display:none}
+.rb-search .rb-kbd{position:absolute;right:14px;display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#8B8C8D}
+.rb-search .rb-kbd kbd{font:500 12px 'Geist Mono',monospace;padding:3px 7px;border:1px solid #363739;border-radius:6px;color:#9C9C9D}
+.rb-search button{position:absolute;right:10px;min-height:36px;padding:0 12px;border:1px solid #363739;border-radius:8px;background:#07080a;color:#E6E6E6;font:500 13px 'Inter',system-ui,sans-serif;cursor:pointer}
+.rb-search button[hidden],.rb-search .rb-kbd[hidden]{display:none}
+.rb-prod mark{background:rgba(63,193,255,.22);color:inherit;border-radius:3px}
 </style>
 </head>
 <body>
@@ -72,14 +82,21 @@
 <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6">Products</span>
 </div>
 <h1 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(44px, 6.4vw, 88px); line-height: 0.98; letter-spacing: 0; max-width: 980px">Robots for work, <span class="rb-grad">research and the classroom.</span></h1>
-<p style="margin: 0; font-size: 19px; line-height: 1.65; color: #9C9C9D; max-width: 640px"><span data-count="<!--cms:n-all-->20<!--/cms:n-all-->"><!--cms:n-all-->20<!--/cms:n-all--></span> platforms across humanoids, quadrupeds and robotic arms. Tell us what you need and we'll help you pick the right one — then deliver it, set it up and support it.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.65; color: #9C9C9D; max-width: 640px"><span data-count="<!--cms:n-all-->20<!--/cms:n-all-->"><!--cms:n-all-->20<!--/cms:n-all--></span> robots across humanoids, robot dogs, cobots and service robots for cleaning, delivery and more. Tell us what you need and we'll help you pick the right one — then deliver it, set it up and support it.</p>
 </section>
 
 <section id="catalogue" aria-label="Product catalogue">
 <div style="max-width: 1280px; margin: 0 auto; padding: 0 28px 104px; display: flex; flex-direction: column; gap: 32px">
-<div role="group" aria-label="Filter products" style="display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid #1b1c1e"><button type="button" class="rb-filter" data-filter="all" aria-pressed="true">All <span style="color: #8B8C8D">(<!--cms:n-all-->20<!--/cms:n-all-->)</span></button><button type="button" class="rb-filter" data-filter="humanoid" aria-pressed="false">Humanoids <span style="color: #8B8C8D">(<!--cms:n-humanoid-->12<!--/cms:n-humanoid-->)</span></button><button type="button" class="rb-filter" data-filter="quadruped" aria-pressed="false">Quadrupeds <span style="color: #8B8C8D">(<!--cms:n-quadruped-->6<!--/cms:n-quadruped-->)</span></button><button type="button" class="rb-filter" data-filter="cobot" aria-pressed="false">Cobots <span style="color: #8B8C8D">(<!--cms:n-cobot-->2<!--/cms:n-cobot-->)</span></button></div>
+<div class="rb-search" role="search">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<input id="rb-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search robots — try &ldquo;cleaning&rdquo;, &ldquo;Dobot&rdquo; or &ldquo;payload&rdquo;" aria-label="Search products" aria-controls="rb-grid">
+<span class="rb-kbd" aria-hidden="true">Press <kbd>/</kbd></span>
+<button type="button" id="rb-clear" hidden>Clear</button>
+</div>
+<div role="group" aria-label="Filter products" style="display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid #1b1c1e"><!--cms:filters--><button type="button" class="rb-filter" data-filter="all" aria-pressed="true">All <span style="color: #8B8C8D">(<!--cms:n-all-->20<!--/cms:n-all-->)</span></button><button type="button" class="rb-filter" data-filter="humanoid" aria-pressed="false">Humanoids <span style="color: #8B8C8D">(<!--cms:n-humanoid-->12<!--/cms:n-humanoid-->)</span></button><button type="button" class="rb-filter" data-filter="quadruped" aria-pressed="false">Quadrupeds <span style="color: #8B8C8D">(<!--cms:n-quadruped-->6<!--/cms:n-quadruped-->)</span></button><button type="button" class="rb-filter" data-filter="cobot" aria-pressed="false">Cobots <span style="color: #8B8C8D">(<!--cms:n-cobot-->2<!--/cms:n-cobot-->)</span></button><!--/cms:filters--></div>
 <p id="rb-count" aria-live="polite" style="margin: 0; font-size: 14px; color: #8B8C8D">Showing all <!--cms:n-all-->20<!--/cms:n-all--> products</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px">
+<p id="rb-empty" hidden style="margin: 0; padding: 32px; border: 1px dashed #363739; border-radius: 16px; font-size: 16px; line-height: 1.6; color: #9C9C9D">No robots match <strong id="rb-empty-q" style="color: #FFFFFF"></strong>. Try a different word, or <a href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20looking%20for%20a%20robot." target="_blank" rel="noopener" style="color: #E6E6E6; font-weight: 600">ask us on WhatsApp</a> — we source robots beyond this list.</p>
+<div id="rb-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px">
 <!--cms:products--><article class="rb-card rb-prod" data-cat="humanoid" id="g1-edu-u8" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
 <img fetchpriority="high" decoding="async" src="assets/img/products/g1-edu-u8.webp" alt="Unitree G1 EDU U8 robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
@@ -339,6 +356,326 @@
 <ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">6-axis + gripper</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">500 g payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">670 mm reach</li></ul>
 <a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Unitree%20D1-T%20Arm.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
 </div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-magician" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-magician.webp" alt="Dobot Magician desktop robot arm with a gripper" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot Magician</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Desktop 4-axis robot arm for STEM labs — pick-and-place, drawing, laser engraving and 3D-printing lessons.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">500 g payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">320 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.2 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20Magician.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-magician-lite" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-magician-lite.webp" alt="Dobot Magician Lite lightweight desktop robot arm" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot Magician Lite</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Lightweight desktop robot arm made for school classrooms and first robotics lessons.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">250 g payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">340 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">4 axes</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20Magician%20Lite.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-magician-e6" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-magician-e6.webp" alt="Dobot Magician E6 desktop six-axis cobot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot Magician E6</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Desktop 6-axis cobot for engineering colleges, research labs and training centres.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">750 g payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">450 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.1 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20Magician%20E6.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-mg400" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-mg400.webp" alt="Dobot MG400 compact desktop robot arm" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot MG400</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Compact desktop 4-axis cobot for small-batch production, lab automation and testing.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">500 g payload (750 g max)</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">440 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.05 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20MG400.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-m1-pro" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-m1-pro.webp" alt="Dobot M1 Pro SCARA robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot M1 Pro</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">SCARA robot for fast, precise assembly and handling in light-industry factories.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1.5 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">400 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.02 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20M1%20Pro.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr3a" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr3a.webp" alt="Dobot CR3A six-axis collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR3A</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Light 6-axis cobot from Dobot’s CRA series for assembly, testing and lab automation.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">3 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">620 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.02 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR3A.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr5a" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr5a.webp" alt="Dobot CR5A six-axis collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR5A</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">All-round 6-axis cobot for pick-and-place, screw driving and machine tending.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">5 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">900 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.02 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR5A.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr7a" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr7a.webp" alt="Dobot CR7A six-axis collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR7A</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">6-axis cobot with a compact reach for busy work cells and production lines.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">7 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">800 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.05 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR7A.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr10a" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr10a.webp" alt="Dobot CR10A six-axis collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR10A</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">6-axis cobot with a long 1.3 m reach for machine tending and handling larger parts.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">10 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1300 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.03 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR10A.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr12a" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr12a.webp" alt="Dobot CR12A six-axis collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR12A</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">6-axis cobot for handling heavier parts and tools on the production line.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">12 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1200 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.03 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR12A.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr16a" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr16a.webp" alt="Dobot CR16A six-axis collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR16A</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">High-payload 6-axis cobot with a compact 1 m reach for heavy handling.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">16 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1000 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.03 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR16A.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr20a" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr20a.webp" alt="Dobot CR20A six-axis collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR20A</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Heavy-duty 6-axis cobot with a 1.7 m reach for palletizing and large loads.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">20 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1700 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.05 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR20A.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-cr30h" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-cr30h.webp" alt="Dobot CR30H heavy-payload collaborative robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot CR30H</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Heavy-payload cobot built for palletizing and material handling in demanding plants.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">30 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1800 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.05 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20CR30H.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-nova-2" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-nova-2.webp" alt="Dobot Nova 2 compact service cobot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot Nova 2</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Compact cobot for restaurant, café and retail automation.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">2 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">625 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.05 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20Nova%202.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cobot" id="dobot-nova-5" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/dobot-nova-5.webp" alt="Dobot Nova 5 service cobot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Dobot Nova 5</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Service cobot with force control for tasks such as massage, retail and lab work.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">5 kg payload</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">850 mm reach</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">±0.05 mm repeatability</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Dobot%20Nova%205.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cleaning" id="pudu-cc1" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-cc1.webp" alt="PUDU CC1 commercial cleaning robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU CC1</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">4-in-1 commercial cleaning robot — sweeps, scrubs, vacuums and mops offices, malls, hospitals and schools.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">700–1000 m²/h</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">17,000 Pa suction</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">5 h scrubbing</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20CC1.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cleaning" id="pudu-cc1-pro" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-cc1-pro.webp" alt="PUDU CC1 Pro cleaning robot with its workstation" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU CC1 Pro</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">AI-powered 4-in-1 cleaner for large commercial floors, with AI spot scrubbing and an optional workstation.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 3000 m²/h (spot mode)</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">50 Ah battery</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">5 h scrubbing</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20CC1%20Pro.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cleaning" id="pudu-bg1" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-bg1.webp" alt="PUDU BG1 large scrubber-dryer robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU BG1</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Large AI scrubber-dryer for big commercial floors — sweeps and scrubs in a single pass.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 2000 m²/h</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">75 L clean-water tank</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 7.5 h</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20BG1.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cleaning" id="pudu-et1" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-et1.webp" alt="PUDU ET1 compact scrubber-dryer robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU ET1</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Compact scrubber-dryer for narrow aisles and cleaning during business hours.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">300–720 m²/h</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 1.0 m/s</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">2.5–4 h run-time</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20ET1.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cleaning" id="pudu-mt1" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-mt1.webp" alt="PUDU MT1 robotic sweeper" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU MT1</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">AI robotic sweeper for dry debris in large venues such as warehouses, factories and car parks.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 1800 m²/h</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">4–8 h run-time</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 1.2 m/s</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20MT1.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="cleaning" id="pudu-mt1-max" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-mt1-max.webp" alt="PUDU MT1 Max outdoor robotic sweeper" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU MT1 Max</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Outdoor and semi-outdoor AI sweeper with 3D perception for campuses, plazas and car parks.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 2200 m²/h</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">IP54</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">5–10 h run-time</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20MT1%20Max.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="delivery" id="pudu-bellabot" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-bellabot.webp" alt="PUDU BellaBot cat-faced delivery robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU BellaBot</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Friendly cat-faced delivery robot that carries food trays in restaurants and hotels.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">40 kg load (10 kg/tray)</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">13 h battery</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">0.5–1.2 m/s</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20BellaBot.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="delivery" id="pudu-bellabot-pro" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-bellabot-pro.webp" alt="PUDU BellaBot Pro delivery robot with advertising screen" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU BellaBot Pro</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Delivery robot with front screens for advertising — for restaurants, retail and events.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">40 kg load (10 kg/tray)</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">11 h battery</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">10.1″ + 18.5″ screens</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20BellaBot%20Pro.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="delivery" id="pudu-flashbot-max" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-flashbot-max.webp" alt="PUDU FlashBot Max enclosed delivery robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU FlashBot Max</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Multi-floor delivery robot for hotels and offices, including semi-outdoor routes.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">10 kg per compartment</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">9 h battery</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">4 h charging</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20FlashBot%20Max.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="delivery" id="pudu-t600" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-t600.webp" alt="PUDU T600 industrial delivery robot carrying boxes" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU T600</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Heavy-payload industrial AMR for moving goods around warehouses and factories, across floors by lift.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">600 kg load</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">12 h battery</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">0.2–1.2 m/s</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20T600.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="delivery" id="pudu-mp2000" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-mp2000.webp" alt="PUDU MP2000 pallet-handling robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU MP2000</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">AI pallet-handling robot for warehouses and production lines.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">2000 kg load</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">200 mm lift height</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">12 h battery (no load)</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20MP2000.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="lawn" id="pudu-gt5" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/pudu-gt5.webp" alt="PUDU GT5 commercial robotic lawn mower" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">PUDU GT5</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Commercial robotic mower for large turf such as sports fields and parks — cuts and collects clippings.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1.52 m cutting width</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Up to 8000 m²/h</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">8–10 h run-time</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20PUDU%20GT5.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="companion" id="eilik" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/eilik.webp" alt="Eilik small desktop companion robot" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Eilik</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Small desktop companion robot with expressive emotions and a playful personality.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">13.3 cm tall</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">230 g</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">1.5 h battery</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Eilik.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="companion" id="emo" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/emo.webp" alt="EMO desktop AI robot pet wearing headphones" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">EMO</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Desktop AI robot pet with over 1000 expressions and moves that reacts to you.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Face recognition</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">10+ sensors</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">HD camera</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20EMO.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="companion" id="emo-go-home" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/emo-go-home.webp" alt="EMO Go Home robot with its charging station" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">EMO Go Home</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">EMO with a home station — walks back to charge itself and roams inside a set area.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Self-charging</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Home Fence area limit</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">LED matrix display</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20EMO%20Go%20Home.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="companion" id="loona-petbot" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/loona-petbot.webp" alt="Loona Petbot family robot pet" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Loona Petbot</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">Family robot pet with games and AI chat that recognises family members.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">2 h playtime</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Face recognition</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">3D ToF sensor</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Loona%20Petbot.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rb-card rb-prod" data-cat="companion" id="loona-deskmate" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+<img loading="lazy" decoding="async" src="assets/img/products/loona-deskmate.webp" alt="Loona Deskmate AI desk companion holding a phone" width="960" height="720" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #111214">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">Quadruped</span>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2">Loona Deskmate</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 15px; line-height: 1.6; color: #9C9C9D">AI desk companion that holds your iPhone with MagSafe and helps with briefs and follow-ups.</p>
+<ul aria-label="Key specs" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px"><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">3-axis motion</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Qi2 15 W charging</li><li style="font-size: 13px; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">iPhone 12 or newer</li></ul>
+<a class="rb-ghost" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%27m%20interested%20in%20the%20Loona%20Deskmate.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener" style="margin-top: 6px; color: #FFFFFF; padding: 12px 18px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px">Enquire on WhatsApp <span aria-hidden="true">→</span></a>
+</div>
 </article><!--/cms:products-->
 </div>
 <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #8B8C8D; max-width: 820px">Unitree, Go2, G1, H1, R1, Z1 and D1 are products and trademarks of Unitree Robotics. Product images courtesy of Unitree Robotics. Specifications are the manufacturer's and can vary by configuration — ask us for the current datasheet.</p>
@@ -406,19 +743,70 @@
 </div>
 <script>
 (function () {
-  var btns = document.querySelectorAll('.rb-filter');
-  var cards = document.querySelectorAll('.rb-prod');
+  var input = document.getElementById('rb-q');
+  var clear = document.getElementById('rb-clear');
+  var kbd = document.querySelector('.rb-search .rb-kbd');
   var count = document.getElementById('rb-count');
-  var names = { all: 'products', humanoid: 'humanoids', quadruped: 'quadrupeds', cobot: 'cobots' };
-  function apply(f) {
-    var n = 0;
-    cards.forEach(function (c) { var show = f === 'all' || c.dataset.cat === f; c.hidden = !show; if (show) n++; });
-    btns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.filter === f ? 'true' : 'false'); });
-    count.textContent = f === 'all' ? 'Showing all ' + n + ' products' : 'Showing ' + n + ' ' + names[f];
+  var empty = document.getElementById('rb-empty');
+  var emptyQ = document.getElementById('rb-empty-q');
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.rb-filter'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.rb-prod'));
+  var filter = 'all';
+  var plural = {};
+  btns.forEach(function (b) { plural[b.dataset.filter] = b.dataset.plural || 'products'; });
+
+  // Search text for each card: name, type, description and specs (lower-case).
+  cards.forEach(function (c) { c._s = (c.dataset.search || c.textContent).toLowerCase(); });
+
+  function words(q) { return q.toLowerCase().split(/\s+/).filter(Boolean); }
+  function matches(c, w) { for (var i = 0; i < w.length; i++) if (c._s.indexOf(w[i]) === -1) return false; return true; }
+
+  function apply() {
+    var q = input.value.trim();
+    var w = words(q);
+    var shown = 0;
+    var perCat = { all: 0 };
+    cards.forEach(function (c) {
+      var hit = matches(c, w);
+      if (hit) { perCat.all++; perCat[c.dataset.cat] = (perCat[c.dataset.cat] || 0) + 1; }
+      var show = hit && (filter === 'all' || c.dataset.cat === filter);
+      c.hidden = !show;
+      if (show) shown++;
+    });
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.filter === filter ? 'true' : 'false');
+      var n = b.querySelector('span'); if (n) n.textContent = '(' + (perCat[b.dataset.filter] || 0) + ')';
+    });
+    var what = filter === 'all' ? 'products' : plural[filter];
+    if (q) count.textContent = shown + (shown === 1 ? ' result' : ' results') + ' for \u201c' + q + '\u201d' + (filter === 'all' ? '' : ' in ' + plural[filter]);
+    else count.textContent = filter === 'all' ? 'Showing all ' + shown + ' products' : 'Showing ' + shown + ' ' + what;
+    empty.hidden = shown !== 0;
+    emptyQ.textContent = q ? '\u201c' + q + '\u201d' : 'this filter';
+    clear.hidden = !q; kbd.hidden = !!q;
+    // Keep the search in the address bar so it can be shared.
+    try {
+      var url = new URL(location.href);
+      if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+      url.hash = filter === 'all' ? '' : filter;
+      history.replaceState(null, '', url);
+    } catch (e) {}
   }
-  btns.forEach(function (b) { b.addEventListener('click', function () { apply(b.dataset.filter); }); });
+
+  input.addEventListener('input', apply);
+  clear.addEventListener('click', function () { input.value = ''; apply(); input.focus(); });
+  input.addEventListener('keydown', function (e) { if (e.key === 'Escape') { input.value = ''; apply(); } });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== input && !/INPUT|TEXTAREA|SELECT/.test((document.activeElement || {}).tagName || '')) {
+      e.preventDefault(); input.focus();
+    }
+  });
+  btns.forEach(function (b) { b.addEventListener('click', function () { filter = b.dataset.filter; apply(); }); });
+
+  var params = new URLSearchParams(location.search);
+  if (params.get('q')) input.value = params.get('q');
   var h = location.hash.slice(1);
-  if (names[h]) apply(h);
+  if (plural[h]) filter = h;
+  apply();
 })();
 </script>
 <script src="assets/js/anim.js?v=3" defer></script>

@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 
 import type { CaseStudy, Media, Product, Robot } from '../payload-types'
+import { PRODUCT_CATEGORY_INFO } from '../collections/Products'
 
 /**
  * The public pages are the original hand-built HTML files in /site.
@@ -167,7 +168,7 @@ async function renderCaseStudies(html: string) {
 
 // ---------- products ----------
 
-const PRODUCT_CAT: Record<string, string> = { humanoid: 'Humanoid', quadruped: 'Quadruped', cobot: 'Cobot' }
+const PRODUCT_CAT: Record<string, string> = Object.fromEntries(PRODUCT_CATEGORY_INFO.map((c) => [c.value, c.label]))
 
 function productHtml(p: Product, i: number) {
   const m = mediaOf(p.image)
@@ -175,7 +176,9 @@ function productHtml(p: Product, i: number) {
   const specs = (p.specs || []).map((s) => s.text).filter(Boolean)
   const w = m?.sizes?.card?.width || m?.width || 960
   const h = m?.sizes?.card?.height || m?.height || 720
-  return `<article class="rb-card rb-prod" data-cat="${esc(p.category)}" id="${esc(p.slug)}" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+  // Text the live search looks through (lower-cased by the page script).
+  const search = [p.name, PRODUCT_CAT[p.category], PRODUCT_CATEGORY_INFO.find((c) => c.value === p.category)?.plural, p.description, ...specs].join(' ')
+  return `<article class="rb-card rb-prod" data-cat="${esc(p.category)}" data-search="${esc(search)}" id="${esc(p.slug)}" style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
 <img ${i < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" src="${esc(imgUrl(m))}" alt="${esc(m?.alt || p.name)}" width="${w}" height="${h}" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: ${imgPos(m)}; background: #111214">
 <div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1">
 <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">${PRODUCT_CAT[p.category]}</span>
@@ -199,9 +202,13 @@ async function renderProducts(html: string) {
   })
   html = fill(html, 'products', docs.map(productHtml).join('\n'))
   html = fill(html, 'n-all', String(docs.length))
-  for (const cat of Object.keys(PRODUCT_CAT)) {
-    html = fill(html, `n-${cat}`, String(docs.filter((d) => d.category === cat).length))
-  }
+  // Filter buttons: "All" plus every category that has at least one product.
+  const count = (v: string) => docs.filter((d) => d.category === v).length
+  const btn = (value: string, text: string, n: number, on: boolean, plural: string) =>
+    `<button type="button" class="rb-filter" data-filter="${value}" data-plural="${esc(plural)}" aria-pressed="${on}">${esc(text)} <span style="color: #8B8C8D">(${n})</span></button>`
+  const buttons = [btn('all', 'All', docs.length, true, 'products')]
+  for (const c of PRODUCT_CATEGORY_INFO) if (count(c.value)) buttons.push(btn(c.value, c.plural, count(c.value), false, c.plural.toLowerCase()))
+  html = fill(html, 'filters', buttons.join(''))
   return html
 }
 

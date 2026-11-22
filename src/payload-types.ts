@@ -236,7 +236,6 @@ export interface Robot {
 export interface Media {
   id: number;
   alt: string;
-  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -273,7 +272,7 @@ export interface Product {
    * Short id for links, e.g. "g1-edu-u8". Lowercase, no spaces.
    */
   slug: string;
-  category: 'humanoid' | 'quadruped' | 'cobot';
+  category: 'humanoid' | 'quadruped' | 'cobot' | 'cleaning' | 'delivery' | 'lawn' | 'companion';
   image: number | Media;
   description: string;
   specs?:
@@ -603,7 +602,6 @@ export interface FaqsSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
-  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
