@@ -200,16 +200,185 @@ async function renderProducts(html: string) {
   return html
 }
 
+// ---------- robot models ----------
+
+async function getModels() {
+  const payload = await getPayload({ config })
+  const { docs } = await payload.find({
+    collection: 'robots',
+    where: { showOnModelsPage: { equals: true } },
+    sort: 'sortOrder',
+    depth: 1,
+    limit: 100,
+  })
+  return docs.filter((r) => r.slug)
+}
+
+function robotSectionHtml(r: Robot, i: number) {
+  const m = mediaOf(r.photo)
+  const even = i % 2 === 1
+  const n = String(i + 1).padStart(2, '0')
+  const meta = [r.kind, r.model].filter(Boolean).map(esc).join(' · ')
+  const img = m
+    ? `<img ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" src="${esc(rel(m.url))}" alt="${esc(m.alt)}" style="flex: 1 1 420px; min-width: 0; width: 100%; height: 620px; object-fit: cover; object-position: ${imgPos(m)}; border-radius: 24px; border: 1px solid #1b1c1e; background: #1b1c1e">`
+    : ''
+  const caps = (r.capabilities || []).map((c) => c.text).filter(Boolean)
+  const text = `<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<span class="rb-grad" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">${n}</span>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">${meta}</span>
+${r.isNew ? `<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: #FF6363; color: #040506">New</span>` : ''}
+</div>
+<h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(48px, 6vw, 80px); line-height: 0.95; letter-spacing: 0">${esc(r.name)}</h2>
+${r.description ? `<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #9C9C9D">${esc(r.description)}</p>` : ''}
+${caps.length ? `<div style="display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E6E6E6">What ${esc(r.name)} does</h3>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 10px 24px; font-size: 16px; color: #E6E6E6">
+${caps.map((c) => `<li style="display: flex; gap: 10px; align-items: center"><span class="rb-rule" style="width: 8px; height: 8px; border-radius: 2px; flex: none"></span>${esc(c)}</li>`).join('\n')}
+</ul>
+</div>` : ''}
+${r.greatFor ? `<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #8B8C8D"><span style="color: #E6E6E6; font-weight: 600">Great for</span> ${esc(r.greatFor)}</p>` : ''}
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-top: 24px; border-top: 1px solid #1b1c1e">
+<a class="rb-btn" href="hire.html" style="color: #FFFFFF; padding: 16px 26px; border-radius: 999px; font-size: 15px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Book ${esc(r.name)}</a>
+</div>
+</div>`
+  return `<section id="${esc(r.slug)}" style="border-top: 1px solid #1b1c1e${even ? '; background: #040506' : ''}">
+<div style="max-width: 1280px; margin: 0 auto; padding: 88px 28px; display: flex; flex-wrap: ${even ? 'wrap-reverse' : 'wrap'}; align-items: center; gap: 56px">
+${even ? `${text}\n${img}` : `${img}\n${text}`}
+</div>
+</section>`
+}
+
+function compareRowsHtml(robots: Robot[]) {
+  return robots
+    .map(
+      (r, i) => `<tr${i < robots.length - 1 ? ' style="border-bottom: 1px solid #1b1c1e"' : ''}>
+<th scope="row" style="padding: 22px 24px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">${esc(r.name)}</th>
+<td style="padding: 22px 24px; color: #9C9C9D">${esc(r.kind)}</td>
+<td style="padding: 22px 24px; color: #9C9C9D">${esc(r.model)}</td>
+<td style="padding: 22px 24px; color: #9C9C9D">${esc(r.bestMoment)}</td>
+</tr>`,
+    )
+    .join('\n')
+}
+
+async function renderRobotModels(html: string) {
+  const robots = await getModels()
+  html = fill(html, 'robots', robots.map(robotSectionHtml).join('\n\n'))
+  html = fill(html, 'compare', compareRowsHtml(robots))
+  return html
+}
+
+/** Footer "Models" list on every page. Keeps each page's own link style. */
+async function renderFooterModels(html: string) {
+  if (!html.includes('<!--cms:footer-models-->')) return html
+  const robots = await getModels()
+  return html.replace(/<!--cms:footer-models-->([\s\S]*?)<!--\/cms:footer-models-->/g, (_, block: string) => {
+    const first = /<li><a href="([^"#]*)#[^"]*"([^>]*)>[^<]*<\/a><\/li>/.exec(block)
+    const prefix = first ? first[1] : 'robot-models.html'
+    const attrs = first ? first[2] : ''
+    return robots.map((r) => `<li><a href="${prefix}#${esc(r.slug)}"${attrs}>${esc(r.name)}</a></li>`).join('\n')
+  })
+}
+
+// ---------- programs ----------
+
+async function renderPrograms(html: string) {
+  const payload = await getPayload({ config })
+  const [{ docs }, op] = await Promise.all([
+    payload.find({ collection: 'programs', where: { published: { equals: true } }, sort: 'sortOrder', limit: 50 }),
+    payload.findGlobal({ slug: 'operator-workshop' }),
+  ])
+  const items = docs.map((p, i) => {
+    const hl = Boolean(p.highlight)
+    const box = hl ? 'background: #111214; border: 2px solid #E6E6E6;' : 'background: #07080a; border: 1px solid #1b1c1e;'
+    const facts = [
+      p.duration ? ['Duration', p.duration] : null,
+      p.group ? ['Group', p.group] : null,
+    ].filter(Boolean) as [string, string][]
+    return `
+<li style="padding: 28px 32px; border-radius: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; box-sizing: border-box; ${box}">
+<div style="flex: 0 0 64px; display: flex; flex-direction: column; gap: 6px">
+<span class="rb-grad" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 32px; line-height: 1">${String(i + 1).padStart(2, '0')}</span>
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8C8D">${esc(p.stage)}</span>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 26px; line-height: 1.15; letter-spacing: 0">${esc(p.title)}</h3>
+${p.badge ? `<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; background: #FF6363; color: #040506">${esc(p.badge)}</span>` : ''}
+</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #9C9C9D; max-width: 560px">${esc(p.summary)}</p>
+</div>
+<dl style="flex: 0 1 260px; margin: 0; display: flex; gap: 28px">
+${facts.map(([k, v]) => `<div><dt style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #8B8C8D">${k}</dt><dd style="margin: 6px 0 0; font-size: 17px; font-weight: 600; white-space: nowrap">${esc(v)}</dd></div>`).join('\n')}
+</dl>
+${p.detailPage ? `<a class="rb-ghost" href="${p.detailPage}.html" aria-label="View the ${esc(p.title)}${/program$/i.test(p.title) ? '' : ' program'}" style="flex: 0 0 auto; color: #FFFFFF; padding: 12px 22px; border-radius: 999px; border: 1px solid #363739; font-size: 14px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; white-space: nowrap">View program →</a>` : ''}
+</li>
+`
+  })
+  html = fill(html, 'programs', items.join(''))
+  html = fill(html, 'op-format', esc(op.format))
+  html = fill(html, 'op-seats', esc(op.seats ?? ''))
+  html = fill(html, 'op-next', esc(op.nextBatch))
+  return html
+}
+
+// ---------- FAQs (any page with a marked FAQ list) ----------
+
+async function renderFaqs(name: string, html: string) {
+  if (!html.includes('<!--cms:faq-->')) return html
+  const payload = await getPayload({ config })
+  const { docs } = await payload.find({
+    collection: 'faqs',
+    where: { and: [{ published: { equals: true } }, { pages: { contains: name } }] },
+    sort: 'sortOrder',
+    limit: 100,
+  })
+  // Each FAQ list reuses its own first item as the design, so every page keeps its look.
+  html = html.replace(/<!--cms:faq-->([\s\S]*?)<!--\/cms:faq-->/g, (_, block: string) => {
+    const pattern = /<details[\s\S]*?<\/details>/.exec(block)![0]
+    return docs
+      .map((f) =>
+        pattern
+          .replace(/(<summary[^>]*>)[\s\S]*?(<span class="rb-plus")/, (_m, a, b) => `${a}${esc(f.question)}${b}`)
+          .replace(/(<\/summary>\s*<p[^>]*>)[\s\S]*?(<\/p>\s*<\/details>)/, (_m, a, b) => `${a}${esc(f.answer)}${b}`),
+      )
+      .join('\n')
+  })
+  // Keep Google's FAQ data in the page head in step with the visible questions.
+  html = html.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (whole, a, json, b) => {
+    try {
+      const data = JSON.parse(json)
+      const nodes = Array.isArray(data['@graph']) ? data['@graph'] : [data]
+      const faq = nodes.find((n: { '@type'?: string }) => n['@type'] === 'FAQPage')
+      if (!faq) return whole
+      faq.mainEntity = docs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      }))
+      return `${a}\n${JSON.stringify(data, null, 1).replace(/</g, '\\u003c')}\n${b}`
+    } catch {
+      return whole
+    }
+  })
+  return html
+}
+
 // ---------- entry ----------
 
 const RENDERERS: Record<string, (html: string) => Promise<string>> = {
   'case-studies': renderCaseStudies,
   products: renderProducts,
+  'robot-models': renderRobotModels,
+  programs: renderPrograms,
 }
 
 export async function renderPage(name: string) {
   let html = await fs.readFile(path.join(SITE_DIR, `${name}.html`), 'utf8')
   const r = RENDERERS[name]
   if (r) html = await r(html)
+  html = await renderFaqs(name, html)
+  html = await renderFooterModels(html)
   return cleanLinks(html)
 }

@@ -10,7 +10,8 @@ async function refresh(pages: string[], context: Record<string, unknown>) {
   if (context?.disableRevalidate) return
   try {
     const { revalidateTag } = await import('next/cache')
-    for (const p of pages) revalidateTag(`page:${p}`, { expire: 0 })
+    // 'ALL' refreshes every page (e.g. robots appear in every footer).
+    for (const p of pages) revalidateTag(p === 'ALL' ? 'site' : `page:${p}`, { expire: 0 })
   } catch {
     // Not running inside Next.js (e.g. the seed script) — nothing to refresh.
   }

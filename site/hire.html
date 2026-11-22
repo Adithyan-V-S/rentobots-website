@@ -228,6 +228,10 @@
 </div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
+<label for="f-phone" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Phone <span style="color: #8B8C8D; font-weight: 400">(optional)</span></label>
+<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="So we can call you back" value="" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
 <label for="f-notes" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Anything else? <span style="color: #8B8C8D; font-weight: 400">(optional)</span></label>
 <input id="f-notes" type="text" placeholder="Theme, costume, script ideas, brand colours…" value="" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
 </div>
@@ -286,7 +290,7 @@ Send booking on WhatsApp</a>
 <h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(34px, 4vw, 48px); line-height: 1.05; letter-spacing: 0">Before you book.</h2>
 </div>
 <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; border-top: 1px solid #1b1c1e">
-<details style="border-bottom: 1px solid #1b1c1e">
+<!--cms:faq--><details style="border-bottom: 1px solid #1b1c1e">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">What does the rate include?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
 <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">The robot's appearance at your event with a Rentobots operator. Transportation and stay are charged separately, on actuals.</p>
 </details>
@@ -301,7 +305,7 @@ Send booking on WhatsApp</a>
 <details style="border-bottom: 1px solid #1b1c1e">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Can the robot follow a script or wear a costume?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
 <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">Tell us your idea in the booking notes — we'll plan stage moments, costumes and branding around your event.</p>
-</details>
+</details><!--/cms:faq-->
 </div>
 </div>
 </section>
@@ -327,9 +331,9 @@ Send booking on WhatsApp</a>
 <nav aria-label="Robot models">
 <h2 style="margin: 0 0 18px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">Models</h2>
 <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<li><a href="robot-models.html#pachu" style="text-decoration: none; color: #E6E6E6">Pachu</a></li>
+<!--cms:footer-models--><li><a href="robot-models.html#pachu" style="text-decoration: none; color: #E6E6E6">Pachu</a></li>
 <li><a href="robot-models.html#kuttappan" style="text-decoration: none; color: #E6E6E6">Kuttappan</a></li>
-<li><a href="robot-models.html#d1" style="text-decoration: none; color: #E6E6E6">D1</a></li>
+<li><a href="robot-models.html#d1" style="text-decoration: none; color: #E6E6E6">D1</a></li><!--/cms:footer-models-->
 <li><a href="https://wa.me/917012230818" style="text-decoration: none; color: #E6E6E6">Custom fleet</a></li>
 </ul>
 </nav>
@@ -520,6 +524,10 @@ Send booking on WhatsApp</a>
 </div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
+<label for="f-phone" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Phone <span style="color: #8B8C8D; font-weight: 400">(optional)</span></label>
+<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="So we can call you back" value="{{phone}}" oninput="{{setPhone}}" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
 <label for="f-notes" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Anything else? <span style="color: #8B8C8D; font-weight: 400">(optional)</span></label>
 <input id="f-notes" type="text" placeholder="Theme, costume, script ideas, brand colours…" value="{{notes}}" oninput="{{setNotes}}" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
 </div>
@@ -580,7 +588,7 @@ Send booking on WhatsApp</a>
 <h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(34px, 4vw, 48px); line-height: 1.05; letter-spacing: 0">Before you book.</h2>
 </div>
 <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; border-top: 1px solid #1b1c1e">
-<details style="border-bottom: 1px solid #1b1c1e">
+<!--cms:faq--><details style="border-bottom: 1px solid #1b1c1e">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">What does the rate include?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
 <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">The robot's appearance at your event with a Rentobots operator. Transportation and stay are charged separately, on actuals.</p>
 </details>
@@ -595,7 +603,7 @@ Send booking on WhatsApp</a>
 <details style="border-bottom: 1px solid #1b1c1e">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Can the robot follow a script or wear a costume?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
 <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">Tell us your idea in the booking notes — we'll plan stage moments, costumes and branding around your event.</p>
-</details>
+</details><!--/cms:faq-->
 </div>
 </div>
 </section>
@@ -621,9 +629,9 @@ Send booking on WhatsApp</a>
 <nav aria-label="Robot models">
 <h2 style="margin: 0 0 18px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">Models</h2>
 <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<li><a href="robot-models.html#pachu" style="text-decoration: none; color: #E6E6E6">Pachu</a></li>
+<!--cms:footer-models--><li><a href="robot-models.html#pachu" style="text-decoration: none; color: #E6E6E6">Pachu</a></li>
 <li><a href="robot-models.html#kuttappan" style="text-decoration: none; color: #E6E6E6">Kuttappan</a></li>
-<li><a href="robot-models.html#d1" style="text-decoration: none; color: #E6E6E6">D1</a></li>
+<li><a href="robot-models.html#d1" style="text-decoration: none; color: #E6E6E6">D1</a></li><!--/cms:footer-models-->
 <li><a href="https://wa.me/917012230818" style="text-decoration: none; color: #E6E6E6">Custom fleet</a></li>
 </ul>
 </nav>
@@ -659,7 +667,7 @@ class Component extends DCLogic {
       robots: { pachu: true, kuttappan: false },
       event: 'launch',
       tasks: { greet: true, stage: true, photos: true },
-      date: '', hours: 'Half day (up to 4 hours)', city: '', venue: '', guests: '', name: '', notes: ''
+      date: '', hours: 'Half day (up to 4 hours)', city: '', venue: '', guests: '', name: '', phone: '', notes: ''
     };
   }
   renderVals() {
@@ -742,7 +750,8 @@ class Component extends DCLogic {
       'Time on site: ' + s.hours,
       s.guests ? 'Guests: ' + s.guests : '',
       s.notes ? 'Notes: ' + s.notes : '',
-      s.name ? 'Name: ' + s.name : ''
+      s.name ? 'Name: ' + s.name : '',
+      s.phone ? 'Phone: ' + s.phone : ''
     ].filter(Boolean);
     const waHref = 'https://wa.me/917012230818?text=' + encodeURIComponent(lines.join('\n'));
 
@@ -756,7 +765,7 @@ class Component extends DCLogic {
           keepalive: true,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            name: s.name, robots: picked.map((p) => p.name).join(' + '), event: eventLabel,
+            name: s.name, phone: s.phone, robots: picked.map((p) => p.name).join(' + '), event: eventLabel,
             eventDate: s.date ? dateLabel : '', hours: s.hours, city: s.city, venue: s.venue,
             guests: s.guests, moments: pickedTasks.join(', '), notes: s.notes
           })
@@ -772,7 +781,7 @@ class Component extends DCLogic {
       taskCount: pickedTasks.length ? pickedTasks.length + ' selected' : 'None yet',
       date: s.date, city: s.city, venue: s.venue, guests: s.guests, name: s.name, notes: s.notes,
       setDate: field('date'), setHours: field('hours'), setCity: field('city'), setVenue: field('venue'),
-      setGuests: field('guests'), setName: field('name'), setNotes: field('notes'),
+      setGuests: field('guests'), setName: field('name'), setPhone: field('phone'), phone: s.phone, setNotes: field('notes'),
       waHref, saveBooking
     };
   }

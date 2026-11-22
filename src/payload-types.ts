@@ -70,6 +70,8 @@ export interface Config {
     'case-studies': CaseStudy;
     products: Product;
     robots: Robot;
+    programs: Program;
+    faqs: Faq;
     media: Media;
     bookings: Booking;
     users: User;
@@ -83,6 +85,8 @@ export interface Config {
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     robots: RobotsSelect<false> | RobotsSelect<true>;
+    programs: ProgramsSelect<false> | ProgramsSelect<true>;
+    faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     bookings: BookingsSelect<false> | BookingsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -95,8 +99,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'operator-workshop': OperatorWorkshop;
+  };
+  globalsSelect: {
+    'operator-workshop': OperatorWorkshopSelect<false> | OperatorWorkshopSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -187,6 +195,33 @@ export interface Robot {
    * e.g. Humanoid or Robot dog
    */
   kind: string;
+  /**
+   * e.g. Unitree G1 EDU
+   */
+  model?: string | null;
+  /**
+   * Link id on /robot-models, e.g. "pachu" → /robot-models#pachu
+   */
+  slug?: string | null;
+  /**
+   * Tall photo works best. Set the focal point to control the crop.
+   */
+  photo?: (number | null) | Media;
+  description?: string | null;
+  capabilities?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. product launches, weddings and college tech fests.
+   */
+  greatFor?: string | null;
+  bestMoment?: string | null;
+  isNew?: boolean | null;
+  showOnModelsPage?: boolean | null;
+  sortOrder?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -252,6 +287,64 @@ export interface Product {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs".
+ */
+export interface Program {
+  id: number;
+  title: string;
+  /**
+   * Small label under the number, e.g. "Introduce"
+   */
+  stage?: string | null;
+  summary: string;
+  /**
+   * e.g. 1 day
+   */
+  duration?: string | null;
+  /**
+   * e.g. 40–100 students
+   */
+  group?: string | null;
+  detailPage?:
+    | (
+        | 'programs-campus-experience'
+        | 'programs-humanoid-immersion'
+        | 'programs-developer-workshop'
+        | 'programs-semester'
+        | 'programs-lab-partner'
+      )
+    | null;
+  /**
+   * Shows it with a white border and the badge below.
+   */
+  highlight?: boolean | null;
+  /**
+   * e.g. "Recommended start". Leave empty for none.
+   */
+  badge?: string | null;
+  published?: boolean | null;
+  sortOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * One question can appear on several pages. Order: lower numbers show first.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+  pages: ('index' | 'hire' | 'programs' | 'partner' | 'china-tour')[];
+  published?: boolean | null;
+  sortOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "bookings".
  */
 export interface Booking {
@@ -260,6 +353,7 @@ export interface Booking {
   internalNotes?: string | null;
   summary?: string | null;
   name?: string | null;
+  phone?: string | null;
   robots?: string | null;
   event?: string | null;
   eventDate?: string | null;
@@ -334,6 +428,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'robots';
         value: number | Robot;
+      } | null)
+    | ({
+        relationTo: 'programs';
+        value: number | Program;
+      } | null)
+    | ({
+        relationTo: 'faqs';
+        value: number | Faq;
       } | null)
     | ({
         relationTo: 'media';
@@ -440,6 +542,52 @@ export interface ProductsSelect<T extends boolean = true> {
 export interface RobotsSelect<T extends boolean = true> {
   name?: T;
   kind?: T;
+  model?: T;
+  slug?: T;
+  photo?: T;
+  description?: T;
+  capabilities?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  greatFor?: T;
+  bestMoment?: T;
+  isNew?: T;
+  showOnModelsPage?: T;
+  sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs_select".
+ */
+export interface ProgramsSelect<T extends boolean = true> {
+  title?: T;
+  stage?: T;
+  summary?: T;
+  duration?: T;
+  group?: T;
+  detailPage?: T;
+  highlight?: T;
+  badge?: T;
+  published?: T;
+  sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs_select".
+ */
+export interface FaqsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  pages?: T;
+  published?: T;
+  sortOrder?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -484,6 +632,7 @@ export interface BookingsSelect<T extends boolean = true> {
   internalNotes?: T;
   summary?: T;
   name?: T;
+  phone?: T;
   robots?: T;
   event?: T;
   eventDate?: T;
@@ -559,6 +708,33 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "operator-workshop".
+ */
+export interface OperatorWorkshop {
+  id: number;
+  format?: string | null;
+  seats?: number | null;
+  /**
+   * e.g. "Kochi · 12–14 Jan 2027" or "Not confirmed"
+   */
+  nextBatch?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "operator-workshop_select".
+ */
+export interface OperatorWorkshopSelect<T extends boolean = true> {
+  format?: T;
+  seats?: T;
+  nextBatch?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

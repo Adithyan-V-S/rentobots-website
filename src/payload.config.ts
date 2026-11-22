@@ -11,6 +11,9 @@ import { Robots } from './collections/Robots'
 import { CaseStudies } from './collections/CaseStudies'
 import { Products } from './collections/Products'
 import { Bookings } from './collections/Bookings'
+import { Faqs } from './collections/Faqs'
+import { Programs } from './collections/Programs'
+import { OperatorWorkshop } from './globals/OperatorWorkshop'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +27,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [CaseStudies, Products, Robots, Media, Bookings, Users],
+  collections: [CaseStudies, Products, Robots, Programs, Faqs, Media, Bookings, Users],
+  globals: [OperatorWorkshop],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -12,9 +12,9 @@ export const Bookings: CollectionConfig = {
   labels: { singular: 'Booking', plural: 'Bookings' },
   admin: {
     useAsTitle: 'summary',
-    defaultColumns: ['status', 'name', 'robots', 'event', 'eventDate', 'city', 'createdAt'],
+    defaultColumns: ['status', 'name', 'phone', 'robots', 'event', 'eventDate', 'city', 'createdAt'],
     group: 'Bookings',
-    listSearchableFields: ['name', 'city', 'venue', 'notes'],
+    listSearchableFields: ['name', 'phone', 'city', 'venue', 'notes'],
   },
   access: {
     create: () => true,
@@ -58,6 +58,7 @@ export const Bookings: CollectionConfig = {
       type: 'row',
       fields: [
         { name: 'name', type: 'text', maxLength: 120 },
+        { name: 'phone', type: 'text', maxLength: 30 },
         { name: 'robots', type: 'text', maxLength: 200 },
       ],
     },

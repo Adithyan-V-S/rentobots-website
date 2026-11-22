@@ -11,7 +11,7 @@ export const Media: CollectionConfig = {
   slug: 'media',
   labels: { singular: 'Photo', plural: 'Photos' },
   admin: { group: 'Content' },
-  hooks: revalidatePages(['case-studies', 'products']),
+  hooks: revalidatePages(['ALL']),
   access: {
     read: anyone,
     create: adminsOnly,
