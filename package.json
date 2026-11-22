@@ -1,0 +1,41 @@
+{
+  "name": "rentobots-cms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rentobots website with Payload CMS admin (Next.js + PostgreSQL)",
+  "type": "module",
+  "scripts": {
+    "db": "node scripts/local-db.mjs",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=4000\" next build",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation payload run scripts/seed.ts",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "3.94.1",
+    "@payloadcms/next": "3.94.1",
+    "@payloadcms/richtext-lexical": "3.94.1",
+    "@payloadcms/ui": "3.94.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "16.4.7",
+    "graphql": "^16.8.1",
+    "next": "16.4.6",
+    "payload": "3.94.1",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "sharp": "0.35.4"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.9",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "embedded-postgres": "18.7.0-beta.19",
+    "typescript": "5.7.3"
+  },
+  "engines": {
+    "node": "^24.22.3"
+  }
+}

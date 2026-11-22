@@ -1,0 +1,137 @@
+/* Rentobots website styles — shared by every page. Most layout lives inline in the HTML. */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+img,svg{max-width:100%}
+[id]{scroll-margin-top:96px}
+body{margin:0;background:#040506;color:#FFFFFF}
+a{color:#FFFFFF}
+a:hover{color:#E6E6E6}
+input,select{color-scheme:dark}
+input:focus,select:focus,button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
+.rb-grad{color:inherit}
+.rb-rule{background:#9C9C9D}
+.rb-grid{background-image:linear-gradient(#1b1c1e 1px,transparent 1px),linear-gradient(90deg,#1b1c1e 1px,transparent 1px);background-size:44px 44px}
+.rb-nav a{text-decoration:none}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+details[open] .rb-plus{transform:rotate(45deg)}
+.rb-plus{color:#E6E6E6 !important;transition:transform .2s ease}
+html,body{overflow-x:clip}
+body{font-feature-settings:'calt','kern','liga','ss03';-webkit-font-smoothing:antialiased}
+h1{font-weight:400 !important;letter-spacing:0.004em !important}
+h2{font-weight:500 !important;letter-spacing:0 !important}
+h3,h4{font-weight:500 !important;letter-spacing:0 !important}
+[style*="text-transform: uppercase"]{font-family:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace !important;letter-spacing:0.08em !important;font-weight:500 !important}
+header{top:12px !important;margin:12px auto 0;max-width:min(1232px,calc(100% - 24px));border:1px solid #2F3031 !important;border-radius:14px;-webkit-backdrop-filter:blur(48px) saturate(140%);backdrop-filter:blur(48px) saturate(140%)}
+header > div{padding-top:10px !important;padding-bottom:10px !important}
+.rb-nav a:not(.rb-btn){color:#9C9C9D;font-size:14px}
+.rb-nav a:not(.rb-btn):hover{color:#FFFFFF}
+.rb-btn{background:#E6E6E6 !important;color:#454647 !important;border-radius:8px !important;box-shadow:rgba(0,0,0,.03) 0 7px 3px 0,rgba(0,0,0,.25) 0 4px 4px 0,rgba(255,255,255,.4) 0 1px 0 0 inset !important;text-decoration:none;transition:background .2s ease}
+.rb-btn:hover{background:#FFFFFF !important;color:#040506 !important}
+.rb-ghost{border-radius:8px !important;border-color:#363739 !important;box-shadow:rgba(255,255,255,.08) 0 1px 0 0 inset;text-decoration:none;transition:border-color .2s ease,background .2s ease}
+.rb-ghost:hover{border-color:#5a5b5c !important;background:rgba(255,255,255,.03)}
+[style*="border-radius: 14px"],[style*="border-radius: 16px"],[style*="border-radius: 18px"],[style*="border-radius: 20px"],[style*="border-radius: 22px"],[style*="border-radius: 24px"]{box-shadow:rgba(255,255,255,.05) 0 1px 0 0 inset,rgba(255,255,255,.06) 0 0 0 1px,rgba(0,0,0,.2) 0 -1px 0 0 inset}
+img[style*="border-radius"]{box-shadow:rgba(255,255,255,.06) 0 0 0 1px}
+input,select{background:rgba(255,255,255,.05) !important;border-color:#2F3031 !important;border-radius:8px !important;color:#FFFFFF !important}
+input::placeholder{color:#8B8C8D}
+input:focus,select:focus{outline:2px solid #E6E6E6 !important;outline-offset:1px}
+.rb-mnav nav{box-shadow:rgba(0,0,0,.4) 0 4px 40px 8px,rgba(255,255,255,.06) 0 0 0 1px inset}
+section#top{position:relative;isolation:isolate}
+section#top::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:-140px -12% -40px;background:radial-gradient(55% 60% at 72% 26%,rgba(4,63,150,.55),rgba(6,18,37,.25) 55%,transparent 75%),radial-gradient(22% 26% at 82% 12%,rgba(255,99,99,.30),transparent 70%),radial-gradient(18% 22% at 20% 6%,rgba(99,161,255,.14),transparent 70%);filter:blur(18px)}
+::selection{background:rgba(255,99,99,.35)}
+@media (max-width: 760px){header{margin:8px auto 0;max-width:calc(100% - 16px);top:8px !important}h1{font-size:38px !important}}
+.rb-mnav{display:none}
+.rb-mnav summary{list-style:none;cursor:pointer}
+.rb-mnav summary::-webkit-details-marker{display:none}
+.rb-mnav[open] .rb-burger{display:none}
+.rb-mnav:not([open]) .rb-close{display:none}
+@media (max-width: 760px){
+.rb-nav{display:none !important}
+.rb-mnav{display:block !important}
+header > div{padding:12px 20px !important;flex-wrap:nowrap !important}
+section > div{padding-left:20px !important;padding-right:20px !important}
+section > div[style*="padding: 96px"],section > div[style*="padding: 104px"],section > div[style*="padding: 112px"],section > div[style*="padding: 88px"]{padding-top:56px !important;padding-bottom:56px !important}
+section[style*="max-width: 1280px"]{padding:36px 20px 56px !important}
+section > div[style*="padding: 72px 28px 80px"]{padding:36px 20px 48px !important}
+h1{font-size:40px !important;line-height:1.03 !important}
+h2{font-size:30px !important;line-height:1.08 !important}
+[style*="height: 520px"],[style*="height: 560px"],[style*="height: 600px"],[style*="height: 620px"]{height:320px !important}
+[style*="height: 420px"],[style*="height: 340px"]{height:260px !important}
+[style*="padding: 44px"],[style*="padding: 40px 44px"],[style*="padding: 40px;"],[style*="padding: 36px;"],[style*="padding: 32px;"]{padding:22px !important}
+[style*="gap: 56px"],[style*="gap: 48px"]{gap:32px !important}
+[style*="grid-template-columns: 72px 1fr auto"]{grid-template-columns:56px 1fr !important}
+}
+a:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
+.rb-sector{text-decoration:none;transition:background .2s ease}
+.rb-sector:hover{background:#07080a;color:#FFFFFF}
+.rb-sector:hover .rb-num{color:#363739}
+.rb-tile{text-decoration:none;transition:border-color .2s ease}
+.rb-tile:hover{border-color:#363739;color:#FFFFFF}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
+.rb-door{text-decoration:none;transition:border-color .2s ease}
+.rb-door:hover{border-color:#363739;color:#FFFFFF}
+.rb-card{transition:border-color .2s ease}
+.rb-card:hover{border-color:#363739}
+input{color-scheme:dark}
+input:focus,button:focus-visible{outline:2px solid #E6E6E6;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none !important}}
+@media (max-width: 760px){footer h2{font-size:12px !important;line-height:1.4 !important}footer > div{padding-left:20px !important;padding-right:20px !important}}
+@media (max-width: 760px){.rb-stats{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px !important}.rb-stats li span:first-child{font-size:17px !important;line-height:1.2}.rb-stats li span:last-child{font-size:12px !important;line-height:1.35}}
+/* ---- Animations (motion only when the visitor hasn't asked to reduce it) ---- */
+@media (prefers-reduced-motion: no-preference){
+@keyframes rbUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes rbFade{from{opacity:0}to{opacity:1}}
+@keyframes rbZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+#top:not(.rb-hero) > *{animation:rbUp .8s cubic-bezier(.2,.7,.2,1) both}
+#top:not(.rb-hero) > :nth-child(2){animation-delay:.08s}
+#top:not(.rb-hero) > :nth-child(3){animation-delay:.16s}
+#top:not(.rb-hero) > :nth-child(4){animation-delay:.24s}
+#top:not(.rb-hero) > :nth-child(n+5){animation-delay:.32s}
+.rb-hero > div:first-child > *{animation:rbUp .8s cubic-bezier(.2,.7,.2,1) both}
+.rb-hero > div:first-child > :nth-child(2){animation-delay:.1s}
+.rb-hero > div:first-child > :nth-child(3){animation-delay:.45s}
+.rb-hero > div:first-child > :nth-child(4){animation-delay:.55s}
+.rb-hero > div:first-child > :nth-child(n+5){animation-delay:.65s}
+.rb-hero h1 .rb-grad{display:inline-block;animation:rbUp .8s .3s cubic-bezier(.2,.7,.2,1) both}
+.rb-hero > div:last-child{animation:rbFade 1s .15s ease-out both}
+.rb-hero > div:last-child > img{animation:rbZoom 1.8s .15s cubic-bezier(.2,.7,.2,1) both}
+.rb-rv{opacity:0;transform:translateY(28px)}
+.rb-rv.rb-in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1) var(--rb-d,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--rb-d,0ms)}
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference){
+.rb-card,.rb-tile,.rb-door,[style*="display: grid"] > article,[style*="display: grid"] > div[style*="border-radius: 18px"],[style*="display: grid"] > a[style*="border-radius: 18px"]{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .2s ease}
+.rb-card:hover,.rb-tile:hover,.rb-door:hover,[style*="display: grid"] > article:hover,[style*="display: grid"] > div[style*="border-radius: 18px"]:hover,[style*="display: grid"] > a[style*="border-radius: 18px"]:hover{transform:translateY(-4px);box-shadow:0 18px 40px -14px rgba(0,0,0,.7),0 0 0 1px rgba(63,193,255,.28),0 0 36px -10px rgba(63,193,255,.35)}
+[style*="overflow: hidden"] > img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.rb-card[style*="overflow: hidden"]:hover > img,[style*="display: grid"] > article[style*="overflow: hidden"]:hover > img,[style*="display: grid"] > div[style*="overflow: hidden"]:hover > img{transform:scale(1.05)}
+}
+/* ---- Home hero: slowly drifting background glow (Home only) ---- */
+@media (prefers-reduced-motion: no-preference){
+@keyframes rbGlowA{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:1}50%{transform:translate3d(-14%,8%,0) scale(1.25);opacity:.75}}
+@keyframes rbGlowB{0%{transform:translate3d(-10%,6%,0) scale(1);opacity:.5}50%{opacity:1}100%{transform:translate3d(30%,-12%,0) scale(1.3);opacity:.6}}
+.rb-hero::before{animation:rbGlowA 12s ease-in-out infinite;will-change:transform,opacity}
+.rb-hero::after{content:"";position:absolute;z-index:-1;pointer-events:none;inset:-120px -8% 0;background:radial-gradient(30% 34% at 26% 36%,rgba(40,110,255,.38),transparent 70%),radial-gradient(18% 22% at 60% 72%,rgba(255,99,99,.24),transparent 70%);filter:blur(28px);animation:rbGlowB 14s ease-in-out infinite alternate;will-change:transform,opacity}
+}
+
+/* ---- Robot-style effects (visor pulse, scan line, typing cursor, lock-on corners) ---- */
+@media (prefers-reduced-motion: no-preference){
+/* 1. Visor glow pulse on the "Hire a robot" button and the hero caption tag */
+@keyframes rbPulse{0%{box-shadow:0 0 0 0 rgba(63,193,255,.55)}70%{box-shadow:0 0 0 10px rgba(63,193,255,0)}100%{box-shadow:0 0 0 0 rgba(63,193,255,0)}}
+.rb-nav .rb-btn{animation:rbPulse 2.8s ease-out 2s infinite}
+@keyframes rbTagGlow{0%,100%{border-color:#363739;color:#9C9C9D}50%{border-color:rgba(63,193,255,.75);color:#CFEFFF;box-shadow:0 0 14px -2px rgba(63,193,255,.45)}}
+#rb-sg{animation:rbTagGlow 2.8s ease-in-out infinite}
+/* 2. Scanning line over the hero photo */
+@keyframes rbScan{0%{transform:translateY(-100%);opacity:0}8%{opacity:1}55%{transform:translateY(0);opacity:1}62%,100%{transform:translateY(0);opacity:0}}
+.rb-scan::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(63,193,255,0) 92%,rgba(63,193,255,.05) 98.6%,rgba(140,225,255,.7) 99.8%,rgba(140,225,255,0) 100%);animation:rbScan 6.5s cubic-bezier(.45,0,.55,1) 2.2s infinite both}
+/* 3. Typing label cursor */
+@keyframes rbBlink{50%{opacity:0}}
+.rb-type::after{content:"";display:inline-block;width:.55em;height:1.05em;margin-left:.25em;vertical-align:-.15em;background:#3FC1FF;animation:rbBlink .8s steps(1) infinite}
+.rb-type.rb-typed::after{animation:rbBlink .8s steps(1) 4 forwards}
+}
+/* 4. Lock-on corner brackets when hovering a card */
+@media (hover: hover) and (prefers-reduced-motion: no-preference){
+.rb-card:not([style*="position: absolute"]),.rb-tile:not([style*="position: absolute"]),.rb-door:not([style*="position: absolute"]),[style*="display: grid"] > article:not([style*="position: absolute"]),[style*="display: grid"] > div[style*="border-radius: 18px"]:not([style*="position: absolute"]),[style*="display: grid"] > a[style*="border-radius: 18px"]:not([style*="position: absolute"]){position:relative}
+.rb-card::after,.rb-tile::after,.rb-door::after,[style*="display: grid"] > article::after,[style*="display: grid"] > div[style*="border-radius: 18px"]::after,[style*="display: grid"] > a[style*="border-radius: 18px"]::after{content:"";position:absolute;inset:10px;z-index:3;pointer-events:none;opacity:0;transform:scale(1.06);transition:opacity .25s ease,transform .35s cubic-bezier(.2,.7,.2,1);
+background:linear-gradient(#3FC1FF,#3FC1FF) left top/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) left top/2px 16px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right top/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right top/2px 16px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) left bottom/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) left bottom/2px 16px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right bottom/16px 2px no-repeat,linear-gradient(#3FC1FF,#3FC1FF) right bottom/2px 16px no-repeat}
+.rb-card:hover::after,.rb-tile:hover::after,.rb-door:hover::after,[style*="display: grid"] > article:hover::after,[style*="display: grid"] > div[style*="border-radius: 18px"]:hover::after,[style*="display: grid"] > a[style*="border-radius: 18px"]:hover::after{opacity:1;transform:scale(1)}
+}

@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rentobots — Robot Rentals for Events in Kerala &amp; India</title>
+<meta name="description" content="Hire Pachu the humanoid and Kuttappan the robot dog for launches, weddings, expos, colleges and parties. Operator-run robot appearances across Kerala and India.">
+<link rel="canonical" href="https://www.rentobots.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rentobots">
+<meta property="og:title" content="Rentobots — Robot Rentals for Events in Kerala &amp; India">
+<meta property="og:description" content="Hire Pachu the humanoid and Kuttappan the robot dog for launches, weddings, expos, colleges and parties. Operator-run robot appearances across Kerala and India.">
+<meta property="og:url" content="https://www.rentobots.com/">
+<meta property="og:image" content="https://www.rentobots.com/assets/img/og-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rentobots — Hire a robot. Own the room.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#040506">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="assets/css/styles.css?v=7">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://www.rentobots.com/#org",
+   "name": "Rentobots",
+   "legalName": "Rentobots Robotics Pvt Ltd",
+   "url": "https://www.rentobots.com/",
+   "logo": "https://www.rentobots.com/assets/img/rentobots-logo.png",
+   "telephone": "+91-70122-30818",
+   "sameAs": [
+    "https://www.instagram.com/rento_bots/",
+    "https://www.facebook.com/profile.php?id=61590279716807",
+    "https://www.linkedin.com/company/rentobots"
+   ]
+  },
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://www.rentobots.com/#kozhikode",
+   "name": "Rentobots — Kozhikode office",
+   "parentOrganization": {
+    "@id": "https://www.rentobots.com/#org"
+   },
+   "url": "https://www.rentobots.com/",
+   "image": "https://www.rentobots.com/assets/img/og-share.jpg",
+   "telephone": "+91-807-542-1909",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "CDA Colony Rd, East Nadakkave",
+    "addressLocality": "Kozhikode",
+    "postalCode": "673006",
+    "addressRegion": "Kerala",
+    "addressCountry": "IN"
+   }
+  },
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://www.rentobots.com/#mumbai",
+   "name": "Rentobots — Mumbai office",
+   "parentOrganization": {
+    "@id": "https://www.rentobots.com/#org"
+   },
+   "url": "https://www.rentobots.com/",
+   "image": "https://www.rentobots.com/assets/img/og-share.jpg",
+   "telephone": "+91-704-586-0305",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Office No. 08, 5th Floor, Mohhata Market, Near Gulshan-E-Iran Hotel",
+    "addressLocality": "Mumbai",
+    "postalCode": "400001",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does the rate include?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The robot's appearance at your event with a Rentobots operator. Transportation and stay are charged separately, on actuals."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you travel outside Kerala?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. We're based in Kozhikode and take bookings across Kerala and the rest of India."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can the robot follow a script or wear a costume?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tell us your idea in the booking notes — we'll plan stage moments, costumes and branding around your event."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>
+/* Hero photo crossfade */
+.rb-slide{opacity:0;transition:opacity 1.4s ease}
+.rb-slide.is-on{opacity:1}
+#rb-sk,#rb-st,#rb-sg{transition:opacity .5s ease}
+.rb-cap-out{opacity:0 !important}
+</style>
+<style>
+/* "Book in minutes" background: robot picks up a ball that lights up like a lamp (loops every 10 s) */
+.rb-kick{position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:calc(50% + 20px);width:min(620px,48vw);
+-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
+.rb-kick svg{width:100%;height:100%;display:block;overflow:visible;transform:scaleX(-1)}
+.rb-kick g,.rb-kick ellipse,.rb-kick circle{transform-box:view-box}
+.rb-kick::after{content:"";position:absolute;inset:-20px;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.rb-kick .o-glow{mix-blend-mode:screen}
+.rb-kick .o-glow,.rb-kick .o-core,.rb-kick .o-pool,.rb-kick .o-dust,.rb-kick .o-hball{opacity:0}
+@media (max-width:760px){.rb-kick{left:auto;right:-80px;width:360px;top:auto;height:300px;opacity:.55}}
+@media (prefers-reduced-motion: reduce){.rb-kick .o-fball{opacity:1}}
+@media (prefers-reduced-motion: no-preference){
+.rb-kick .o-all{animation:oAll 10s ease-in-out infinite}
+.rb-kick .o-upper{transform-origin:200px 210px;animation:oUpper 10s ease-in-out infinite}
+.rb-kick .o-thigh{transform-origin:200px 210px;animation:oThigh 10s ease-in-out infinite}
+.rb-kick .o-shin{transform-origin:200px 276px;animation:oShin 10s ease-in-out infinite}
+.rb-kick .o-up{transform-origin:200px 115px;animation:oUp 10s ease-in-out infinite}
+.rb-kick .o-fore{transform-origin:200px 168px;animation:oFore 10s ease-in-out infinite}
+.rb-kick .o-head{transform-origin:200px 95px;animation:oHead 10s ease-in-out infinite}
+.rb-kick .o-fball{animation:oFball 10s linear infinite}
+.rb-kick .o-hball{animation:oHball 10s linear infinite}
+.rb-kick .o-glow,.rb-kick .o-core,.rb-kick .o-pool{animation:oLight 10s linear infinite}
+.rb-kick .o-dust{animation:oDust 10s linear infinite}
+.rb-kick::after{animation:oGrain .6s steps(3) infinite}
+.rb-lit{animation:oText 10s linear infinite}
+@keyframes oText{0%,41%{filter:brightness(.55)}42%{filter:brightness(.9)}43%{filter:brightness(.6)}44%{filter:brightness(1)}45%{filter:brightness(.75)}47%,74%{filter:brightness(1.18) drop-shadow(0 0 22px rgba(255,214,150,.28))}80%,100%{filter:brightness(.55)}}
+@keyframes oAll{0%,6%{transform:translateY(0)}20%,26%{transform:translateY(50px)}40%,80%{transform:translateY(0)}92%{transform:translateY(50px)}97%,100%{transform:translateY(0)}}
+@keyframes oUpper{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(65deg)}40%,80%{transform:rotate(0)}92%{transform:rotate(65deg)}97%,100%{transform:rotate(0)}}
+@keyframes oThigh{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(-50deg)}40%,80%{transform:rotate(0)}92%{transform:rotate(-50deg)}97%,100%{transform:rotate(0)}}
+@keyframes oShin{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(100deg)}40%,80%{transform:rotate(0)}92%{transform:rotate(100deg)}97%,100%{transform:rotate(0)}}
+@keyframes oUp{0%,6%{transform:rotate(0)}20%,26%{transform:rotate(-65deg)}40%{transform:rotate(-60deg)}58%,64%{transform:rotate(-80deg)}74%,80%{transform:rotate(-60deg)}92%{transform:rotate(-65deg)}97%,100%{transform:rotate(0)}}
+@keyframes oFore{0%,26%{transform:rotate(0)}40%{transform:rotate(-50deg)}58%,64%{transform:rotate(-40deg)}74%,80%{transform:rotate(-50deg)}92%,100%{transform:rotate(0)}}
+@keyframes oHead{0%,8%{transform:rotate(0)}20%,26%{transform:rotate(-10deg)}40%,50%{transform:rotate(14deg)}58%,64%{transform:rotate(2deg)}74%,80%{transform:rotate(14deg)}92%{transform:rotate(-10deg)}97%,100%{transform:rotate(0)}}
+@keyframes oFball{0%,22.9%{opacity:1}23%,91.9%{opacity:0}92%,100%{opacity:1}}
+@keyframes oHball{0%,22.9%{opacity:0}23%,91.9%{opacity:1}92%,100%{opacity:0}}
+@keyframes oLight{0%,41%{opacity:0}42%{opacity:.7}43%{opacity:.15}44%{opacity:.85}45%{opacity:.4}47%,74%{opacity:1}80%,100%{opacity:0}}
+@keyframes oDust{0%,45%{opacity:0;transform:translateY(0)}52%{opacity:.8}74%{opacity:.6;transform:translateY(-30px)}80%,100%{opacity:0;transform:translateY(-38px)}}
+@keyframes oGrain{0%{transform:translate(0,0)}33%{transform:translate(-7px,5px)}66%{transform:translate(6px,-4px)}}
+}
+</style>
+</head>
+<body>
+<div style="background: #040506; color: #FFFFFF; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh">
+
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(4,5,6,0.62); border-bottom: 1px solid #1b1c1e; backdrop-filter: blur(10px)">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="text-decoration: none; display: flex; flex-direction: column; gap: 2px; color: #FFFFFF">
+<img src="assets/img/rentobots-logo.webp" alt="Rentobots — Robots for a brighter tomorrow" style="display: block; height: 34px; width: auto">
+</a>
+<nav class="rb-nav" aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 14px; font-weight: 500">
+<a href="robot-models.html">Robot models</a>
+<a href="products.html">Products</a>
+<a href="applications.html">Applications</a>
+<a href="services.html">Services</a>
+<a href="programs.html">Programs</a>
+<a href="case-studies.html">Case studies</a>
+<a href="partner.html">Partner with us</a>
+<a class="rb-btn" href="hire.html" style="color: #FFFFFF; padding: 14px 22px; border-radius: 999px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Hire a robot</a>
+</nav>
+<details class="rb-mnav" style="position: relative">
+<summary aria-label="Menu" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 12px; border: 1px solid #2F3031; background: #07080a; display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg class="rb-burger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg><svg class="rb-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></summary>
+<nav aria-label="Mobile menu" style="position: absolute; right: 0; top: 54px; width: 300px; max-width: calc(100vw - 40px); box-sizing: border-box; background: #07080a; border: 1px solid #1b1c1e; border-radius: 18px; padding: 10px; display: flex; flex-direction: column; gap: 2px; z-index: 30">
+<a href="robot-models.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 12px; font-size: 16px; font-weight: 500; text-decoration: none; color: #FFFFFF; background: transparent">Robot models</a>
+<a href="products.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 12px; font-size: 16px; font-weight: 500; text-decoration: none; color: #FFFFFF; background: transparent">Products</a>
+<a href="applications.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 12px; font-size: 16px; font-weight: 500; text-decoration: none; color: #FFFFFF; background: transparent">Applications</a>
+<a href="services.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 12px; font-size: 16px; font-weight: 500; text-decoration: none; color: #FFFFFF; background: transparent">Services</a>
+<a href="programs.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 12px; font-size: 16px; font-weight: 500; text-decoration: none; color: #FFFFFF; background: transparent">Programs</a>
+<a href="case-studies.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 12px; font-size: 16px; font-weight: 500; text-decoration: none; color: #FFFFFF; background: transparent">Case studies</a>
+<a href="partner.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 12px; font-size: 16px; font-weight: 500; text-decoration: none; color: #FFFFFF; background: transparent">Partner with us</a>
+<a class="rb-btn" href="hire.html" style="margin-top: 8px; color: #040506; padding: 14px 20px; border-radius: 999px; font-weight: 600; min-height: 48px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-decoration: none">Hire a robot</a>
+</nav>
+</details>
+</div>
+</header>
+
+<section id="top" class="rb-hero" style="max-width: 1280px; margin: 0 auto; padding: 48px 28px 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span class="rb-rule" style="width: 36px; height: 3px; border-radius: 2px; display: inline-block"></span>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6" class="rb-type" aria-label="Robot hire for events">Robot hire for events</span>
+</div>
+<h1 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(44px, 6.4vw, 88px); line-height: 0.98; letter-spacing: 0">Hire a robot.<br><span class="rb-grad">Own the room.</span></h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.65; color: #9C9C9D; max-width: 560px">Book Pachu the humanoid or Kuttappan the robot dog for your launch, wedding, expo or party. Our operators bring the robot, run the show and pack up after — from Kozhikode to anywhere in India.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="rb-btn" href="hire.html" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Build your booking</a>
+<a class="rb-ghost" href="https://wa.me/917012230818" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; border: 1px solid #363739; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">WhatsApp us</a>
+</div>
+<ul class="rb-stats" style="list-style: none; margin: 8px 0 0; padding: 24px 0 0; border-top: 1px solid #1b1c1e; display: flex; flex-wrap: wrap; gap: 32px">
+<li style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px"><span data-count="3">3</span> robots</span><span style="font-size: 14px; color: #8B8C8D">Humanoid + quadrupeds</span></li>
+<li style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px">Operator on site</span><span style="font-size: 14px; color: #8B8C8D">Every booking, start to finish</span></li>
+<li style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 22px">Pan-India</span><span style="font-size: 14px; color: #8B8C8D">Based in Kozhikode, Kerala</span></li>
+</ul>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; height: 600px; border-radius: 24px; border: 1px solid #1b1c1e; background-color: #07080a; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; box-sizing: border-box; position: relative; overflow: hidden" class="rb-scan">
+<img class="rb-slide is-on" fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu the humanoid robot walking through a mall in a traditional Kerala costume" data-k="Now booking" data-t="Meet Pachu" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/kuttappan.webp" alt="" aria-hidden="true" data-k="Now booking" data-t="Meet Kuttappan" data-g="Robot dog" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-kerala.webp" alt="" aria-hidden="true" data-k="Custom costumes" data-t="Festival-ready" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/robot-dog-yellow.webp" alt="" aria-hidden="true" data-k="Quadrupeds" data-t="Robot dogs" data-g="Robot dog" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-suit.webp" alt="" aria-hidden="true" data-k="Corporate events" data-t="Suited up" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%">
+<img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-jersey.webp" alt="" aria-hidden="true" data-k="Sports events" data-t="Match-day ready" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 45%; background: linear-gradient(180deg, rgba(4,5,6,0) 0%, rgba(4,5,6,0.9) 100%)"></div>
+<div style="position: relative; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E6E6E6" id="rb-sk">Now booking</span>
+<span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 26px" id="rb-st">Meet Pachu</span>
+</div>
+<span style="font-size: 13px; padding: 8px 14px; border: 1px solid #363739; border-radius: 999px; color: #9C9C9D" id="rb-sg">Humanoid</span>
+</div>
+</div>
+</section>
+
+<section id="hire" style="border-top: 1px solid #1b1c1e; background: #040506; position: relative; overflow: hidden; isolation: isolate">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px">
+<div class="rb-kick" aria-hidden="true">
+<svg viewBox="0 -60 600 460" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="rbMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3e44"/><stop offset="1" stop-color="#121417"/></linearGradient>
+<linearGradient id="rbMetalD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#24272b"/><stop offset="1" stop-color="#0b0c0e"/></linearGradient>
+<radialGradient id="rbGlow"><stop offset="0" stop-color="rgba(255,246,226,.75)"/><stop offset=".08" stop-color="rgba(255,240,210,.45)"/><stop offset=".3" stop-color="rgba(255,232,200,.14)"/><stop offset="1" stop-color="rgba(255,232,200,0)"/></radialGradient>
+<radialGradient id="rbCore" cx="45%" cy="40%"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#fff3d6"/><stop offset="1" stop-color="#ffd99a"/></radialGradient>
+<radialGradient id="rbBallD" cx="40%" cy="35%"><stop offset="0" stop-color="#55595f"/><stop offset="1" stop-color="#16181b"/></radialGradient>
+<radialGradient id="rbPool"><stop offset="0" stop-color="rgba(255,240,215,.5)"/><stop offset="1" stop-color="rgba(255,240,215,0)"/></radialGradient>
+</defs>
+<line x1="0" y1="358" x2="600" y2="358" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+<ellipse class="o-pool" cx="300" cy="360" rx="190" ry="18" fill="url(#rbPool)"/>
+<g class="o-fball"><circle cx="286" cy="344" r="14" fill="url(#rbBallD)" stroke="rgba(255,255,255,.25)" stroke-width="1"/></g>
+<g class="o-all">
+<g transform="translate(-8 0)"><g class="o-thigh o-legF"><rect x="191" y="205" width="18" height="72" rx="9" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><g class="o-shin"><rect x="192" y="272" width="16" height="76" rx="8" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><path d="M192 346 h32 a6 6 0 0 1 0 12 h-32 z" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/></g></g></g>
+<g class="o-thigh o-legN"><rect x="191" y="205" width="18" height="72" rx="9" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><g class="o-shin"><rect x="192" y="272" width="16" height="76" rx="8" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><path d="M192 346 h32 a6 6 0 0 1 0 12 h-32 z" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/></g></g>
+<g class="o-upper">
+<g class="o-arm o-far2" transform="translate(-7 0)"><g class="o-up"><rect x="193" y="110" width="14" height="58" rx="7" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><g class="o-fore"><rect x="194" y="164" width="12" height="52" rx="6" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/><circle cx="200" cy="222" r="8" fill="url(#rbMetalD)" stroke="rgba(255,255,255,.08)" stroke-width="1.2"/></g></g></g>
+<path d="M178 112 Q200 100 222 112 L216 206 Q200 214 184 206 Z" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
+<path d="M186 140 h28 M188 170 h24" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+<rect x="193" y="92" width="14" height="14" rx="4" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
+<g class="o-head"><ellipse cx="204" cy="70" rx="24" ry="27" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><rect x="190" y="58" width="34" height="22" rx="10" fill="#050608" stroke="rgba(110,190,255,.55)" stroke-width="1.6"/></g>
+<g class="o-arm o-near" transform="translate(0 0)"><g class="o-up"><rect x="193" y="110" width="14" height="58" rx="7" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><g class="o-fore"><rect x="194" y="164" width="12" height="52" rx="6" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><circle cx="200" cy="222" r="8" fill="url(#rbMetal)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/><g class="o-hball"><circle class="o-glow" cx="200" cy="241" r="240" fill="url(#rbGlow)"/><circle cx="200" cy="241" r="14" fill="url(#rbBallD)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><circle class="o-core" cx="200" cy="241" r="14" fill="url(#rbCore)"/></g></g></g></g>
+</g>
+</g>
+<g class="o-dust" fill="#fff4dc"><circle cx="270" cy="150" r="1.4"/><circle cx="320" cy="120" r="1"/><circle cx="345" cy="170" r="1.6"/><circle cx="295" cy="95" r="1.1"/><circle cx="250" cy="120" r="1"/><circle cx="330" cy="70" r="1.3"/></g>
+</svg>
+</div>
+<div class="rb-lit" style="flex: 1 1 520px; min-width: 0; max-width: 640px; display: flex; flex-direction: column; gap: 18px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6">Book in minutes</span>
+<h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; letter-spacing: 0">Pick a robot. Tell us the date. <span class="rb-grad">We handle the rest.</span></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #9C9C9D; max-width: 560px">Build your booking in about two minutes and send it to us on WhatsApp. We'll confirm availability and your quote.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; flex-basis: 100%; margin-top: -12px">
+<a class="rb-btn" href="hire.html" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Start your booking</a>
+<a class="rb-ghost" href="robot-models.html" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; border: 1px solid #363739; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Compare robots</a>
+</div>
+</div>
+</section>
+
+<section id="press" style="border-top: 1px solid #1b1c1e">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 28px 88px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span class="rb-rule" style="width: 4px; height: 18px; border-radius: 2px; display: inline-block"></span>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #E6E6E6">As seen in</span>
+</div>
+<h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(36px, 5vw, 64px); line-height: 1; letter-spacing: 0; text-transform: uppercase">Robomaveli made <span class="rb-grad">headlines.</span></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #9C9C9D; max-width: 640px">When our humanoid became Robo Maveli at Forum Mall, Kochi this Onam, national and regional media picked up the story.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px">
+<article style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: 0; text-transform: uppercase">OPEN</h3>
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">National magazine</span>
+</div>
+<p style="margin: 0; flex-grow: 1; font-size: 16px; line-height: 1.6; color: #E6E6E6">“Robo Maveli Steals the Show: AI Humanoid Robot Brings King Mahabali to Life at Kerala's Onam Celebrations”</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #1b1c1e">
+<span style="font-size: 13px; letter-spacing: 0.06em; color: #8B8C8D">Aug 27, 2026</span>
+<a href="https://openthemagazine.com/india/robo-maveli-has-arrived-ai-humanoid-steals-the-show-at-keralas-onam-celebrations" target="_blank" rel="noopener" aria-label="Read the OPEN story (opens in a new tab)" style="min-height: 44px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #E6E6E6">Read story <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: 0; text-transform: uppercase">WION</h3>
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">National TV news</span>
+</div>
+<p style="margin: 0; flex-grow: 1; font-size: 16px; line-height: 1.6; color: #E6E6E6">“From Onam Beats to Ujjain Streets: India's Robotics Scene Is Tailoring Humanoids to 'Desi' Roots”</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #1b1c1e">
+<span style="font-size: 13px; letter-spacing: 0.06em; color: #8B8C8D">Aug 2026</span>
+<a href="https://www.wionews.com/trending/from-onam-beats-to-ujjain-streets-india-s-robotics-scene-is-tailoring-humanoids-to-desi-roots-1787624235053" target="_blank" rel="noopener" aria-label="Read the WION story (opens in a new tab)" style="min-height: 44px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #E6E6E6">Read story <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: 0; text-transform: uppercase">TV9 Malayalam</h3>
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">Regional TV news</span>
+</div>
+<p style="margin: 0; flex-grow: 1; font-size: 16px; line-height: 1.6; color: #E6E6E6">“Robo Maveli Collapses Mid-Dance? — Viral Moment at Forum Mall, Onam 2026” <span style="color: #8B8C8D">(Malayalam)</span></p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #1b1c1e">
+<span style="font-size: 13px; letter-spacing: 0.06em; color: #8B8C8D">Aug 25, 2026</span>
+<a href="https://www.malayalamtv9.com/kerala/robo-maveli-collapses-mid-dance-at-forum-mall-onam-2026-viral-moment-watch-2225832.html" target="_blank" rel="noopener" aria-label="Read the TV9 Malayalam story (opens in a new tab)" style="min-height: 44px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #E6E6E6">Read story <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article style="border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: 0; text-transform: uppercase">JBT News</h3>
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 10px; border: 1px solid #2F3031; border-radius: 6px; color: #E6E6E6">National news portal</span>
+</div>
+<p style="margin: 0; flex-grow: 1; font-size: 16px; line-height: 1.6; color: #E6E6E6">“Kerala's Unique Onam Celebration: Video of Dhoti-Clad Robot's Dance Goes Viral” <span style="color: #8B8C8D">(Hindi)</span></p>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #1b1c1e">
+<span style="font-size: 13px; letter-spacing: 0.06em; color: #8B8C8D">Aug 2026</span>
+<a href="https://www.thejbt.com/viral/viral-humanoid-robot-onam-dance-at-kochi-mall-news-316914" target="_blank" rel="noopener" aria-label="Read the JBT News story (opens in a new tab)" style="min-height: 44px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #E6E6E6">Read story <span aria-hidden="true">→</span></a>
+</div>
+</article>
+</div>
+<p style="margin: 0; text-align: center; font-size: 13px; letter-spacing: 0.08em; color: #8B8C8D">Coverage of the Robomaveli deployment at Forum Mall, Kochi — Onam 2026</p>
+</div>
+</section>
+
+<section id="china-tour" aria-label="Rentobots China Tour" style="border-top: 1px solid #1b1c1e; background: #040506">
+<div style="max-width: 1280px; margin: 0 auto; padding: 64px 28px">
+<div style="position: relative; overflow: hidden; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; padding: 40px 44px; border-radius: 24px; border: 1px solid #2F3031; background: linear-gradient(120deg, #07080a 0%, #452324 100%)">
+<div aria-hidden="true" style="position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: #FF6363; opacity: 0.12"></div>
+<div style="position: relative; flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: #FF6363; color: #040506">New · Deep Robotics Supply Chain Tour</span>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #9C9C9D">4 days · 3 nights · Shenzhen</span>
+</div>
+<h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; letter-spacing: 0">Go deep into China’s robotics supply chain <span class="rb-grad">with us.</span></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #9C9C9D; max-width: 620px">A hands-on workshop, 6S &amp; 7S robot experience stores, simulation and teleoperation labs, and a supply-chain mini fair. Max 15 people.</p>
+</div>
+<div style="position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0">₹2,50,000</span><span style="font-size: 13px; color: #8B8C8D">per person · everything included</span></div>
+<a class="rb-btn" href="china-tour.html" style="color: #FFFFFF; padding: 16px 26px; border-radius: 999px; font-size: 15px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Explore the tour →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="included" style="border-top: 1px solid #1b1c1e">
+<div style="max-width: 1280px; margin: 0 auto; padding: 104px 28px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6">Every booking includes</span>
+<h2 style="margin: 16px 0 48px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; letter-spacing: 0; max-width: 760px">You host the event. <span class="rb-grad">We run the robot.</span></h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px">
+<div style="padding: 28px; border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; display: flex; flex-direction: column; gap: 14px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E6E6E6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"></path></svg>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Trained operator</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9C9C9D">A Rentobots operator controls the robot for the whole appearance — safely, and on cue.</p>
+</div>
+<div style="padding: 28px; border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; display: flex; flex-direction: column; gap: 14px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E6E6E6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.8"></circle><circle cx="17" cy="17.5" r="1.8"></circle></svg>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Transport handled</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9C9C9D">We bring the robot to your venue. Travel and stay are billed on actuals, nothing more.</p>
+</div>
+<div style="padding: 28px; border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; display: flex; flex-direction: column; gap: 14px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E6E6E6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H4z"></path><path d="M9 20h6"></path><path d="M12 16v4"></path><path d="M8 10.5l2.5 2.5L16 8"></path></svg>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Show planning</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9C9C9D">We plan the entry, stage moment and photo time with your anchor or event team before the day.</p>
+</div>
+<div style="padding: 28px; border: 1px solid #1b1c1e; border-radius: 18px; background: #07080a; display: flex; flex-direction: column; gap: 14px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E6E6E6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4-8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 16l8 4 8-4"></path></svg>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Setup &amp; pack-down</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9C9C9D">We arrive early, test everything on site and pack up after — no work for your crew.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq" style="border-top: 1px solid #1b1c1e; background: #040506">
+<div style="max-width: 1280px; margin: 0 auto; padding: 104px 28px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E6E6E6">FAQ</span>
+<h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(34px, 4vw, 48px); line-height: 1.05; letter-spacing: 0">Before you book.</h2>
+</div>
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; border-top: 1px solid #1b1c1e">
+<details style="border-bottom: 1px solid #1b1c1e">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">What does the rate include?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
+<p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">The robot's appearance at your event with a Rentobots operator. Transportation and stay are charged separately, on actuals.</p>
+</details>
+<details style="border-bottom: 1px solid #1b1c1e">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Do you travel outside Kerala?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
+<p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">Yes. We're based in Kozhikode and take bookings across Kerala and the rest of India.</p>
+</details>
+<details style="border-bottom: 1px solid #1b1c1e">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">How far ahead should I book?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
+<p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">We recommend booking at least 2 weeks ahead, especially for wedding and festival season. Message us for last-minute dates.</p>
+</details>
+<details style="border-bottom: 1px solid #1b1c1e">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 24px 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 20px">Can the robot follow a script or wear a costume?<span class="rb-plus" aria-hidden="true" style="font-size: 28px; color: #E6E6E6; line-height: 1">+</span></summary>
+<p style="margin: 0 0 24px; font-size: 16px; line-height: 1.65; color: #9C9C9D; max-width: 640px">Tell us your idea in the booking notes — we'll plan stage moments, costumes and branding around your event.</p>
+</details>
+</div>
+</div>
+</section>
+
+<section style="border-top: 1px solid #1b1c1e">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px">
+<h2 style="margin: 0; flex: 1 1 560px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(38px, 5.4vw, 72px); line-height: 0.98; letter-spacing: 0">Your guests will remember <span class="rb-grad">the robot.</span></h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="rb-btn" href="hire.html" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Build your booking</a>
+<a class="rb-ghost" href="tel:+917012230818" style="color: #FFFFFF; padding: 18px 28px; border-radius: 999px; border: 1px solid #363739; font-size: 16px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Call +91 70122 30818</a>
+</div>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #1b1c1e; background: #040506">
+<div style="max-width: 1280px; margin: 0 auto; padding: 72px 28px 40px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 48px 40px">
+<div style="display: flex; flex-direction: column; gap: 20px; grid-column: span 1">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<img src="assets/img/rentobots-logo.webp" alt="Rentobots — Robots for a brighter tomorrow" style="display: block; height: 48px; width: auto">
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #9C9C9D; max-width: 300px">Humanoid robotics rental for the modern enterprise. Flexible, scalable, fully autonomous.</p>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">Follow us</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a class="rb-ghost" href="https://www.instagram.com/rento_bots/reels/" aria-label="Rentobots on Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid #363739; color: #E6E6E6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6"></circle></svg></a>
+<a class="rb-ghost" href="https://www.facebook.com/profile.php?id=61590279716807" aria-label="Rentobots on Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid #363739; color: #E6E6E6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"></path></svg></a>
+<a class="rb-ghost" href="https://www.linkedin.com/company/rentobots" aria-label="Rentobots on LinkedIn" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid #363739; color: #E6E6E6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10.5V16"></path><path d="M8 7.5v.01"></path><path d="M12 16v-5.5"></path><path d="M12 13a2.5 2.5 0 0 1 5 0v3"></path></svg></a>
+<a class="rb-ghost" href="https://wa.me/917012230818" aria-label="Chat with Rentobots on WhatsApp" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid #363739; color: #E6E6E6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg></a>
+</div>
+</div>
+</div>
+<nav aria-label="Robot models">
+<h2 style="margin: 0 0 18px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">Models</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
+<li><a href="robot-models.html#pachu" style="text-decoration: none; color: #E6E6E6">Pachu</a></li>
+<li><a href="robot-models.html#kuttappan" style="text-decoration: none; color: #E6E6E6">Kuttappan</a></li>
+<li><a href="robot-models.html#d1" style="text-decoration: none; color: #E6E6E6">D1</a></li>
+<li><a href="https://wa.me/917012230818" style="text-decoration: none; color: #E6E6E6">Custom fleet</a></li>
+</ul>
+</nav>
+<div>
+<h2 style="margin: 0 0 18px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">Mumbai office</h2>
+<address style="font-style: normal; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.6; color: #9C9C9D">
+<span style="color: #FFFFFF; font-weight: 600">Super Enterprises</span>
+<span>Office No. 08, 5th Floor, Mohhata Market, Near Gulshan-E-Iran Hotel, Mumbai – 400001</span>
+<a href="tel:+917045860305" style="text-decoration: none; color: #E6E6E6">+91 704 586 0305</a>
+</address>
+</div>
+<div>
+<h2 style="margin: 0 0 18px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">Kozhikode office</h2>
+<address style="font-style: normal; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.6; color: #9C9C9D">
+<span style="color: #FFFFFF; font-weight: 600">Thouhid Binaya</span>
+<span>CDA Colony Rd, East Nadakkave, Kozhikode, Kerala 673006</span>
+<a href="tel:+918075421909" style="text-decoration: none; color: #E6E6E6">+91 807 542 1909</a>
+</address>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 28px; border-top: 1px solid #1b1c1e; font-size: 13px; letter-spacing: 0.08em; color: #8B8C8D"><span>© 2026 RENTOBOTS ROBOTICS PVT LTD — ALL RIGHTS RESERVED</span><span><a href="https://www.rentobots.com" style="color: rgb(197, 204, 214)">www.rentobots.com</a> · <a href="tel:+917012230818" style="color: rgb(197, 204, 214)">+91-70122 30818&nbsp;</a></span></div>
+</div>
+</footer>
+
+</div>
+
+<script>
+/* Typing effect for the hero label (text stays readable to screen readers via aria-label). */
+(function () {
+  var el = document.querySelector('.rb-type');
+  if (!el) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.classList.remove('rb-type'); return; }
+  var full = el.textContent, n = 0;
+  el.style.minHeight = el.offsetHeight + 'px';
+  el.textContent = '';
+  setTimeout(function step() {
+    el.textContent = full.slice(0, ++n);
+    if (n < full.length) setTimeout(step, 55 + Math.random() * 45);
+    else el.classList.add('rb-typed');
+  }, 450);
+})();
+</script>
+<script>
+/* Hero photo crossfade: each photo shows ~5 s, caption changes with it. */
+(function () {
+  var imgs = document.querySelectorAll('.rb-slide');
+  if (imgs.length < 2) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var cap = [document.getElementById('rb-sk'), document.getElementById('rb-st'), document.getElementById('rb-sg')];
+  var keys = ['k', 't', 'g'], i = 0;
+  setInterval(function () {
+    if (document.hidden) return;
+    var prev = imgs[i]; i = (i + 1) % imgs.length; var next = imgs[i];
+    prev.classList.remove('is-on'); next.classList.add('is-on');
+    cap.forEach(function (c) { if (c) c.classList.add('rb-cap-out'); });
+    setTimeout(function () {
+      cap.forEach(function (c, n) { if (c) { c.textContent = next.getAttribute('data-' + keys[n]); c.classList.remove('rb-cap-out'); } });
+    }, 500);
+  }, 5000);
+})();
+</script>
+<script src="assets/js/anim.js?v=3" defer></script>
+</body>
+</html>
