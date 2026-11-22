@@ -58,3 +58,4 @@ node_modules/
 
 # Online database address (secret)
 .env.neon
+.env.vercel
