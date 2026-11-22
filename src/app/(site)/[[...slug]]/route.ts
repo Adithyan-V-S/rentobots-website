@@ -11,7 +11,13 @@ import { pageExists, renderPage } from '@/site/render'
 const cachedPage = (name: string) =>
   process.env.NODE_ENV === 'development'
     ? renderPage(name) // always fresh while developing
-    : unstable_cache(() => renderPage(name), ['page', name], { tags: [`page:${name}`, 'site'] })()
+    : unstable_cache(
+        () => renderPage(name),
+        // Each deployment starts with a fresh cache, so a new release never shows old copies.
+        ['page', name, process.env.VERCEL_DEPLOYMENT_ID || process.env.BUILD_ID || 'local'],
+        // Edits refresh pages instantly via tags; the hourly refresh is only a safety net.
+        { tags: [`page:${name}`, 'site'], revalidate: 3600 },
+      )()
 
 const HTML_HEADERS = {
   'Content-Type': 'text/html; charset=utf-8',

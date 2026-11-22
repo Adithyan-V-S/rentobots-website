@@ -17,7 +17,9 @@ const decode = (s: string) =>
   s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
 
 const payload = await getPayload({ config })
-const ctx = { disableRevalidate: true }
+// A fresh context object per call: plugins keep per-operation notes in it,
+// and sharing one object made each new photo upload delete the previous one.
+const ctx = () => ({ disableRevalidate: true })
 
 const mediaCache = new Map<string, number>()
 async function media(src: string, alt: string, focalY = 50) {
@@ -27,7 +29,7 @@ async function media(src: string, alt: string, focalY = 50) {
     collection: 'media',
     data: { alt, focalX: 50, focalY },
     filePath: asset(src),
-    context: ctx,
+    context: ctx(),
   })
   mediaCache.set(key, doc.id)
   return doc.id
@@ -41,7 +43,7 @@ const focalY = (pos: string) => {
 async function robot(name: string, kind: string) {
   const found = await payload.find({ collection: 'robots', where: { name: { equals: name } }, limit: 1 })
   if (found.docs[0]) return found.docs[0].id
-  return (await payload.create({ collection: 'robots', data: { name, kind }, context: ctx })).id
+  return (await payload.create({ collection: 'robots', data: { name, kind }, context: ctx() })).id
 }
 const robotIds: Record<string, number> = {
   'Pachu · Humanoid': await robot('Pachu', 'Humanoid'),
@@ -85,7 +87,7 @@ if (existingCases.totalDocs === 0) {
         published: true,
         sortOrder: order,
       },
-      context: ctx,
+      context: ctx(),
     })
     order += 10
     payload.logger.info(`Case study: ${c.title}`)
@@ -111,7 +113,7 @@ if (existingProducts.totalDocs === 0) {
     await payload.create({
       collection: 'products',
       data: { name, slug, category, image: await media(src, alt), description, specs, published: true, sortOrder: order },
-      context: ctx,
+      context: ctx(),
     })
     order += 10
     payload.logger.info(`Product: ${name}`)
@@ -146,7 +148,7 @@ if (existingProducts.totalDocs === 0) {
         collection: 'media',
         data: { alt: decode(img[2]), focalX: pct(pos[0]), focalY: pct(pos[1] ?? '50') },
         filePath: asset(img[1]),
-        context: ctx,
+        context: ctx(),
       })
     ).id
     const data = {
@@ -168,10 +170,10 @@ if (existingProducts.totalDocs === 0) {
     if (found.docs[0]?.slug) {
       payload.logger.info(`Robot model ${name} already has details — skipped.`)
     } else if (found.docs[0]) {
-      await payload.update({ collection: 'robots', id: found.docs[0].id, data, context: ctx })
+      await payload.update({ collection: 'robots', id: found.docs[0].id, data, context: ctx() })
       payload.logger.info(`Robot model updated: ${name}`)
     } else {
-      await payload.create({ collection: 'robots', data, context: ctx })
+      await payload.create({ collection: 'robots', data, context: ctx() })
       payload.logger.info(`Robot model added: ${name}`)
     }
     order += 10
@@ -200,7 +202,7 @@ if ((await payload.count({ collection: 'programs' })).totalDocs === 0) {
         published: true,
         sortOrder: order,
       },
-      context: ctx,
+      context: ctx(),
     })
     order += 10
   }
@@ -227,7 +229,7 @@ if ((await payload.count({ collection: 'faqs' })).totalDocs === 0) {
     await payload.create({
       collection: 'faqs',
       data: { question, answer: f.answer, pages: f.pages as never, published: true, sortOrder: f.order },
-      context: ctx,
+      context: ctx(),
     })
   }
   payload.logger.info(`FAQs imported: ${byQ.size}`)
