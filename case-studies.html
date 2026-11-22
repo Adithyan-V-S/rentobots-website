@@ -138,7 +138,7 @@
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
 <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #E6E6E6">Malls &amp; retail</span>
-<span style="font-size: 13px; color: #8B8C8D">[Venue], [City]</span>
+<span style="font-size: 13px; color: #8B8C8D"></span>
 </div>
 <h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: 0">Kuttappan turns an open floor into a photo spot</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #9C9C9D">Our robot dog roamed the floor, did tricks on cue and drew a crowd of kids and parents wherever it stopped.</p>
@@ -184,7 +184,7 @@
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
 <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #E6E6E6">Corporate</span>
-<span style="font-size: 13px; color: #8B8C8D">[City]</span>
+<span style="font-size: 13px; color: #8B8C8D"></span>
 </div>
 <h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: 0">A humanoid unveil for a product launch</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #9C9C9D">Pachu walked on stage to reveal the product, then stayed on for photos with guests and media.</p>
@@ -206,7 +206,7 @@
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
 <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #E6E6E6">Education</span>
-<span style="font-size: 13px; color: #8B8C8D">[College name], [City]</span>
+<span style="font-size: 13px; color: #8B8C8D"></span>
 </div>
 <h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: 0">A live humanoid demo for a college tech fest</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #9C9C9D">Students met a real humanoid and robot dog up close, followed by a robotics Q&amp;A with our team.</p>
@@ -230,7 +230,7 @@
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
 <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #E6E6E6">Celebrations</span>
-<span style="font-size: 13px; color: #8B8C8D">[City]</span>
+<span style="font-size: 13px; color: #8B8C8D"></span>
 </div>
 <h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: 0">Robot greeters for a wedding reception</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #9C9C9D">Pachu welcomed guests at the entrance while Kuttappan kept the kids entertained all evening.</p>
@@ -416,10 +416,12 @@
 <h4 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8B8C8D">What we did</h4>
 <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #E6E6E6">{{c.did}}</p>
 </div>
+<sc-if value="{{c.hasOutcome}}" hint-placeholder-val="{{false}}">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <h4 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8B8C8D">The result</h4>
 <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #E6E6E6">{{c.outcome}}</p>
 </div>
+</sc-if>
 </div>
 </sc-if>
 <button type="button" onclick="{{c.toggle}}" aria-expanded="{{c.expanded}}" style="align-self: flex-start; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 1px solid #363739; background: transparent; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">{{c.toggleLabel}}</button>
@@ -513,55 +515,55 @@ class Component extends DCLogic {
         alt: 'Pachu walking through a mall in a traditional Kerala costume',
         title: 'A Kerala-costume walkabout that stopped shoppers in their tracks',
         summary: 'Pachu walked the concourse in a hand-embellished traditional costume, greeting families and posing for selfies.',
-        brief: '[Client] wanted a festive centrepiece that would make shoppers stop, film and share — without building a stage.',
+        brief: 'The mall wanted a festive centrepiece that would make shoppers stop, film and share — without building a stage.',
         did: 'We dressed Pachu in a traditional costume, planned a walkabout route through the busiest stretch of the concourse and kept an operator on the floor managing a safe guest zone throughout.',
-        outcome: '[Add the result — footfall, reels and reach, press or social coverage, client quote.]'
+        outcome: '' /* TODO: add real result */
       },
       {
-        id: 'dog', cat: 'retail', place: '[Venue], [City]', robots: [K],
+        id: 'dog', cat: 'retail', place: '' /* TODO: city */, robots: [K],
         photo: 'assets/img/kuttappan.webp', pos: 'center 40%',
         alt: 'Kuttappan the robot dog walking across a mall floor',
         title: 'Kuttappan turns an open floor into a photo spot',
         summary: 'Our robot dog roamed the floor, did tricks on cue and drew a crowd of kids and parents wherever it stopped.',
-        brief: '[Client] needed something that would keep families around the activation area longer.',
+        brief: 'The organisers needed something that would keep families around the activation area longer.',
         did: 'Kuttappan roamed a marked zone, performed tricks on cue and paused for photos, with our operator steering it through the crowd.',
-        outcome: '[Add the result — dwell time, photos taken, social mentions.]'
+        outcome: '' /* TODO: add real result */
       },
       {
         id: 'annual-day', cat: 'corporate', place: 'Hyderabad', robots: [P, K],
         photo: '', alt: 'Photo placeholder: office annual day',
         title: 'Two robots, one office annual day',
         summary: 'Pachu and Kuttappan travelled from Kerala to Hyderabad for a six-hour office annual day celebration.',
-        brief: '[Company name] wanted both robots at their annual day to welcome staff and anchor the evening.',
+        brief: 'The company wanted both robots at their annual day to welcome staff and anchor the evening.',
         did: 'Pachu welcomed employees at the entrance and made a stage appearance, while Kuttappan roamed between tables. Our team travelled with the robots and ran the full six hours on site.',
-        outcome: '[Add the result — attendee reactions, client quote, photos.]'
+        outcome: '' /* TODO: add real result */
       },
       {
-        id: 'launch', cat: 'corporate', place: '[City]', robots: [P],
+        id: 'launch', cat: 'corporate', place: '' /* TODO: city */, robots: [P],
         photo: '', alt: 'Photo placeholder: product launch',
         title: 'A humanoid unveil for a product launch',
         summary: 'Pachu walked on stage to reveal the product, then stayed on for photos with guests and media.',
-        brief: '[Brand] wanted a launch moment that would stand out in photos and on social media.',
+        brief: 'The brand wanted a launch moment that would stand out in photos and on social media.',
         did: 'We scripted Pachu’s stage entry and unveil with the event anchor, then moved him to a photo corner for the rest of the evening.',
-        outcome: '[Add the result — media pickup, reel views, client quote.]'
+        outcome: '' /* TODO: add real result */
       },
       {
-        id: 'college', cat: 'education', place: '[College name], [City]', robots: [P, K],
+        id: 'college', cat: 'education', place: '' /* TODO: city */, robots: [P, K],
         photo: '', alt: 'Photo placeholder: college tech fest',
         title: 'A live humanoid demo for a college tech fest',
         summary: 'Students met a real humanoid and robot dog up close, followed by a robotics Q&A with our team.',
-        brief: '[College] wanted a headline attraction for its tech fest that also taught students something real.',
+        brief: 'The college wanted a headline attraction for its tech fest that also taught students something real.',
         did: 'Live demos of Pachu and Kuttappan, a walkthrough of how the robots are operated, and an open Q&A — an introduction to our Industry Institute Program.',
-        outcome: '[Add the result — students reached, follow-up workshop or programme bookings.]'
+        outcome: '' /* TODO: add real result */
       },
       {
-        id: 'wedding', cat: 'celebrations', place: '[City]', robots: [P, K],
+        id: 'wedding', cat: 'celebrations', place: '' /* TODO: city */, robots: [P, K],
         photo: '', alt: 'Photo placeholder: wedding reception',
         title: 'Robot greeters for a wedding reception',
         summary: 'Pachu welcomed guests at the entrance while Kuttappan kept the kids entertained all evening.',
         brief: 'The family wanted a welcome their guests would remember — and photos to match.',
         did: 'Pachu greeted guests at the entrance and joined the couple for photos; Kuttappan roamed the hall and performed for the children.',
-        outcome: '[Add the result — family quote, photos.]'
+        outcome: '' /* TODO: add real result */
       }
     ];
     const f = s.filter;
@@ -575,6 +577,7 @@ class Component extends DCLogic {
           catLabel: cats[c.cat],
           hasPhoto: !!c.photo,
           noPhoto: !c.photo,
+          hasOutcome: !!c.outcome,
           imgStyle: 'display: block; width: 100%; height: 240px; object-fit: cover; object-position: ' + c.pos + '; border-bottom: 1px solid #1b1c1e',
           open,
           expanded: open ? 'true' : 'false',
