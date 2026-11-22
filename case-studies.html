@@ -179,7 +179,7 @@
 <article id="cs-launch" class="rb-card" style="border: 1px solid #1b1c1e; border-radius: 20px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
 
 
-<div class="rb-grid" role="img" aria-label="Photo placeholder: product launch" style="height: 240px; background-color: #111214; border-bottom: 1px solid #1b1c1e; display: flex; align-items: center; justify-content: center; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">[Event photo]</div>
+<img loading="lazy" decoding="async" src="assets/img/cases/launch.webp" alt="Humanoid robot unveiling a product on stage as photographers take pictures" style="display: block; width: 100%; height: 240px; object-fit: cover; object-position: center 35%; border-bottom: 1px solid #1b1c1e">
 
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
@@ -201,7 +201,7 @@
 <article id="cs-college" class="rb-card" style="border: 1px solid #1b1c1e; border-radius: 20px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
 
 
-<div class="rb-grid" role="img" aria-label="Photo placeholder: college tech fest" style="height: 240px; background-color: #111214; border-bottom: 1px solid #1b1c1e; display: flex; align-items: center; justify-content: center; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #8B8C8D">[Event photo]</div>
+<img loading="lazy" decoding="async" src="assets/img/cases/college.webp" alt="Students filming a humanoid robot and robot dog at a college tech fest" style="display: block; width: 100%; height: 240px; object-fit: cover; object-position: center 50%; border-bottom: 1px solid #1b1c1e">
 
 <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
@@ -540,7 +540,8 @@ class Component extends DCLogic {
       },
       {
         id: 'launch', cat: 'corporate', place: '' /* TODO: city */, robots: [P],
-        photo: '', alt: 'Photo placeholder: product launch',
+        photo: 'assets/img/cases/launch.webp', pos: 'center 35%',
+        alt: 'Humanoid robot unveiling a product on stage as photographers take pictures',
         title: 'A humanoid unveil for a product launch',
         summary: 'Pachu walked on stage to reveal the product, then stayed on for photos with guests and media.',
         brief: 'The brand wanted a launch moment that would stand out in photos and on social media.',
@@ -549,7 +550,8 @@ class Component extends DCLogic {
       },
       {
         id: 'college', cat: 'education', place: '' /* TODO: city */, robots: [P, K],
-        photo: '', alt: 'Photo placeholder: college tech fest',
+        photo: 'assets/img/cases/college.webp', pos: 'center 50%',
+        alt: 'Students filming a humanoid robot and robot dog at a college tech fest',
         title: 'A live humanoid demo for a college tech fest',
         summary: 'Students met a real humanoid and robot dog up close, followed by a robotics Q&A with our team.',
         brief: 'The college wanted a headline attraction for its tech fest that also taught students something real.',
