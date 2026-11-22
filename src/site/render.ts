@@ -365,6 +365,46 @@ async function renderFaqs(name: string, html: string) {
   return html
 }
 
+// ---------- hire page robot picker ----------
+
+async function renderHire(html: string) {
+  const payload = await getPayload({ config })
+  const { docs } = await payload.find({
+    collection: 'robots',
+    where: { bookable: { equals: true } },
+    sort: 'sortOrder',
+    depth: 1,
+    limit: 50,
+  })
+  const robots = docs.filter((r) => r.slug)
+  const defs = robots.map((r) => {
+    const m = mediaOf(r.photo)
+    return { id: r.slug, name: r.name, kind: r.kind, model: r.model || '', photo: imgUrl(m), pos: imgPos(m), alt: m?.alt || r.name, desc: r.description || '' }
+  })
+  const state = Object.fromEntries(robots.map((r, i) => [r.slug, i === 0]))
+  const check = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>'
+  const cards = defs.map((d, i) => {
+    const on = i === 0
+    const photo = d.photo
+      ? `<img ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" src="${esc(d.photo)}" alt="${esc(d.alt)}" style="display: block; width: 100%; height: 200px; object-fit: cover; object-position: ${d.pos}; border-radius: 12px; border: 1px solid #1b1c1e; background: #111214">`
+      : ''
+    return `<button type="button" aria-pressed="${on}" style="display: flex; flex-direction: column; gap: 10px; text-align: left; padding: 16px 16px 20px; border-radius: 16px; cursor: pointer; font: inherit; color: inherit; ${on ? 'background: #111214; border: 2px solid #E6E6E6;' : 'background: #07080a; border: 2px solid #1b1c1e;'}">
+${photo}
+<span style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8B8C8D">${esc(d.kind)}</span>
+<span style="width: 28px; height: 28px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; ${on ? 'background: #E6E6E6; color: #040506;' : 'border: 1px solid #363739; color: transparent;'}">
+${check}
+</span>
+</span>
+<span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 32px; letter-spacing: 0; color: #FFFFFF">${esc(d.name)}</span>
+</button>`
+  })
+  html = fill(html, 'hire-robots', cards.join('\n\n'))
+  html = fill(html, 'hire-state', scriptJson(state))
+  html = fill(html, 'hire-defs', scriptJson(defs))
+  return html
+}
+
 // ---------- entry ----------
 
 const RENDERERS: Record<string, (html: string) => Promise<string>> = {
@@ -372,6 +412,7 @@ const RENDERERS: Record<string, (html: string) => Promise<string>> = {
   products: renderProducts,
   'robot-models': renderRobotModels,
   programs: renderPrograms,
+  hire: renderHire,
 }
 
 export async function renderPage(name: string) {

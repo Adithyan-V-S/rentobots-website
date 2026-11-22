@@ -99,7 +99,7 @@
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px">
 
-<button type="button" aria-pressed="true" style="display: flex; flex-direction: column; gap: 10px; text-align: left; padding: 16px 16px 20px; border-radius: 16px; cursor: pointer; font: inherit; color: inherit; background: #111214; border: 2px solid #E6E6E6;">
+<!--cms:hire-robots--><button type="button" aria-pressed="true" style="display: flex; flex-direction: column; gap: 10px; text-align: left; padding: 16px 16px 20px; border-radius: 16px; cursor: pointer; font: inherit; color: inherit; background: #111214; border: 2px solid #E6E6E6;">
 
 <img fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu the humanoid robot in a traditional Kerala costume" style="display: block; width: 100%; height: 200px; object-fit: cover; object-position: center 22%; border-radius: 12px; border: 1px solid #1b1c1e; background: #111214">
 
@@ -125,7 +125,7 @@
 </span>
 </span>
 <span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 32px; letter-spacing: 0; color: #FFFFFF">Kuttappan</span>
-</button>
+</button><!--/cms:hire-robots-->
 
 </div>
 </div>
@@ -664,7 +664,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = {
-      robots: { pachu: true, kuttappan: false },
+      robots: /*cms:hire-state*/{ pachu: true, kuttappan: false }/*/cms:hire-state*/,
       event: 'launch',
       tasks: { greet: true, stage: true, photos: true },
       date: '', hours: 'Half day (up to 4 hours)', city: '', venue: '', guests: '', name: '', phone: '', notes: ''
@@ -674,10 +674,10 @@ class Component extends DCLogic {
     const accent = this.props.accent ?? '#E6E6E6';
     const s = this.state;
 
-    const robotDefs = [
+    const robotDefs = /*cms:hire-defs*/[
       { id: 'pachu', name: 'Pachu', kind: 'Humanoid', model: 'Unitree G1 EDU', photo: 'assets/img/pachu.webp', pos: 'center 22%', alt: 'Pachu the humanoid robot in a traditional Kerala costume', desc: 'Greets guests, makes a stage entry, co-hosts with your anchor and poses for every photo.' },
       { id: 'kuttappan', name: 'Kuttappan', kind: 'Robot dog', model: 'Unitree Go2 Pro', photo: 'assets/img/kuttappan.webp', pos: 'center 38%', alt: 'Kuttappan the robot dog walking toward the camera', desc: 'Roams the floor, does tricks and turns every stall, party and reception into a photo spot.' }
-    ];
+    ]/*/cms:hire-defs*/;
     const cardBase = 'display: flex; flex-direction: column; gap: 10px; text-align: left; padding: 16px 16px 20px; border-radius: 16px; cursor: pointer; font: inherit; color: inherit; ';
     const robots = robotDefs.map((r) => {
       const on = !!s.robots[r.id];

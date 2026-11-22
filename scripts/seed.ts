@@ -126,6 +126,8 @@ if (existingProducts.totalDocs === 0) {
   const block = /<!--cms:robots-->([\s\S]*?)<!--\/cms:robots-->/.exec(html)![1]
   const tbody = /<!--cms:compare-->([\s\S]*?)<!--\/cms:compare-->/.exec(html)![1]
   const sections = block.match(/<section id="[^"]+"[\s\S]*?<\/section>/g) || []
+  // Robots already offered in the booking form on the hire page.
+  const hireIds = [...site('hire.html').matchAll(/\{ id: '([a-z0-9-]+)', name:/g)].map((m) => m[1])
   let order = 10
   for (const s of sections) {
     const slug = /<section id="([^"]+)"/.exec(s)![1]
@@ -159,6 +161,7 @@ if (existingProducts.totalDocs === 0) {
       bestMoment: row ? decode(row[1]) : '',
       isNew: s.includes('>New</span>'),
       showOnModelsPage: true,
+      bookable: hireIds.includes(slug),
       sortOrder: order,
     }
     const found = await payload.find({ collection: 'robots', where: { name: { equals: name } }, limit: 1 })

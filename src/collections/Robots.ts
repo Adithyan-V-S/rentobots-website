@@ -46,6 +46,13 @@ export const Robots: CollectionConfig = {
     { name: 'bestMoment', label: 'Best moment (comparison table)', type: 'text' },
     { name: 'isNew', label: 'Show "New" badge', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar' } },
     { name: 'showOnModelsPage', label: 'Show on Robot models page', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
+    {
+      name: 'bookable',
+      label: 'Show on Hire page (bookable)',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { position: 'sidebar', description: 'Visitors can pick this robot in the booking form. The first one is pre-selected.' },
+    },
     { name: 'sortOrder', label: 'Order', type: 'number', defaultValue: 100, admin: { position: 'sidebar' } },
   ],
 }

@@ -221,6 +221,10 @@ export interface Robot {
   bestMoment?: string | null;
   isNew?: boolean | null;
   showOnModelsPage?: boolean | null;
+  /**
+   * Visitors can pick this robot in the booking form. The first one is pre-selected.
+   */
+  bookable?: boolean | null;
   sortOrder?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -556,6 +560,7 @@ export interface RobotsSelect<T extends boolean = true> {
   bestMoment?: T;
   isNew?: T;
   showOnModelsPage?: T;
+  bookable?: T;
   sortOrder?: T;
   updatedAt?: T;
   createdAt?: T;
