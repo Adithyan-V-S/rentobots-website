@@ -43,3 +43,27 @@ Then open `/admin` and create the first admin account.
 2. Mark the region in the page in `site/` with `<!--cms:key-->…<!--/cms:key-->`.
 3. Add a renderer for that page in `src/site/render.ts`.
 4. Add `revalidatePages(['page-name'])` hooks so edits appear immediately.
+
+## Vercel preview (for the team)
+
+Vercel has no permanent disk or built-in database, so the preview uses:
+
+- **Neon** (free PostgreSQL) → `DATABASE_URL`
+- **Vercel Blob** (photo storage) → `BLOB_READ_WRITE_TOKEN` (added automatically when a Blob store is connected)
+- `PAYLOAD_SECRET` (long random string) and `NEXT_PUBLIC_SITE_URL` (the preview URL)
+
+The build command (`vercel.json`) is `npm run ci`, which applies database migrations, then builds.
+
+Load the current content into the online database once, from this PC:
+
+```
+set DATABASE_URL=<neon url>
+set BLOB_READ_WRITE_TOKEN=<blob token>
+npm run payload migrate
+npm run seed
+```
+
+## Database changes
+
+Locally, tables update automatically. For the online database, after changing a collection run
+`npm run payload migrate:create <name>` and commit the new file in `src/migrations/`.

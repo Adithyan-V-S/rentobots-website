@@ -12,12 +12,14 @@
     "seed": "cross-env NODE_OPTIONS=--no-deprecation payload run scripts/seed.ts",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload"
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "ci": "cross-env NODE_OPTIONS=--no-deprecation payload migrate && npm run build"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.94.1",
     "@payloadcms/next": "3.94.1",
     "@payloadcms/richtext-lexical": "3.94.1",
+    "@payloadcms/storage-vercel-blob": "3.94.1",
     "@payloadcms/ui": "3.94.1",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",

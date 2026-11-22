@@ -1,4 +1,5 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -36,7 +37,19 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URL || '' },
+    // Production uses migrations (src/migrations); local dev updates tables automatically.
+    migrationDir: path.resolve(dirname, 'migrations'),
   }),
+  plugins: [
+    // On Vercel, photos are stored in Vercel Blob (Vercel has no permanent disk).
+    // On the VPS and locally there is no token, so photos stay in the /media folder.
+    vercelBlobStorage({
+      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      collections: { media: { disablePayloadAccessControl: true } }, // photos are public; serve straight from Blob CDN
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+      clientUploads: true, // upload straight from the browser, so large photos work
+    }),
+  ],
   sharp,
   telemetry: false,
 })

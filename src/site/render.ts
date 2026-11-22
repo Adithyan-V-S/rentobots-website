@@ -57,7 +57,12 @@ function cleanLinks(html: string) {
 
 const mediaOf = (m: number | Media | null | undefined): Media | null => (m && typeof m === 'object' ? m : null)
 /** Site-relative URL (no "http://host"), so pages work on any domain. */
-const rel = (u: string | null | undefined) => (u || '').replace(/^https?:\/\/[^/]+/, '')
+const SITE_ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '')
+const rel = (u: string | null | undefined) => {
+  const s = u || ''
+  // Our own uploads become "/api/media/..."; external (e.g. Vercel Blob CDN) URLs stay as they are.
+  return s.startsWith(SITE_ORIGIN) ? s.slice(SITE_ORIGIN.length) : s
+}
 const imgUrl = (m: Media | null) => (m ? rel(m.sizes?.card?.url || m.url) : '')
 const imgPos = (m: Media | null) => (m ? `${m.focalX ?? 50}% ${m.focalY ?? 50}%` : 'center')
 const robotLabel = (r: number | Robot) => (typeof r === 'object' ? `${r.name} · ${r.kind}` : '')
