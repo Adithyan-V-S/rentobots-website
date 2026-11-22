@@ -97,29 +97,40 @@ if (existingCases.totalDocs === 0) {
 }
 
 // ---------- products ----------
-const existingProducts = await payload.count({ collection: 'products' })
-if (existingProducts.totalDocs === 0) {
+// Adds any product from products.html that is not in the database yet (matched by slug).
+// Existing products, and edits made in the admin panel, are left alone. A new product is
+// slotted in just after the product before it on the page.
+{
   const html = site('products.html')
   const articles = html.match(/<article class="rb-card rb-prod"[\s\S]*?<\/article>/g) || []
-  let order = 10
+  const existing = await payload.find({ collection: 'products', limit: 1000, depth: 0 })
+  const bySlug = new Map(existing.docs.map((d) => [d.slug, d]))
+  let prevOrder = 0
+  let added = 0
   for (const a of articles) {
     const slug = /id="([^"]+)"/.exec(a)![1]
+    const have = bySlug.get(slug)
+    if (have) {
+      prevOrder = have.sortOrder ?? prevOrder
+      continue
+    }
     const category = /data-cat="([^"]+)"/.exec(a)![1] as 'humanoid' | 'quadruped' | 'cobot'
     const src = /<img[^>]*src="([^"]+)"/.exec(a)![1]
     const alt = decode(/<img[^>]*alt="([^"]*)"/.exec(a)![1])
     const name = decode(/<h3[^>]*>([^<]+)<\/h3>/.exec(a)![1])
     const description = decode(/<p[^>]*>([^<]+)<\/p>/.exec(a)![1])
     const specs = [...a.matchAll(/<li[^>]*>([^<]+)<\/li>/g)].map((m) => ({ text: decode(m[1]) }))
+    const sortOrder = existing.totalDocs === 0 ? prevOrder + 10 : prevOrder + 1
     await payload.create({
       collection: 'products',
-      data: { name, slug, category, image: await media(src, alt), description, specs, published: true, sortOrder: order },
+      data: { name, slug, category, image: await media(src, alt), description, specs, published: true, sortOrder },
       context: ctx(),
     })
-    order += 10
-    payload.logger.info(`Product: ${name}`)
+    prevOrder = sortOrder
+    added++
+    payload.logger.info(`Product added: ${name}`)
   }
-} else {
-  payload.logger.info('Products already exist — skipped.')
+  payload.logger.info(`Products: ${added} added, ${articles.length - added} already there.`)
 }
 
 // ---------- robot models (details for /robot-models) ----------
@@ -137,6 +148,12 @@ if (existingProducts.totalDocs === 0) {
     const meta = decode(/letter-spacing: 0\.2em; text-transform: uppercase; color: #8B8C8D">([^<]+)<\/span>/.exec(s)![1])
     const [kind, model] = meta.split(' · ')
     const img = /<img[^>]*src="([^"]+)"[^>]*alt="([^"]*)"[^>]*object-position: ([^;]+);/.exec(s)!
+    const already = await payload.find({ collection: 'robots', where: { name: { equals: name } }, limit: 1 })
+    if (already.docs[0]?.slug) {
+      payload.logger.info(`Robot model ${name} already has details — skipped.`)
+      order += 10
+      continue
+    }
     const pos = img[3].trim().split(/\s+/)
     const pct = (v: string) => (v === 'center' ? 50 : parseFloat(v))
     const description = decode(/<p style="margin: 0; font-size: 18px[^>]*>([^<]+)<\/p>/.exec(s)?.[1] || '')
