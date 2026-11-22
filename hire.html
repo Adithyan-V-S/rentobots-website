@@ -491,7 +491,10 @@ Send booking on WhatsApp</a>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 18px">
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="f-date" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Event date</label>
-<input id="f-date" type="date" value="{{date}}" oninput="{{setDate}}" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
+<input id="f-date" type="date" min="{{minDate}}" max="{{maxDate}}" aria-invalid="{{dateInvalid}}" aria-describedby="f-date-msg" value="{{date}}" oninput="{{setDate}}" style="{{dateBorder}}height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
+<sc-if value="{{dateMsg}}" hint-placeholder-val="{{false}}">
+<span id="f-date-msg" role="status" style="font-size: 13px; line-height: 1.45; color: {{dateMsgColor}}">{{dateMsg}}</span>
+</sc-if>
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="f-hours" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Time on site</label>
@@ -560,7 +563,10 @@ Send booking on WhatsApp</a>
 
 <p style="margin: 0; padding: 16px; border-radius: 12px; background: #07080a; border: 1px solid #1b1c1e; font-size: 14px; line-height: 1.55; color: #9C9C9D">We'll share your quote on WhatsApp after we confirm the date and venue.</p>
 
-<sc-if value="{{hasRobot}}" hint-placeholder-val="{{true}}">
+<sc-if value="{{dateBlocked}}" hint-placeholder-val="{{false}}">
+<p role="alert" style="margin: 0; padding: 16px; border: 1px dashed #FF6363; border-radius: 12px; font-size: 15px; line-height: 1.5; color: #FFB4B4">Please fix the event date to send your booking.</p>
+</sc-if>
+<sc-if value="{{canSend}}" hint-placeholder-val="{{true}}">
 <a class="rb-btn" href="{{waHref}}" style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; border-radius: 999px; color: #FFFFFF; font-size: 16px; font-weight: 600">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg>
 Send booking on WhatsApp</a>
@@ -724,6 +730,22 @@ class Component extends DCLogic {
     const picked = robots.filter((r) => s.robots[r.id]).map((r) => ({ name: r.name, kind: r.kind }));
     const hasRobot = picked.length > 0;
 
+    // Event date checks: not in the past, not more than 2 years ahead; gentle note if under 2 weeks.
+    const iso = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const maxD = new Date(today); maxD.setFullYear(maxD.getFullYear() + 2);
+    const minDate = iso(today), maxDate = iso(maxD);
+    let dateMsg = '', dateError = false;
+    if (s.date) {
+      const picked0 = new Date(s.date + 'T00:00:00');
+      if (isNaN(picked0)) { dateMsg = 'Please enter a valid date.'; dateError = true; }
+      else if (s.date < minDate) { dateMsg = 'That date has already passed. Please pick today or a later date.'; dateError = true; }
+      else if (s.date > maxDate) { dateMsg = 'Please pick a date within the next 2 years.'; dateError = true; }
+      else if ((picked0 - today) / 86400000 < 14) { dateMsg = 'Less than 2 weeks away. We will check availability quickly; you can also call us.'; }
+    }
+    const dateBlocked = hasRobot && dateError;
+    const canSend = hasRobot && !dateError;
+
     let dateLabel = 'Not set';
     if (s.date) {
       const d = new Date(s.date + 'T00:00:00');
@@ -751,6 +773,10 @@ class Component extends DCLogic {
     return {
       accent, robots, events, tasks, picked, eventLabel,
       hasRobot, noRobot: !hasRobot,
+      minDate, maxDate, dateMsg, dateBlocked, canSend,
+      dateInvalid: dateError ? 'true' : 'false',
+      dateMsgColor: dateError ? '#FF8A8A' : '#E6C35C',
+      dateBorder: dateError ? 'border-color: #FF6363 !important; ' : '',
       dateLabel, whereLabel,
       hours: s.hours,
       taskCount: pickedTasks.length ? pickedTasks.length + ' selected' : 'None yet',
