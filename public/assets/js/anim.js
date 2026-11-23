@@ -112,3 +112,33 @@
   window.addEventListener('resize', schedule);
   check();
 })();
+
+/* Mobile menu: close it when tapping anywhere outside, choosing a link, or pressing Esc.
+   The outside tap only closes the menu — it does not also press whatever is underneath. */
+(function () {
+  'use strict';
+  var swallowUntil = 0;
+  function openMenus() { return document.querySelectorAll('details.rb-mnav[open]'); }
+  document.addEventListener('pointerdown', function (e) {
+    var menus = openMenus(), closed = false;
+    for (var i = 0; i < menus.length; i++) {
+      if (!menus[i].contains(e.target)) { menus[i].removeAttribute('open'); closed = true; }
+    }
+    if (closed) swallowUntil = Date.now() + 600;
+  }, true);
+  document.addEventListener('click', function (e) {
+    if (Date.now() < swallowUntil && !(e.target.closest && e.target.closest('details.rb-mnav'))) {
+      swallowUntil = 0; e.preventDefault(); e.stopPropagation(); return;
+    }
+    var link = e.target.closest && e.target.closest('details.rb-mnav a');
+    if (link) link.closest('details').removeAttribute('open');
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var menus = openMenus();
+    for (var i = 0; i < menus.length; i++) {
+      menus[i].removeAttribute('open');
+      var s = menus[i].querySelector('summary'); if (s) s.focus();
+    }
+  });
+})();
