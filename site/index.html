@@ -116,6 +116,19 @@
 .rb-slide.is-on{opacity:1}
 #rb-sk,#rb-st,#rb-sg{transition:opacity .5s ease}
 .rb-cap-out{opacity:0 !important}
+/* Hero intro: the photo is built from 100 falling pieces, then powers on (see script near </body>) */
+.rb-assembling .rb-slide{opacity:0 !important;transition:none !important}
+.rb-assembling > div{opacity:0}
+.rb-scan > div{transition:opacity .6s ease}
+.rb-assembling::after{animation:none !important;opacity:0}
+.rb-assembled::after{animation-delay:.6s !important}
+.rb-shards{position:absolute;z-index:15;pointer-events:none}
+.rb-shard{position:absolute;background-repeat:no-repeat;will-change:transform,opacity;box-shadow:inset 0 0 0 1px rgba(63,193,255,.22)}
+.rb-poweron .rb-slide.is-on{animation:rbPowerOn .9s steps(1,end) both !important;transition:none !important}
+.rb-poweron::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(60% 50% at 50% 38%,rgba(140,225,255,.55),rgba(63,193,255,.12) 55%,transparent 75%);animation:rbPowerFlash .9s ease-out both}
+@keyframes rbPowerOn{0%{opacity:.25;filter:brightness(2.4) saturate(0)}12%{opacity:1;filter:brightness(1.7) saturate(.6)}20%{opacity:.35;filter:brightness(1)}32%{opacity:1;filter:brightness(1.3)}42%{opacity:.6}54%,100%{opacity:1;filter:none}}
+@keyframes rbPowerFlash{0%{opacity:0}15%{opacity:1}100%{opacity:0}}
 </style>
 <style>
 /* "Book in minutes" background: robot picks up a ball that lights up like a lamp (loops every 10 s) */
@@ -483,6 +496,99 @@
 })();
 </script>
 <script>
+/* Hero intro: cut the first photo into 100 pieces that fall in, lock into place with a
+   mechanical shiver, then the whole photo shakes once and powers on. The slideshow and
+   scan line start after that. Skipped for reduced-motion users. */
+(function () {
+  var box = document.querySelector('.rb-hero .rb-scan');
+  var img = box && box.querySelector('.rb-slide.is-on');
+  if (!box || !img || !box.animate) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  window.__rbAssembling = true;
+  box.classList.add('rb-assembling');
+  var done = false;
+  function finish() {
+    if (done) return; done = true;
+    box.classList.remove('rb-assembling');
+    box.classList.add('rb-assembled', 'rb-poweron');
+    setTimeout(function () { box.classList.remove('rb-poweron'); }, 950);
+    window.__rbAssembling = false;
+    document.dispatchEvent(new Event('rb:assembled'));
+  }
+  // Never leave the photo hidden: if anything stalls, just show it.
+  var safety = setTimeout(finish, 6000);
+
+  function build() {
+    var r = box.getBoundingClientRect();
+    var W = r.width, H = r.height, N = 10;
+    var nw = img.naturalWidth || W, nh = img.naturalHeight || H;
+    var pos = (getComputedStyle(img).objectPosition || '50% 50%').split(' ');
+    var px = (parseFloat(pos[0]) || 50) / 100, py = (parseFloat(pos[1] || pos[0]) || 50) / 100;
+    if (/center/.test(pos[0])) px = 0.5;
+    if (pos[1] && /center/.test(pos[1])) py = 0.5;
+    var s = Math.max(W / nw, H / nh), dw = nw * s, dh = nh * s;
+    var ox = (W - dw) * px, oy = (H - dh) * py;
+
+    var layer = document.createElement('div');
+    layer.className = 'rb-shards';
+    layer.setAttribute('aria-hidden', 'true');
+    layer.style.left = (r.left + window.scrollX) + 'px';
+    layer.style.top = (r.top + window.scrollY) + 'px';
+    layer.style.width = W + 'px';
+    layer.style.height = H + 'px';
+    document.body.appendChild(layer);
+
+    var tw = W / N, th = H / N, src = img.currentSrc || img.src, anims = [];
+    for (var y = 0; y < N; y++) {
+      for (var x = 0; x < N; x++) {
+        var t = document.createElement('div');
+        t.className = 'rb-shard';
+        var L = Math.floor(x * tw), T = Math.floor(y * th);
+        t.style.left = L + 'px'; t.style.top = T + 'px';
+        t.style.width = (Math.ceil(tw) + 1) + 'px'; t.style.height = (Math.ceil(th) + 1) + 'px';
+        t.style.backgroundImage = 'url("' + src + '")';
+        t.style.backgroundSize = dw + 'px ' + dh + 'px';
+        t.style.backgroundPosition = (ox - L) + 'px ' + (oy - T) + 'px';
+        if (x === 0 && y === 0) t.style.borderTopLeftRadius = '24px';
+        if (x === N - 1 && y === 0) t.style.borderTopRightRadius = '24px';
+        if (x === 0 && y === N - 1) t.style.borderBottomLeftRadius = '24px';
+        if (x === N - 1 && y === N - 1) t.style.borderBottomRightRadius = '24px';
+        layer.appendChild(t);
+        // Falls from above, spinning; lands with a spark; shivers as it locks in.
+        var dx = (Math.random() - 0.5) * W * 1.1;
+        var dy = -(T + 260 + Math.random() * 520);
+        var rot = (Math.random() - 0.5) * 300;
+        var j = 1.5 + Math.random() * 1.5;
+        anims.push(t.animate([
+          { transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(' + rot + 'deg) scale(.6)', opacity: 0, filter: 'brightness(1)', easing: 'cubic-bezier(.45,0,.85,.45)' },
+          { opacity: 1, offset: 0.2 },
+          { transform: 'translate(0,0) rotate(0deg) scale(1)', filter: 'brightness(1.9)', offset: 0.7 },
+          { transform: 'translate(' + j + 'px,' + (-j / 2) + 'px) rotate(' + (j * 0.8) + 'deg)', filter: 'brightness(1.3)', offset: 0.77 },
+          { transform: 'translate(' + (-j) + 'px,' + (j / 2) + 'px) rotate(' + (-j * 0.7) + 'deg)', offset: 0.84 },
+          { transform: 'translate(' + (j / 2) + 'px,0) rotate(' + (j * 0.35) + 'deg)', offset: 0.91 },
+          { transform: 'none', opacity: 1, filter: 'brightness(1)' }
+        ], { duration: 950, delay: Math.random() * 1100, fill: 'both' }));
+      }
+    }
+    Promise.all(anims.map(function (a) { return a.finished; })).then(function () {
+      // All parts locked: one short mechanical shake of the whole picture.
+      var shake = layer.animate([
+        { transform: 'none' }, { transform: 'translate(-4px,1px)' }, { transform: 'translate(4px,-1px)' },
+        { transform: 'translate(-3px,0)' }, { transform: 'translate(2px,1px)' }, { transform: 'none' }
+      ], { duration: 320, easing: 'linear' });
+      shake.finished.then(function () {
+        clearTimeout(safety);
+        finish();
+        layer.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: 'forwards' })
+          .finished.then(function () { layer.remove(); });
+      });
+    });
+  }
+  if (img.complete && img.naturalWidth) requestAnimationFrame(build);
+  else { img.addEventListener('load', function () { requestAnimationFrame(build); }, { once: true }); img.addEventListener('error', finish, { once: true }); }
+})();
+</script>
+<script>
 /* Hero photo crossfade: each photo shows ~5 s, caption changes with it. */
 (function () {
   var imgs = document.querySelectorAll('.rb-slide');
@@ -490,7 +596,9 @@
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var cap = [document.getElementById('rb-sk'), document.getElementById('rb-st'), document.getElementById('rb-sg')];
   var keys = ['k', 't', 'g'], i = 0;
-  setInterval(function () {
+  function startShow() { setInterval(tick, 5000); }
+  if (window.__rbAssembling) document.addEventListener('rb:assembled', startShow, { once: true }); else startShow();
+  function tick() {
     if (document.hidden) return;
     var prev = imgs[i]; i = (i + 1) % imgs.length; var next = imgs[i];
     prev.classList.remove('is-on'); next.classList.add('is-on');
@@ -498,7 +606,7 @@
     setTimeout(function () {
       cap.forEach(function (c, n) { if (c) { c.textContent = next.getAttribute('data-' + keys[n]); c.classList.remove('rb-cap-out'); } });
     }, 500);
-  }, 5000);
+  }
 })();
 </script>
 <script src="assets/js/anim.js?v=4" defer></script>
