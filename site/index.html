@@ -116,6 +116,22 @@
 .rb-slide.is-on{opacity:1}
 #rb-sk,#rb-st,#rb-sg{transition:opacity .5s ease}
 .rb-cap-out{opacity:0 !important}
+.rb-hire{position:relative;z-index:3;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;
+  background:#E6E6E6;color:#040506;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;
+  box-shadow:0 0 0 0 rgba(63,193,255,0);transition:background .2s ease,transform .2s ease}
+.rb-hire:hover{background:#FFFFFF;transform:translateY(-1px)}
+.rb-hire:focus-visible{outline:2px solid #3FC1FF;outline-offset:3px}
+.rb-dots{position:absolute;z-index:3;bottom:4px;left:0;right:0;display:flex;justify-content:center;gap:4px;transition:opacity .4s ease}
+.rb-dots button{width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.rb-dots button::before{content:"";width:7px;height:7px;border-radius:999px;background:rgba(255,255,255,.35);transition:width .3s ease,background .3s ease}
+.rb-dots button[aria-current="true"]::before{width:22px;background:#FFFFFF}
+.rb-intro .rb-dots,.rb-assembling .rb-dots{opacity:0}
+.rb-hero .rb-scan{touch-action:pan-y}
+/* Phones: taller hero card and a bigger Pachu cut-out (desktop unchanged) */
+@media (max-width:760px){
+  .rb-hero .rb-scan{height:460px !important}
+  .rb-hero .rb-slide[src*="pachu-cutout"]{padding:6px 6px 92px !important;object-position:50% 18% !important}
+}
 /* Hero intro: the photo is built from 100 falling pieces, then powers on (see script near </body>) */
 .rb-intro .rb-hero .rb-scan .rb-slide,.rb-assembling .rb-slide{opacity:0 !important;transition:none !important}
 .rb-intro .rb-hero .rb-scan > div:last-child{opacity:0}
@@ -239,13 +255,14 @@
 <img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/robot-dog-yellow.webp" alt="" aria-hidden="true" data-k="Quadrupeds" data-t="Robot dogs" data-g="Robot dog" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%">
 <img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-suit.webp" alt="" aria-hidden="true" data-k="Corporate events" data-t="Suited up" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%">
 <img class="rb-slide" fetchpriority="low" decoding="async" src="assets/img/hero/pachu-jersey.webp" alt="" aria-hidden="true" data-k="Sports events" data-t="Match-day ready" data-g="Humanoid" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+<div class="rb-dots" role="group" aria-label="Choose a photo"></div>
 <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 45%; background: linear-gradient(180deg, rgba(4,5,6,0) 0%, rgba(4,5,6,0.9) 100%)"></div>
 <div style="position: relative; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap">
 <div style="display: flex; flex-direction: column; gap: 4px">
 <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E6E6E6" id="rb-sk">Now booking</span>
 <span style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 26px" id="rb-st">Meet Pachu</span>
 </div>
-<span style="font-size: 13px; padding: 8px 14px; border: 1px solid #363739; border-radius: 999px; color: #9C9C9D" id="rb-sg">Humanoid</span>
+<a class="rb-hire" href="hire.html">Hire me <span aria-hidden="true">&rarr;</span></a>
 </div>
 </div>
 </section>
@@ -647,24 +664,71 @@
 })();
 </script>
 <script>
-/* Hero photo crossfade: each photo shows ~5 s, caption changes with it. */
+/* Hero photos: auto-advance every 5 s, swipe (touch or mouse drag) and dots to move
+   between photos; the caption changes with each photo. Waits for the intro. */
 (function () {
-  var imgs = document.querySelectorAll('.rb-slide');
+  var box = document.querySelector('.rb-hero .rb-scan');
+  var imgs = box ? box.querySelectorAll('.rb-slide') : [];
   if (imgs.length < 2) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var cap = [document.getElementById('rb-sk'), document.getElementById('rb-st'), document.getElementById('rb-sg')];
-  var keys = ['k', 't', 'g'], i = 0;
-  function startShow() { setInterval(tick, 5000); }
-  if (window.__rbAssembling) document.addEventListener('rb:assembled', startShow, { once: true }); else startShow();
-  function tick() {
-    if (document.hidden) return;
-    var prev = imgs[i]; i = (i + 1) % imgs.length; var next = imgs[i];
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cap = [document.getElementById('rb-sk'), document.getElementById('rb-st')];
+  var keys = ['k', 't'], i = 0, timer = null, ready = !window.__rbAssembling;
+  var dotsBox = box.querySelector('.rb-dots'), dots = [];
+
+  function label(n) { return imgs[n].getAttribute('data-t') || ('Photo ' + (n + 1)); }
+  if (dotsBox) {
+    for (var n = 0; n < imgs.length; n++) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Show ' + label(n));
+      (function (k) { b.addEventListener('click', function () { go(k, true); }); })(n);
+      dotsBox.appendChild(b); dots.push(b);
+    }
+  }
+  function mark() { dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); }); }
+  mark();
+
+  function go(n, byUser) {
+    if (!ready) return;
+    n = (n + imgs.length) % imgs.length;
+    if (n === i) return;
+    var prev = imgs[i]; i = n; var next = imgs[i];
     prev.classList.remove('is-on'); next.classList.add('is-on');
+    mark();
     cap.forEach(function (c) { if (c) c.classList.add('rb-cap-out'); });
     setTimeout(function () {
-      cap.forEach(function (c, n) { if (c) { c.textContent = next.getAttribute('data-' + keys[n]); c.classList.remove('rb-cap-out'); } });
-    }, 500);
+      cap.forEach(function (c, k) { if (c) { c.textContent = next.getAttribute('data-' + keys[k]); c.classList.remove('rb-cap-out'); } });
+    }, reduce ? 0 : 400);
+    if (byUser) restart();
   }
+  function restart() {
+    if (timer) clearInterval(timer);
+    if (reduce) return;   // no auto-advance for reduced motion; swipe and dots still work
+    timer = setInterval(function () { if (!document.hidden) go(i + 1); }, 5000);
+  }
+  function start() { ready = true; restart(); }
+  if (window.__rbAssembling) document.addEventListener('rb:assembled', start, { once: true }); else start();
+
+  // Swipe left/right (touch, pen or mouse drag). Vertical page scrolling still works.
+  // Stop the browser's own "drag the picture" gesture, which would cancel the swipe.
+  for (var m = 0; m < imgs.length; m++) imgs[m].setAttribute('draggable', 'false');
+  box.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  var x0 = null, y0 = 0, t0 = 0;
+  box.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('a,button')) return;
+    x0 = e.clientX; y0 = e.clientY; t0 = Date.now();
+  });
+  box.addEventListener('pointerup', function (e) {
+    if (x0 === null) return;
+    var dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2 && Date.now() - t0 < 1000) go(i + (dx < 0 ? 1 : -1), true);
+  });
+  box.addEventListener('pointercancel', function () { x0 = null; });
+  // Keyboard: left/right arrows when a dot has focus
+  if (dotsBox) dotsBox.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { go(i + 1, true); dots[i].focus(); }
+    if (e.key === 'ArrowLeft') { go(i - 1, true); dots[i].focus(); }
+  });
 })();
 </script>
 <script src="assets/js/anim.js?v=4" defer></script>
