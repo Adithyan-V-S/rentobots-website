@@ -118,14 +118,14 @@
 .rb-cap-out{opacity:0 !important}
 /* Hero intro: the photo is built from 100 falling pieces, then powers on (see script near </body>) */
 .rb-intro .rb-hero .rb-scan .rb-slide,.rb-assembling .rb-slide{opacity:0 !important;transition:none !important}
-.rb-intro .rb-hero .rb-scan > div{opacity:0}
-.rb-assembling > div{opacity:0}
+.rb-intro .rb-hero .rb-scan > div:last-child{opacity:0}
+.rb-assembling > div:last-child{opacity:0}
 .rb-scan > div{transition:opacity .6s ease}
 .rb-assembling::after{animation:none !important;opacity:0}
 .rb-assembled::after{animation-delay:.6s !important}
 .rb-assembling .rb-slide,.rb-assembled .rb-slide{animation:none !important;transform:none !important}
 .rb-shards{position:absolute;z-index:15;pointer-events:none}
-.rb-shard{position:absolute;background-repeat:no-repeat;will-change:transform,opacity;box-shadow:inset 0 0 0 1px rgba(63,193,255,.22)}
+.rb-shard{position:absolute;background-repeat:no-repeat;will-change:transform,opacity}
 </style>
 <style>
 /* "Book in minutes" background: robot picks up a ball that lights up like a lamp (loops every 10 s) */
@@ -532,7 +532,7 @@
   var safety = setTimeout(finish, 6000);
 
   function build() {
-    var r = box.getBoundingClientRect();
+    var r = img.getBoundingClientRect();
     var W = r.width, H = r.height, N = 10;
     var nw = img.naturalWidth || W, nh = img.naturalHeight || H;
     var pos = (getComputedStyle(img).objectPosition || '50% 50%').split(' ');
@@ -550,22 +550,36 @@
     layer.style.width = W + 'px';
     layer.style.height = H + 'px';
     document.body.appendChild(layer);
+    // Keep the pieces glued to the photo even if the layout shifts slightly while
+    // the page finishes loading (e.g. when the web font arrives).
+    var following = true;
+    (function follow() {
+      if (!following) return;
+      var q = img.getBoundingClientRect();
+      layer.style.left = (q.left + window.scrollX) + 'px';
+      layer.style.top = (q.top + window.scrollY) + 'px';
+      layer.style.transformOrigin = '0 0';
+      layer.style.scale = (q.width / W) + ' ' + (q.height / H);
+      requestAnimationFrame(follow);
+    })();
 
     var tw = W / N, th = H / N, src = img.currentSrc || img.src, anims = [];
+    var shade = box.querySelector(':scope > div[aria-hidden="true"]');
     for (var y = 0; y < N; y++) {
       for (var x = 0; x < N; x++) {
         var t = document.createElement('div');
         t.className = 'rb-shard';
-        var L = Math.floor(x * tw), T = Math.floor(y * th);
+        var L = x * tw, T = y * th;
         t.style.left = L + 'px'; t.style.top = T + 'px';
-        t.style.width = (Math.ceil(tw) + 1) + 'px'; t.style.height = (Math.ceil(th) + 1) + 'px';
+        // a hair of overlap so no seams show between neighbours
+        t.style.width = (tw + (x < N - 1 ? 0.6 : 0)) + 'px'; t.style.height = (th + (y < N - 1 ? 0.6 : 0)) + 'px';
         t.style.backgroundImage = 'url("' + src + '")';
         t.style.backgroundSize = dw + 'px ' + dh + 'px';
         t.style.backgroundPosition = (ox - L) + 'px ' + (oy - T) + 'px';
-        if (x === 0 && y === 0) t.style.borderTopLeftRadius = '24px';
-        if (x === N - 1 && y === 0) t.style.borderTopRightRadius = '24px';
-        if (x === 0 && y === N - 1) t.style.borderBottomLeftRadius = '24px';
-        if (x === N - 1 && y === N - 1) t.style.borderBottomRightRadius = '24px';
+        if (x === 0 && y === 0) t.style.borderTopLeftRadius = '23px';
+        if (x === N - 1 && y === 0) t.style.borderTopRightRadius = '23px';
+        if (x === 0 && y === N - 1) t.style.borderBottomLeftRadius = '23px';
+        if (x === N - 1 && y === N - 1) t.style.borderBottomRightRadius = '23px';
         layer.appendChild(t);
         // Rises in from below, spinning, and shivers as it locks into place.
         var dx = (Math.random() - 0.5) * W * 1.1;
@@ -600,17 +614,23 @@
         ], { duration: 1350, delay: Math.random() * 1100, fill: 'both' }));
       }
     }
+    if (shade) {
+      var sh2 = shade.cloneNode(false);
+      sh2.style.zIndex = '1';
+      layer.appendChild(sh2);
+    }
     Promise.all(anims.map(function (a) { return a.finished; })).then(function () {
-      // All parts locked: one short mechanical shake of the whole picture.
-      var shake = layer.animate([
-        { transform: 'none' }, { transform: 'translate(-7px,2px) rotate(-.4deg)' }, { transform: 'translate(7px,-2px) rotate(.4deg)' },
-        { transform: 'translate(-6px,1px) rotate(-.3deg)' }, { transform: 'translate(5px,-1px) rotate(.25deg)' },
-        { transform: 'translate(-3px,1px)' }, { transform: 'translate(2px,0)' }, { transform: 'none' }
-      ], { duration: 520, easing: 'linear' });
-      shake.finished.then(function () {
-        clearTimeout(safety);
-        finish();
-        requestAnimationFrame(function () { layer.remove(); });
+      // All parts locked: hand over to the real photo (identical), then shake the whole frame.
+      clearTimeout(safety);
+      finish();
+      requestAnimationFrame(function () {
+        following = false;
+        layer.remove();
+        box.animate([
+          { transform: 'none' }, { transform: 'translate(-7px,2px) rotate(-.4deg)' }, { transform: 'translate(7px,-2px) rotate(.4deg)' },
+          { transform: 'translate(-6px,1px) rotate(-.3deg)' }, { transform: 'translate(5px,-1px) rotate(.25deg)' },
+          { transform: 'translate(-3px,1px)' }, { transform: 'translate(2px,0)' }, { transform: 'none' }
+        ], { duration: 520, easing: 'linear' });
       });
     });
   }
