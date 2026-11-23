@@ -203,9 +203,8 @@
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="f-hours" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Time on site</label>
-<select id="f-hours" value="Half day (up to 4 hours)" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
+<select id="f-hours" value="Up to 2 hours" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
 <option value="Up to 2 hours">Up to 2 hours</option>
-<option value="Half day (up to 4 hours)">Half day (up to 4 hours)</option>
 <option value="Full day">Full day</option>
 <option value="Multi-day">Multi-day</option>
 </select>
@@ -259,7 +258,7 @@
 <dl style="margin: 0; padding: 18px 0; border-top: 1px solid #1b1c1e; border-bottom: 1px solid #1b1c1e; display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; font-size: 14px">
 <dt style="color: #8B8C8D">Date</dt><dd style="margin: 0; text-align: right; color: #E6E6E6">Not set</dd>
 <dt style="color: #8B8C8D">Where</dt><dd style="margin: 0; text-align: right; color: #E6E6E6">Not set</dd>
-<dt style="color: #8B8C8D">On site</dt><dd style="margin: 0; text-align: right; color: #E6E6E6">Half day (up to 4 hours)</dd>
+<dt style="color: #8B8C8D">On site</dt><dd style="margin: 0; text-align: right; color: #E6E6E6">Up to 2 hours</dd>
 <dt style="color: #8B8C8D">Moments</dt><dd style="margin: 0; text-align: right; color: #E6E6E6">3 selected</dd>
 </dl>
 
@@ -500,7 +499,6 @@ Send booking on WhatsApp</a>
 <label for="f-hours" style="font-size: 14px; font-weight: 500; color: #9C9C9D">Time on site</label>
 <select id="f-hours" value="{{hours}}" onchange="{{setHours}}" style="height: 52px; box-sizing: border-box; padding: 0 16px; background: #07080a; border: 1px solid #2F3031; border-radius: 12px; color: #FFFFFF; font: inherit; font-size: 16px">
 <option value="Up to 2 hours">Up to 2 hours</option>
-<option value="Half day (up to 4 hours)">Half day (up to 4 hours)</option>
 <option value="Full day">Full day</option>
 <option value="Multi-day">Multi-day</option>
 </select>
@@ -665,7 +663,7 @@ class Component extends DCLogic {
       robots: { pachu: true, kuttappan: false },
       event: 'launch',
       tasks: { greet: true, stage: true, photos: true },
-      date: '', hours: 'Half day (up to 4 hours)', city: '', venue: '', guests: '', name: '', notes: ''
+      date: '', hours: 'Up to 2 hours', city: '', venue: '', guests: '', name: '', notes: ''
     };
   }
   renderVals() {
@@ -789,6 +787,6 @@ class Component extends DCLogic {
 }
 RB.mount(Component, {"accent":"#E6E6E6"});
 </script>
-<script src="assets/js/anim.js?v=3" defer></script>
+<script src="assets/js/anim.js?v=4" defer></script>
 </body>
 </html>
