@@ -173,6 +173,9 @@ export interface CaseStudy {
    * Defaults to the short summary.
    */
   featuredText?: string | null;
+  /**
+   * Untick to hide it from the website without deleting it.
+   */
   published?: boolean | null;
   /**
    * Lower numbers show first.
@@ -281,6 +284,9 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Untick to hide it from the website without deleting it.
+   */
   published?: boolean | null;
   /**
    * Lower numbers show first.
@@ -326,6 +332,9 @@ export interface Program {
    * e.g. "Recommended start". Leave empty for none.
    */
   badge?: string | null;
+  /**
+   * Untick to hide it from the website without deleting it.
+   */
   published?: boolean | null;
   sortOrder?: number | null;
   updatedAt: string;
@@ -342,6 +351,9 @@ export interface Faq {
   question: string;
   answer: string;
   pages: ('index' | 'hire' | 'programs' | 'partner' | 'china-tour')[];
+  /**
+   * Untick to hide it from the website without deleting it.
+   */
   published?: boolean | null;
   sortOrder?: number | null;
   updatedAt: string;

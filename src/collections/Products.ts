@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { adminsOnly, anyone } from '../access'
 import { revalidatePages } from '../hooks/revalidate'
+import { publishedField } from '../fields/published'
 
 /**
  * Product categories, in the order the filter buttons appear on /products.
@@ -56,7 +57,7 @@ export const Products: CollectionConfig = {
       maxRows: 6,
       fields: [{ name: 'text', type: 'text', required: true }],
     },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
+    publishedField,
     {
       name: 'sortOrder',
       label: 'Order',

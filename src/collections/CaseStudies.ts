@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { adminsOnly, anyone } from '../access'
 import { revalidatePages } from '../hooks/revalidate'
+import { publishedField } from '../fields/published'
 
 export const CASE_CATEGORIES = [
   { label: 'Malls & retail', value: 'retail' },
@@ -74,7 +75,7 @@ export const CaseStudies: CollectionConfig = {
         { name: 'featuredText', label: 'Longer intro', type: 'textarea', admin: { description: 'Defaults to the short summary.' } },
       ],
     },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
+    publishedField,
     {
       name: 'sortOrder',
       label: 'Order',

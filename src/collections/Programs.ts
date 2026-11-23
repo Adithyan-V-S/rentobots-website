@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { adminsOnly } from '../access'
 import { revalidatePages } from '../hooks/revalidate'
+import { publishedField } from '../fields/published'
 
 /** The program detail pages that exist today (a new one needs a new page built). */
 export const PROGRAM_PAGES = [
@@ -54,7 +55,7 @@ export const Programs: CollectionConfig = {
       admin: { position: 'sidebar', description: 'Shows it with a white border and the badge below.' },
     },
     { name: 'badge', type: 'text', admin: { position: 'sidebar', description: 'e.g. "Recommended start". Leave empty for none.' } },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
+    publishedField,
     { name: 'sortOrder', label: 'Order', type: 'number', defaultValue: 100, admin: { position: 'sidebar' } },
   ],
 }

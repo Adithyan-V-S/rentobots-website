@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { adminsOnly } from '../access'
 import { revalidatePages } from '../hooks/revalidate'
+import { publishedField } from '../fields/published'
 
 /** Pages that have an FAQ section. Value = page file name in /site. */
 export const FAQ_PAGES = [
@@ -40,7 +41,7 @@ export const Faqs: CollectionConfig = {
       required: true,
       options: [...FAQ_PAGES],
     },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
+    publishedField,
     { name: 'sortOrder', label: 'Order', type: 'number', defaultValue: 100, admin: { position: 'sidebar' } },
   ],
 }
