@@ -117,11 +117,13 @@
 #rb-sk,#rb-st,#rb-sg{transition:opacity .5s ease}
 .rb-cap-out{opacity:0 !important}
 /* Hero intro: the photo is built from 100 falling pieces, then powers on (see script near </body>) */
-.rb-assembling .rb-slide{opacity:0 !important;transition:none !important}
+.rb-intro .rb-hero .rb-scan .rb-slide,.rb-assembling .rb-slide{opacity:0 !important;transition:none !important}
+.rb-intro .rb-hero .rb-scan > div{opacity:0}
 .rb-assembling > div{opacity:0}
 .rb-scan > div{transition:opacity .6s ease}
 .rb-assembling::after{animation:none !important;opacity:0}
 .rb-assembled::after{animation-delay:.6s !important}
+.rb-assembling .rb-slide,.rb-assembled .rb-slide{animation:none !important;transform:none !important}
 .rb-shards{position:absolute;z-index:15;pointer-events:none}
 .rb-shard{position:absolute;background-repeat:no-repeat;will-change:transform,opacity;box-shadow:inset 0 0 0 1px rgba(63,193,255,.22)}
 .rb-poweron .rb-slide.is-on{animation:rbPowerOn .9s steps(1,end) both !important;transition:none !important}
@@ -167,6 +169,18 @@
 @keyframes oGrain{0%{transform:translate(0,0)}33%{transform:translate(-7px,5px)}66%{transform:translate(6px,-4px)}}
 }
 </style>
+<script>
+/* Hero intro flag, set before first paint so the photo never shows before its pieces.
+   Not set for reduced-motion users; removed by the intro script (or after 6 s at most). */
+(function () {
+  try {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!document.documentElement.animate) return;
+    var d = document.documentElement; d.classList.add('rb-intro');
+    setTimeout(function () { d.classList.remove('rb-intro'); }, 6000);
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <div style="background: #040506; color: #FFFFFF; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh">
@@ -499,10 +513,11 @@
 (function () {
   var box = document.querySelector('.rb-hero .rb-scan');
   var img = box && box.querySelector('.rb-slide.is-on');
-  if (!box || !img || !box.animate) return;
+  if (!box || !img || !box.animate) { document.documentElement.classList.remove('rb-intro'); return; }
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   window.__rbAssembling = true;
   box.classList.add('rb-assembling');
+  document.documentElement.classList.remove('rb-intro');
   var done = false;
   function finish() {
     if (done) return; done = true;
