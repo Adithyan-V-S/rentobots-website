@@ -73,6 +73,7 @@ const CASE_CAT: Record<string, string> = {
   corporate: 'Corporate',
   celebrations: 'Celebrations',
   education: 'Education',
+  sports: 'Sports &amp; events',
 }
 
 // ---------- case studies ----------

@@ -8,6 +8,7 @@ export const CASE_CATEGORIES = [
   { label: 'Corporate', value: 'corporate' },
   { label: 'Celebrations', value: 'celebrations' },
   { label: 'Education', value: 'education' },
+  { label: 'Sports & events', value: 'sports' },
 ] as const
 
 /** Case studies shown on /case-studies. Empty fields are simply hidden on the site. */

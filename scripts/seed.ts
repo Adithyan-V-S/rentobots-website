@@ -51,8 +51,10 @@ const robotIds: Record<string, number> = {
 }
 
 // ---------- case studies ----------
-const existingCases = await payload.count({ collection: 'case-studies' })
-if (existingCases.totalDocs === 0) {
+// Adds any case study from case-studies.html that is not in the database yet (matched by
+// slug). Existing stories and admin edits are left alone; a new story is slotted in just
+// before the story that follows it on the page.
+{
   const html = site('case-studies.html')
   const arr = /\/\*cms:cases\*\/([\s\S]*?)\/\*\/cms:cases\*\//.exec(html)![1]
   const all = new Function('P', 'K', `return ${arr}`)('Pachu · Humanoid', 'Kuttappan · Robot dog') as Array<
@@ -65,8 +67,16 @@ if (existingCases.totalDocs === 0) {
   const featLabel = decode(/color: #8B8C8D">([^<]+)<\/span>\s*<\/div>/.exec(feat)![1])
   const featText = decode(/<p [^>]*>([^<]+)<\/p>/.exec(feat)![1])
 
-  let order = 10
-  for (const c of all) {
+  const existing = await payload.find({ collection: 'case-studies', limit: 1000, depth: 0 })
+  const bySlug = new Map(existing.docs.map((d) => [d.slug, d]))
+  const fresh = existing.totalDocs === 0
+  let added = 0
+  for (let i = 0; i < all.length; i++) {
+    const c = all[i]
+    if (bySlug.has(c.id)) continue
+    // Order: 10, 20, 30… on an empty database; otherwise just before the next existing story.
+    const next = all.slice(i + 1).map((x) => bySlug.get(x.id)).find(Boolean)
+    const sortOrder = fresh ? (i + 1) * 10 : (next?.sortOrder ?? 1000) - 1
     const photo = c.photo ? await media(c.photo, c.alt, focalY(c.pos)) : undefined
     await payload.create({
       collection: 'case-studies',
@@ -85,15 +95,14 @@ if (existingCases.totalDocs === 0) {
         featuredLabel: c.id === featHref ? featLabel : undefined,
         featuredText: c.id === featHref ? featText : undefined,
         published: true,
-        sortOrder: order,
+        sortOrder,
       },
       context: ctx(),
     })
-    order += 10
-    payload.logger.info(`Case study: ${c.title}`)
+    added++
+    payload.logger.info(`Case study added: ${c.title}`)
   }
-} else {
-  payload.logger.info('Case studies already exist — skipped.')
+  payload.logger.info(`Case studies: ${added} added, ${all.length - added} already there.`)
 }
 
 // ---------- products ----------

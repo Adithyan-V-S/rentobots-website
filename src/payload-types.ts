@@ -144,7 +144,7 @@ export interface CaseStudy {
    * Short id used in the page link, e.g. "wedding" → /case-studies#cs-wedding. Lowercase, no spaces.
    */
   slug: string;
-  category: 'retail' | 'corporate' | 'celebrations' | 'education';
+  category: 'retail' | 'corporate' | 'celebrations' | 'education' | 'sports';
   /**
    * Leave empty to hide.
    */
