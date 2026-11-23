@@ -583,18 +583,17 @@
         t.style.backgroundImage = 'url("' + src + '")';
         t.style.backgroundSize = dw + 'px ' + dh + 'px';
         t.style.backgroundPosition = (ox - L) + 'px ' + (oy - T) + 'px';
-        if (x === 0 && y === 0) t.style.borderTopLeftRadius = '23px';
-        if (x === N - 1 && y === 0) t.style.borderTopRightRadius = '23px';
-        if (x === 0 && y === N - 1) t.style.borderBottomLeftRadius = '23px';
-        if (x === N - 1 && y === N - 1) t.style.borderBottomRightRadius = '23px';
         layer.appendChild(t);
         // Starts in a pile at the bottom of the card, rises slowly while shivering hard,
         // then speeds up into its place and shivers as it locks in.
-        var sx = Math.random() * (W - tw), sy = H - th - Math.random() * H * 0.14;
+        // pile sits under the robot itself (not across the whole card), so on narrow
+        // phone screens no piece starts far off to the side
+        var pileL = Math.max(0, ox - tw * 0.5), pileR = Math.min(W - tw, ox + dw - tw * 0.5);
+        var sx = pileL + Math.random() * Math.max(0, pileR - pileL), sy = H - th - Math.random() * H * 0.14;
         var dx = sx - L, dy = sy - T;
         var rot = (Math.random() - 0.5) * 70;
         var rise = 25 + Math.random() * 45;          // how far it creeps up in the slow phase
-        var split = 0.5 + Math.random() * 0.16;      // when the fast phase starts
+        var split = 0.52 + Math.random() * 0.07;     // when the fast phase starts (close together)
         var A = 5 + Math.random() * 3;               // slow-phase shiver strength
         var j = 4 + Math.random() * 3;               // lock-in shiver strength
         var kf = [{ transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(' + rot + 'deg) scale(.92)', opacity: 0 }];
@@ -615,7 +614,7 @@
         var rest = [1, -1, 0.8, -0.7, 0.5, -0.35, 0.15];
         for (var q = 0; q < rest.length; q++) kf.push({ transform: sh(rest[q]), offset: lock + (1 - lock) * (q + 1) / (rest.length + 1) });
         kf.push({ transform: 'none', opacity: 1 });
-        anims.push(t.animate(kf, { duration: 2600, delay: Math.random() * 250, fill: 'both' }));
+        anims.push(t.animate(kf, { duration: 2600, delay: Math.random() * 120, fill: 'both' }));
       }
     }
     if (shade) {
