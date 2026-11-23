@@ -222,6 +222,14 @@ export interface Robot {
    */
   greatFor?: string | null;
   bestMoment?: string | null;
+  /**
+   * Optional. e.g. /d1 — adds a second button next to "Book" on Robot models.
+   */
+  detailsLink?: string | null;
+  /**
+   * e.g. View details
+   */
+  detailsLabel?: string | null;
   isNew?: boolean | null;
   showOnModelsPage?: boolean | null;
   /**
@@ -570,6 +578,8 @@ export interface RobotsSelect<T extends boolean = true> {
       };
   greatFor?: T;
   bestMoment?: T;
+  detailsLink?: T;
+  detailsLabel?: T;
   isNew?: T;
   showOnModelsPage?: T;
   bookable?: T;

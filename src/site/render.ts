@@ -251,8 +251,9 @@ ${caps.map((c) => `<li style="display: flex; gap: 10px; align-items: center"><sp
 </ul>
 </div>` : ''}
 ${r.greatFor ? `<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #8B8C8D"><span style="color: #E6E6E6; font-weight: 600">Great for</span> ${esc(r.greatFor)}</p>` : ''}
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-top: 24px; border-top: 1px solid #1b1c1e">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 24px; border-top: 1px solid #1b1c1e">
 <a class="rb-btn" href="hire.html" style="color: #FFFFFF; padding: 16px 26px; border-radius: 999px; font-size: 15px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Book ${esc(r.name)}</a>
+${r.detailsLink ? `<a class="rb-ghost" href="${esc(r.detailsLink)}" style="color: #FFFFFF; padding: 15px 24px; border: 1px solid #363739; border-radius: 999px; font-size: 15px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">${esc(r.detailsLabel || 'View details')} <span aria-hidden="true">→</span></a>` : ''}
 </div>
 </div>`
   return `<section id="${esc(r.slug)}" style="border-top: 1px solid #1b1c1e${even ? '; background: #040506' : ''}">

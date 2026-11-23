@@ -44,6 +44,18 @@ export const Robots: CollectionConfig = {
     },
     { name: 'greatFor', label: 'Great for', type: 'text', admin: { description: 'e.g. product launches, weddings and college tech fests.' } },
     { name: 'bestMoment', label: 'Best moment (comparison table)', type: 'text' },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'detailsLink',
+          label: 'Details page link',
+          type: 'text',
+          admin: { description: 'Optional. e.g. /d1 — adds a second button next to "Book" on Robot models.' },
+        },
+        { name: 'detailsLabel', label: 'Details button text', type: 'text', defaultValue: 'View details', admin: { description: 'e.g. View details' } },
+      ],
+    },
     { name: 'isNew', label: 'Show "New" badge', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar' } },
     { name: 'showOnModelsPage', label: 'Show on Robot models page', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
     {
