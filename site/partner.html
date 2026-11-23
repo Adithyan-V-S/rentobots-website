@@ -22,6 +22,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
 <link rel="stylesheet" href="assets/css/styles.css?v=8">
+<style>
+/* Hero photos as live robot "camera feeds": lock-on corners, scanner sweep, status tags */
+.rb-feed{position:relative;overflow:hidden;border-radius:22px;border:1px solid #1b1c1e;background:#07080a}
+.rb-feed img{display:block;width:100%;height:100%;object-fit:cover}
+.rb-feed__corners{position:absolute;inset:14px;pointer-events:none;
+  background:
+   linear-gradient(#E6E6E6,#E6E6E6) top left/22px 2px no-repeat,linear-gradient(#E6E6E6,#E6E6E6) top left/2px 22px no-repeat,
+   linear-gradient(#E6E6E6,#E6E6E6) top right/22px 2px no-repeat,linear-gradient(#E6E6E6,#E6E6E6) top right/2px 22px no-repeat,
+   linear-gradient(#E6E6E6,#E6E6E6) bottom left/22px 2px no-repeat,linear-gradient(#E6E6E6,#E6E6E6) bottom left/2px 22px no-repeat,
+   linear-gradient(#E6E6E6,#E6E6E6) bottom right/22px 2px no-repeat,linear-gradient(#E6E6E6,#E6E6E6) bottom right/2px 22px no-repeat;
+  opacity:.85}
+.rb-feed__scan{position:absolute;left:0;right:0;top:0;height:28%;pointer-events:none;opacity:0;
+  background:linear-gradient(180deg,rgba(63,193,255,0),rgba(63,193,255,.07) 75%,rgba(140,225,255,.5) 99%,rgba(140,225,255,0))}
+.rb-feed__tag,.rb-feed__cam{position:absolute;display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;
+  background:rgba(4,5,6,.68);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  font:500 11px/1 'Geist Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#E6E6E6}
+.rb-feed__tag{left:24px;bottom:24px}
+.rb-feed__cam{right:24px;top:24px;color:#9C9C9D}
+.rb-feed__tag i{width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 8px #3DDC84;flex:none}
+@media (max-width:520px){.rb-feed__cam{display:none}.rb-feed__tag{left:16px;bottom:16px;font-size:10px}}
+@media (prefers-reduced-motion: no-preference){
+  .rb-feed{animation:rbFeedOn 1s steps(1,end) var(--d,0s) both}
+  .rb-feed__corners{animation:rbFeedLock .8s cubic-bezier(.2,.7,.2,1) calc(var(--d,0s) + .45s) both}
+  .rb-feed__scan{animation:rbFeedScan 6s cubic-bezier(.45,0,.55,1) calc(var(--d,0s) + 1.4s) infinite}
+  .rb-feed__tag{animation:rbFeedTag .6s cubic-bezier(.2,.7,.2,1) calc(var(--d,0s) + .9s) both}
+  .rb-feed__tag i{animation:rbFeedDot 1.6s ease-in-out calc(var(--d,0s) + 1.4s) infinite}
+}
+@keyframes rbFeedOn{0%{opacity:0}18%{opacity:.85}26%{opacity:.2}38%{opacity:1}46%{opacity:.5}58%,100%{opacity:1}}
+@keyframes rbFeedLock{from{inset:-4px;opacity:0}60%{opacity:1}to{inset:14px;opacity:.85}}
+@keyframes rbFeedScan{0%{transform:translateY(-100%);opacity:0}12%{opacity:1}88%{opacity:1}100%{transform:translateY(360%);opacity:0}}
+@keyframes rbFeedTag{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes rbFeedDot{0%,100%{opacity:1}50%{opacity:.25}}
+</style>
 </head>
 <body>
 <div data-rb-root="" style="background: #040506; color: #FFFFFF; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh">
@@ -75,8 +108,8 @@
 </ul>
 </div>
 <div style="flex: 1 1 400px; min-width: 0; height: 560px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
-<img fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu, the humanoid robot partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%; border-radius: 22px; border: 1px solid #1b1c1e">
-<img loading="lazy" decoding="async" src="assets/img/kuttappan.webp" alt="Kuttappan, the robot dog partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%; border-radius: 22px; border: 1px solid #1b1c1e">
+<div class="rb-feed" style="--d: 0s"><img fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu, the humanoid robot partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%;"><span class="rb-feed__corners" aria-hidden="true"></span><span class="rb-feed__scan" aria-hidden="true"></span><span class="rb-feed__cam" aria-hidden="true">Cam 01 · Live</span><span class="rb-feed__tag" aria-hidden="true"><i></i>Pachu · Online</span></div>
+<div class="rb-feed" style="--d: .35s"><img loading="lazy" decoding="async" src="assets/img/kuttappan.webp" alt="Kuttappan, the robot dog partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%;"><span class="rb-feed__corners" aria-hidden="true"></span><span class="rb-feed__scan" aria-hidden="true"></span><span class="rb-feed__cam" aria-hidden="true">Cam 02 · Live</span><span class="rb-feed__tag" aria-hidden="true"><i></i>Kuttappan · Online</span></div>
 </div>
 </section>
 
@@ -263,8 +296,8 @@
 </ul>
 </div>
 <div style="flex: 1 1 400px; min-width: 0; height: 560px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
-<img fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu, the humanoid robot partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%; border-radius: 22px; border: 1px solid #1b1c1e">
-<img loading="lazy" decoding="async" src="assets/img/kuttappan.webp" alt="Kuttappan, the robot dog partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%; border-radius: 22px; border: 1px solid #1b1c1e">
+<div class="rb-feed" style="--d: 0s"><img fetchpriority="high" decoding="async" src="assets/img/pachu.webp" alt="Pachu, the humanoid robot partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%;"><span class="rb-feed__corners" aria-hidden="true"></span><span class="rb-feed__scan" aria-hidden="true"></span><span class="rb-feed__cam" aria-hidden="true">Cam 01 · Live</span><span class="rb-feed__tag" aria-hidden="true"><i></i>Pachu · Online</span></div>
+<div class="rb-feed" style="--d: .35s"><img loading="lazy" decoding="async" src="assets/img/kuttappan.webp" alt="Kuttappan, the robot dog partners can invest in" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%;"><span class="rb-feed__corners" aria-hidden="true"></span><span class="rb-feed__scan" aria-hidden="true"></span><span class="rb-feed__cam" aria-hidden="true">Cam 02 · Live</span><span class="rb-feed__tag" aria-hidden="true"><i></i>Kuttappan · Online</span></div>
 </div>
 </section>
 
