@@ -175,7 +175,7 @@
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!document.documentElement.animate) return;
     var d = document.documentElement; d.classList.add('rb-intro');
-    setTimeout(function () { d.classList.remove('rb-intro'); }, 6000);
+    setTimeout(function () { d.classList.remove('rb-intro'); }, 7000);
   } catch (e) {}
 })();
 </script>
@@ -505,8 +505,8 @@
 })();
 </script>
 <script>
-/* Hero intro: cut the first photo into 100 pieces that rise in from below, lock into place with a
-   mechanical shiver, then the whole photo shakes once and stays on. The slideshow and
+/* Hero intro: cut the first photo into 100 pieces that start at the bottom of the card, rise slowly while shivering,
+   then rush into place and lock in with a mechanical shiver, then the whole photo shakes once and stays on. The slideshow and
    scan line start after that. Skipped for reduced-motion users. */
 (function () {
   var box = document.querySelector('.rb-hero .rb-scan');
@@ -529,7 +529,7 @@
     document.dispatchEvent(new Event('rb:assembled'));
   }
   // Never leave the photo hidden: if anything stalls, just show it.
-  var safety = setTimeout(finish, 6000);
+  var safety = setTimeout(finish, 7000);
 
   function build() {
     var r = img.getBoundingClientRect();
@@ -554,6 +554,8 @@
     layer.style.top = (r.top + window.scrollY) + 'px';
     layer.style.width = W + 'px';
     layer.style.height = H + 'px';
+    layer.style.overflow = 'hidden';
+    layer.style.borderRadius = '23px';
     document.body.appendChild(layer);
     // Keep the pieces glued to the photo even if the layout shifts slightly while
     // the page finishes loading (e.g. when the web font arrives).
@@ -586,37 +588,34 @@
         if (x === 0 && y === N - 1) t.style.borderBottomLeftRadius = '23px';
         if (x === N - 1 && y === N - 1) t.style.borderBottomRightRadius = '23px';
         layer.appendChild(t);
-        // Rises in from below, spinning, and shivers as it locks into place.
-        var dx = (Math.random() - 0.5) * W * 1.1;
-        var dy = (H - T) + 220 + Math.random() * 480;
-        var rot = (Math.random() - 0.5) * 300;
-        // Start-up vibration (a), then rise, then a strong lock-in shiver (j) that settles.
-        var a = 3 + Math.random() * 3;
-        var j = 4 + Math.random() * 3;
-        var at = function (ox, oy, or) {
-          return 'translate(' + (dx + ox) + 'px,' + (dy + oy) + 'px) rotate(' + (rot + or) + 'deg) scale(.6)';
+        // Starts in a pile at the bottom of the card, rises slowly while shivering hard,
+        // then speeds up into its place and shivers as it locks in.
+        var sx = Math.random() * (W - tw), sy = H - th - Math.random() * H * 0.14;
+        var dx = sx - L, dy = sy - T;
+        var rot = (Math.random() - 0.5) * 70;
+        var rise = 25 + Math.random() * 45;          // how far it creeps up in the slow phase
+        var split = 0.5 + Math.random() * 0.16;      // when the fast phase starts
+        var A = 5 + Math.random() * 3;               // slow-phase shiver strength
+        var j = 4 + Math.random() * 3;               // lock-in shiver strength
+        var kf = [{ transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(' + rot + 'deg) scale(.92)', opacity: 0 }];
+        var steps = 12;
+        for (var k = 1; k <= steps; k++) {
+          var f = k / steps, sgn = k % 2 ? 1 : -1;
+          var px2 = dx * (1 - 0.12 * f) + sgn * A * (0.6 + 0.4 * Math.random());
+          var py2 = dy - rise * f + -sgn * A * 0.5 * Math.random();
+          var r2 = rot * (1 - 0.25 * f) + sgn * A * 1.1;
+          kf.push({ transform: 'translate(' + px2 + 'px,' + py2 + 'px) rotate(' + r2 + 'deg) scale(.92)', opacity: 1, offset: split * f });
+        }
+        kf[kf.length - 1].easing = 'cubic-bezier(.55,0,.85,.4)';   // fast run to its place
+        var sh = function (q) {
+          return 'translate(' + (j * q) + 'px,' + (-j * q * 0.5) + 'px) rotate(' + (j * q * 0.9) + 'deg)';
         };
-        var sh = function (k) {
-          return 'translate(' + (j * k) + 'px,' + (-j * k * 0.5) + 'px) rotate(' + (j * k * 0.9) + 'deg)';
-        };
-        anims.push(t.animate([
-          { transform: at(0, 0, 0), opacity: 0 },
-          { transform: at(0, 0, 0), opacity: 1, offset: 0.05 },
-          { transform: at(a, -a * 0.6, a), offset: 0.08 },
-          { transform: at(-a, a * 0.6, -a), offset: 0.11 },
-          { transform: at(a * 0.8, a * 0.4, a * 0.8), offset: 0.14 },
-          { transform: at(-a * 0.6, -a * 0.4, -a * 0.6), offset: 0.17 },
-          { transform: at(0, 0, 0), offset: 0.2, easing: 'cubic-bezier(.2,.65,.35,1)' },
-          { transform: 'translate(0,0) rotate(0deg) scale(1)', offset: 0.6 },
-          { transform: sh(1), offset: 0.65 },
-          { transform: sh(-1), offset: 0.7 },
-          { transform: sh(0.8), offset: 0.75 },
-          { transform: sh(-0.7), offset: 0.8 },
-          { transform: sh(0.5), offset: 0.85 },
-          { transform: sh(-0.35), offset: 0.9 },
-          { transform: sh(0.15), offset: 0.95 },
-          { transform: 'none', opacity: 1 }
-        ], { duration: 1350, delay: Math.random() * 1100, fill: 'both' }));
+        var lock = split + 0.2;
+        kf.push({ transform: 'translate(0,0) rotate(0deg) scale(1)', offset: lock });
+        var rest = [1, -1, 0.8, -0.7, 0.5, -0.35, 0.15];
+        for (var q = 0; q < rest.length; q++) kf.push({ transform: sh(rest[q]), offset: lock + (1 - lock) * (q + 1) / (rest.length + 1) });
+        kf.push({ transform: 'none', opacity: 1 });
+        anims.push(t.animate(kf, { duration: 2600, delay: Math.random() * 250, fill: 'both' }));
       }
     }
     if (shade) {
