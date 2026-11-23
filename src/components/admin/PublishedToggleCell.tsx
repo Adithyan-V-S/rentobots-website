@@ -66,7 +66,7 @@ export default function PublishedToggleCell({ cellData, rowData, collectionSlug 
       title={visible ? 'Shown on the website — click to hide' : 'Hidden from the website — click to show'}
       aria-pressed={visible}
     >
-      <span aria-hidden="true">{visible ? '●' : '○'}</span>
+      <span aria-hidden="true" className={visible ? 'rb-led rb-led--on' : 'rb-led'}>{visible ? '●' : '○'}</span>
       {error ? 'Error — try again' : visible ? 'Shown' : 'Hidden'}
     </button>
   )

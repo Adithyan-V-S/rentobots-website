@@ -1,0 +1,219 @@
+/* =========================================================================
+   Rentobots admin — robot-style touches.
+   Everything animated sits inside "prefers-reduced-motion: no-preference",
+   so people who switch off motion get a calm, static admin.
+   ========================================================================= */
+
+:root {
+  --rb-blue: 63, 193, 255; /* site accent, as r,g,b */
+}
+
+/* ---------- Login / create-account screen ---------- */
+.template-minimal {
+  position: relative;
+  overflow: hidden;
+  /* faint blueprint grid + soft blue glow behind the form */
+  background-image:
+    radial-gradient(600px 360px at 50% 30%, rgba(var(--rb-blue), 0.10), transparent 70%),
+    linear-gradient(rgba(var(--rb-blue), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--rb-blue), 0.05) 1px, transparent 1px);
+  background-size: auto, 44px 44px, 44px 44px;
+}
+
+.template-minimal__wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Status LED on the Shown / Hidden button ---------- */
+.rb-led {
+  display: inline-block;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scanner line sweeping down the login screen */
+  .template-minimal::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20%;
+    height: 18%;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(var(--rb-blue), 0.04) 70%, rgba(var(--rb-blue), 0.28) 99%, transparent);
+    animation: rbAdminScan 6s cubic-bezier(0.45, 0, 0.55, 1) 1.2s infinite;
+  }
+
+  /* Whole form "boots" in */
+  .template-minimal__wrap {
+    animation: rbAdminBoot 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  /* Logo powers on with a flicker, then a slow glow */
+  .rb-admin-logo__img {
+    animation:
+      rbAdminPowerOn 1.1s steps(1, end) both,
+      rbAdminGlow 4s ease-in-out 1.4s infinite;
+  }
+
+  /* "ADMIN" types itself out, with a blinking blue block cursor */
+  .rb-admin-logo__label {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    padding-right: 4px;
+    animation: rbAdminType 0.8s steps(5, end) 1s forwards;
+    position: relative;
+  }
+  .rb-admin-logo__label::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 7px;
+    height: 13px;
+    margin-top: -7px;
+    background: rgb(var(--rb-blue));
+    animation: rbAdminBlink 0.8s steps(1, end) 1s 5 both;
+    opacity: 0;
+  }
+
+  /* Scanner light running along the top bar */
+  .app-header {
+    position: relative;
+  }
+  .app-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(var(--rb-blue), 0.9), transparent) no-repeat;
+    background-size: 22% 100%;
+    animation: rbAdminSweep 5s linear infinite;
+  }
+
+  /* Active menu item glows like a status light */
+  .nav__link-indicator {
+    background: rgb(var(--rb-blue)) !important;
+    box-shadow: 0 0 10px rgba(var(--rb-blue), 0.8);
+    animation: rbAdminPulse 2.4s ease-in-out infinite;
+  }
+  .nav__link {
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .nav__link:hover {
+    transform: translateX(3px);
+  }
+
+  /* Page titles power on */
+  .list-header h1,
+  .doc-header__title {
+    animation: rbAdminTitle 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  /* Table rows load one after another, like a system boot */
+  .table tbody tr {
+    animation: rbAdminRow 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @for $i from 1 through 25 {
+    .table tbody tr:nth-child(#{$i}) {
+      animation-delay: #{0.04 * $i}s;
+    }
+  }
+
+  /* Visible items: LED pulses */
+  .rb-led--on {
+    animation: rbAdminLed 2s ease-in-out infinite;
+  }
+
+  /* Dashboard cards: lock-on corner brackets on hover */
+  .card {
+    position: relative;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    background:
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) top left / 12px 2px no-repeat,
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) top left / 2px 12px no-repeat,
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) top right / 12px 2px no-repeat,
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) top right / 2px 12px no-repeat,
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) bottom left / 12px 2px no-repeat,
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) bottom left / 2px 12px no-repeat,
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) bottom right / 12px 2px no-repeat,
+      linear-gradient(rgb(var(--rb-blue)), rgb(var(--rb-blue))) bottom right / 2px 12px no-repeat;
+  }
+  .card:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Row "lock-on": blue edge on the row under the pointer (no motion needed) */
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+.table tbody tr:hover td:first-child {
+  box-shadow: inset 3px 0 0 rgb(var(--rb-blue));
+}
+
+@keyframes rbAdminScan {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(700%); opacity: 0; }
+}
+@keyframes rbAdminBoot {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes rbAdminPowerOn {
+  0% { opacity: 0; }
+  20% { opacity: 0.9; }
+  28% { opacity: 0.15; }
+  40% { opacity: 1; }
+  48% { opacity: 0.35; }
+  60%, 100% { opacity: 1; }
+}
+@keyframes rbAdminGlow {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(var(--rb-blue), 0)); }
+  50% { filter: drop-shadow(0 0 10px rgba(var(--rb-blue), 0.55)); }
+}
+@keyframes rbAdminType {
+  to { width: 6.2em; }
+}
+@keyframes rbAdminBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+@keyframes rbAdminSweep {
+  from { background-position: -25% 0; }
+  to { background-position: 125% 0; }
+}
+@keyframes rbAdminPulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(var(--rb-blue), 0.5); }
+  50% { box-shadow: 0 0 14px rgba(var(--rb-blue), 1); }
+}
+@keyframes rbAdminTitle {
+  0% { opacity: 0; letter-spacing: 0.06em; filter: blur(3px); }
+  60% { opacity: 1; filter: none; }
+  100% { opacity: 1; letter-spacing: normal; }
+}
+@keyframes rbAdminRow {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes rbAdminLed {
+  0%, 100% { text-shadow: 0 0 0 rgba(48, 200, 120, 0); opacity: 1; }
+  50% { text-shadow: 0 0 8px rgba(95, 224, 160, 0.9); opacity: 0.75; }
+}
