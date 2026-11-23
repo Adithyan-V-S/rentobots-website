@@ -19,8 +19,23 @@ import { OperatorWorkshop } from './globals/OperatorWorkshop'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+// The site's own address(es). Saves made with the admin login cookie are only accepted
+// from these origins (CSRF protection), so list every address the admin may be opened on.
+const clean = (u?: string) => (u ? u.trim().replace(/\/+$/, '') : '')
+const vercel = (host?: string) => (host ? `https://${host}` : '')
+const SITE_URL = clean(process.env.NEXT_PUBLIC_SITE_URL) || vercel(process.env.VERCEL_PROJECT_PRODUCTION_URL) || 'http://localhost:3000'
+const TRUSTED_ORIGINS = [
+  SITE_URL,
+  vercel(process.env.VERCEL_PROJECT_PRODUCTION_URL),
+  vercel(process.env.VERCEL_URL),
+  vercel(process.env.VERCEL_BRANCH_URL),
+  'http://localhost:3000',
+].filter((v, i, a) => v && a.indexOf(v) === i)
+
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  serverURL: SITE_URL,
+  csrf: TRUSTED_ORIGINS,
+  cors: TRUSTED_ORIGINS,
   admin: {
     user: Users.slug,
     // Rentobots branding instead of Payload's.
