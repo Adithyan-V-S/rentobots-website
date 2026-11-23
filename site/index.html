@@ -126,8 +126,6 @@
 .rb-assembling .rb-slide,.rb-assembled .rb-slide{animation:none !important;transform:none !important}
 .rb-shards{position:absolute;z-index:15;pointer-events:none}
 .rb-shard{position:absolute;background-repeat:no-repeat;will-change:transform,opacity;box-shadow:inset 0 0 0 1px rgba(63,193,255,.22)}
-.rb-poweron .rb-slide.is-on{animation:rbPowerOn .9s steps(1,end) both !important;transition:none !important}
-@keyframes rbPowerOn{0%{opacity:.3}14%{opacity:1}24%{opacity:.45}36%{opacity:1}46%{opacity:.7}58%,100%{opacity:1}}
 </style>
 <style>
 /* "Book in minutes" background: robot picks up a ball that lights up like a lamp (loops every 10 s) */
@@ -508,7 +506,7 @@
 </script>
 <script>
 /* Hero intro: cut the first photo into 100 pieces that rise in from below, lock into place with a
-   mechanical shiver, then the whole photo shakes once and powers on. The slideshow and
+   mechanical shiver, then the whole photo shakes once and stays on. The slideshow and
    scan line start after that. Skipped for reduced-motion users. */
 (function () {
   var box = document.querySelector('.rb-hero .rb-scan');
@@ -521,9 +519,12 @@
   var done = false;
   function finish() {
     if (done) return; done = true;
+    // Show the real photo instantly (no fade) underneath the joined pieces.
+    img.style.transition = 'none';
     box.classList.remove('rb-assembling');
-    box.classList.add('rb-assembled', 'rb-poweron');
-    setTimeout(function () { box.classList.remove('rb-poweron'); }, 950);
+    void img.offsetWidth;
+    setTimeout(function () { img.style.transition = ''; }, 50);
+    box.classList.add('rb-assembled');
     window.__rbAssembling = false;
     document.dispatchEvent(new Event('rb:assembled'));
   }
@@ -591,8 +592,7 @@
       shake.finished.then(function () {
         clearTimeout(safety);
         finish();
-        layer.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: 'forwards' })
-          .finished.then(function () { layer.remove(); });
+        requestAnimationFrame(function () { layer.remove(); });
       });
     });
   }
