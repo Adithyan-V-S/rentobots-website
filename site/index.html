@@ -620,17 +620,21 @@
       layer.appendChild(sh2);
     }
     Promise.all(anims.map(function (a) { return a.finished; })).then(function () {
-      // All parts locked: hand over to the real photo (identical), then shake the whole frame.
+      // All parts locked: hand over to the real photo (identical), then a light shiver.
       clearTimeout(safety);
       finish();
       requestAnimationFrame(function () {
         following = false;
         layer.remove();
+        // A light final shiver (small, fast tremble), not a shake.
         box.animate([
-          { transform: 'none' }, { transform: 'translate(-7px,2px) rotate(-.4deg)' }, { transform: 'translate(7px,-2px) rotate(.4deg)' },
-          { transform: 'translate(-6px,1px) rotate(-.3deg)' }, { transform: 'translate(5px,-1px) rotate(.25deg)' },
-          { transform: 'translate(-3px,1px)' }, { transform: 'translate(2px,0)' }, { transform: 'none' }
-        ], { duration: 520, easing: 'linear' });
+          { transform: 'none' },
+          { transform: 'translate(1.5px,-0.5px)' }, { transform: 'translate(-1.5px,0.5px)' },
+          { transform: 'translate(1.2px,0.4px)' }, { transform: 'translate(-1.2px,-0.4px)' },
+          { transform: 'translate(0.9px,-0.3px)' }, { transform: 'translate(-0.9px,0.3px)' },
+          { transform: 'translate(0.5px,0)' }, { transform: 'translate(-0.5px,0)' },
+          { transform: 'none' }
+        ], { duration: 380, easing: 'linear' });
       });
     });
   }
