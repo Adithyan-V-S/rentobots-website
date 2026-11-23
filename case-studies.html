@@ -93,7 +93,7 @@
 <h2 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.02; letter-spacing: 0">All case studies</h2>
 <div role="group" aria-label="Filter case studies" style="display: flex; flex-wrap: wrap; gap: 10px">
 
-<button type="button" aria-pressed="true" style="min-height: 44px; padding: 10px 20px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; background: #E6E6E6; color: #040506; border: 1px solid #E6E6E6;">All (6)</button>
+<button type="button" aria-pressed="true" style="min-height: 44px; padding: 10px 20px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; background: #E6E6E6; color: #040506; border: 1px solid #E6E6E6;">All (7)</button>
 
 <button type="button" aria-pressed="false" style="min-height: 44px; padding: 10px 20px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; background: transparent; color: #9C9C9D; border: 1px solid #363739;">Malls &amp; retail</button>
 
@@ -103,10 +103,34 @@
 
 <button type="button" aria-pressed="false" style="min-height: 44px; padding: 10px 20px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; background: transparent; color: #9C9C9D; border: 1px solid #363739;">Education</button>
 
+<button type="button" aria-pressed="false" style="min-height: 44px; padding: 10px 20px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; background: transparent; color: #9C9C9D; border: 1px solid #363739;">Sports &amp; events</button>
+
 </div>
 </div>
 
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 20px; align-items: start">
+
+<article id="cs-kovalam-marathon" class="rb-card" style="border: 1px solid #1b1c1e; border-radius: 20px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
+
+<img loading="lazy" decoding="async" src="assets/img/cases/kovalam-marathon.webp" alt="Pachu the humanoid robot running the Kovalam Marathon 5K in race jersey and bib 5748" style="display: block; width: 100%; height: 240px; object-fit: cover; object-position: center 40%; border-bottom: 1px solid #1b1c1e">
+
+
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #E6E6E6">Sports &amp; events</span>
+<span style="font-size: 13px; color: #8B8C8D">Kovalam, Thiruvananthapuram</span>
+</div>
+<h3 style="margin: 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: 0">India’s first marathon-running robot</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #9C9C9D">Pachu lined up with the runners at the Kovalam Marathon and took on the 5K course in the official race jersey and bib.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+
+<span style="font-size: 13px; font-weight: 500; padding: 6px 12px; border: 1px solid #363739; border-radius: 999px; color: #9C9C9D">Pachu · Humanoid</span>
+
+</div>
+
+<button type="button" aria-expanded="false" style="align-self: flex-start; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 1px solid #363739; background: transparent; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Read the story</button>
+</div>
+</article>
 
 <article id="cs-mall" class="rb-card" style="border: 1px solid #1b1c1e; border-radius: 20px; background: #07080a; overflow: hidden; display: flex; flex-direction: column">
 
@@ -507,8 +531,18 @@ class Component extends DCLogic {
     const s = this.state;
     const P = 'Pachu · Humanoid';
     const K = 'Kuttappan · Robot dog';
-    const cats = { retail: 'Malls & retail', corporate: 'Corporate', celebrations: 'Celebrations', education: 'Education' };
+    const cats = { retail: 'Malls & retail', corporate: 'Corporate', celebrations: 'Celebrations', education: 'Education', sports: 'Sports & events' };
     const all = [
+      {
+        id: 'kovalam-marathon', cat: 'sports', place: 'Kovalam, Thiruvananthapuram', robots: [P],
+        photo: 'assets/img/cases/kovalam-marathon.webp', pos: 'center 40%',
+        alt: 'Pachu the humanoid robot running the Kovalam Marathon 5K in race jersey and bib 5748',
+        title: 'India’s first marathon-running robot',
+        summary: 'Pachu lined up with the runners at the Kovalam Marathon and took on the 5K course in the official race jersey and bib.',
+        brief: 'The Kovalam Marathon, organised by Young Indians (Yi) Trivandrum, wanted a race-day moment that runners and spectators would remember.',
+        did: 'Pachu ran the 5K in the official race jersey and bib 5748, alongside the human runners on the race track, with our operators close by throughout.',
+        outcome: '' /* TODO: add result / press link */
+      },
       {
         id: 'mall', cat: 'retail', place: 'Kochi', robots: [P],
         photo: 'assets/img/pachu.webp', pos: 'center 25%',
@@ -592,7 +626,8 @@ class Component extends DCLogic {
       { id: 'retail', label: 'Malls & retail' },
       { id: 'corporate', label: 'Corporate' },
       { id: 'celebrations', label: 'Celebrations' },
-      { id: 'education', label: 'Education' }
+      { id: 'education', label: 'Education' },
+      { id: 'sports', label: 'Sports & events' }
     ];
     const base = 'min-height: 44px; padding: 10px 20px; border-radius: 999px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; ';
     const chips = chipDefs.map((c) => {
