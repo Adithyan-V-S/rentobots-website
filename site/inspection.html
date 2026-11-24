@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspection Robo | Rentobots</title>
+<meta name="description" content="Rent Inspection Robo with a trained Rentobots operator. It walks your plant route, captures gauges, valves, panels and fire doors on camera, flags what looks wrong and hands you a report the same day.">
+<link rel="canonical" href="https://www.rentobots.com/inspection">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rentobots">
+<meta property="og:title" content="Inspection Robo | Rentobots">
+<meta property="og:description" content="Inspection rounds, on four legs. Rent a quadruped robot with a trained operator for plant, warehouse and site inspections.">
+<meta property="og:url" content="https://www.rentobots.com/inspection">
+<meta property="og:image" content="https://www.rentobots.com/assets/img/d1.jpg">
+<meta name="theme-color" content="#060a14">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: premium, technician-plain — names the job, never oversells.
+   IDEA: an inspection round sheet that the robot fills in as it walks.
+   PICTURE: the robot on its grey stage with live reading chips; then a plant map the visitor can run.
+   COLOUR and TYPE: Rentobots night navy, white, cyan #2EE6FE accent; status green/amber/red only on readings. Sora + Inter.
+   LAYOUT: glass nav, hero stage, mission builder, block-by-block tabs, sectors, rental, FAQ, CTA, footer. */
+:root{color-scheme:dark;--bg:#060a14;--bg2:#0b1222;--card:#0f1729;--line:rgba(255,255,255,.1);--ink:#f4f7ff;--mute:#9aa6c2;--cy:#2EE6FE;--ok:#3ddc97;--warn:#ffb547;--bad:#ff5d6c}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Sora,sans-serif;letter-spacing:-.02em;line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4.2vw,48px)}h3{font-size:20px}
+p{margin:0}a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(56px,7vw,104px) max(5vw,16px);border-top:1px solid var(--line)}
+.lede{color:var(--mute);font-size:17px;max-width:62ch;margin-top:14px}
+.kick{color:var(--cy);font-weight:600;font-size:14px;margin-bottom:12px}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);cursor:pointer;font:600 15px Inter,sans-serif}
+.btn.pri{background:var(--cy);color:#04121a;border-color:var(--cy)}
+.btn:hover{filter:brightness(1.1)}.btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
+/* nav */
+nav{position:sticky;top:12px;z-index:20;margin:12px max(3vw,10px) 0;padding:12px 14px 12px 22px;border:1px solid var(--line);border-radius:22px;background:rgba(8,12,24,.72);backdrop-filter:blur(14px);display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;text-decoration:none;line-height:1}
+.logo img{display:block;height:28px;width:auto}
+.links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.links a{padding:10px 12px;border-radius:10px;text-decoration:none;color:#c9d2e8;font-size:15px}
+.links a.on,.links a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+@media(max-width:860px){.links{display:none}nav .btn{margin-left:auto}}
+@media(max-width:420px){.logo img{height:22px}nav .btn{padding:0 16px}}
+/* hero */
+.hero{position:relative;padding:clamp(40px,6vw,80px) max(5vw,16px) 56px;background:radial-gradient(60% 70% at 80% 10%,rgba(46,230,254,.13),transparent 60%),radial-gradient(40% 50% at 95% 80%,rgba(255,93,108,.10),transparent 70%)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:center}
+.crumb{font-size:14px;color:var(--mute);margin-bottom:18px}.crumb a{text-decoration:none}.crumb span{color:var(--cy)}
+.hero h1{font-size:clamp(40px,5.6vw,68px);letter-spacing:-.035em}
+.hero .lede{font-size:18px;margin-top:20px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.stage{position:relative;border-radius:28px;overflow:hidden;background:radial-gradient(70% 60% at 55% 40%,#7d7f86,#2a2d33 70%,#15171c);aspect-ratio:900/645;border:1px solid var(--line);box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-mask:radial-gradient(85% 85% at 55% 45%,#000 60%,transparent 100%);mask:radial-gradient(85% 85% at 55% 45%,#000 60%,transparent 100%)}
+.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,transparent,var(--cy),transparent)}
+.chip{position:absolute;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:rgba(6,10,20,.78);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);font-size:13px;font-weight:600;white-space:nowrap;animation:bob 5s ease-in-out infinite}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px currentColor;flex:none}
+.chip.w i{background:var(--warn)}.chip.b i{background:var(--bad)}
+.chip:nth-of-type(2){animation-delay:-1.5s}.chip:nth-of-type(3){animation-delay:-3s}.chip:nth-of-type(4){animation-delay:-4s}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.note{font-size:13px;color:var(--mute);margin-top:12px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
+.facts b{display:block;font:700 22px Sora,sans-serif}.facts span{color:var(--mute);font-size:15px}
+@media(max-width:900px){.hgrid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.facts{grid-template-columns:minmax(0,1fr)}.chip{font-size:12px;padding:6px 9px}}
+/* mission builder */
+.mb{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr) minmax(0,1fr);gap:16px;margin-top:36px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.panel h3{font-size:16px;margin-bottom:12px}
+.step{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:8px 10px;margin-bottom:6px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--ink);font:500 14px Inter,sans-serif;text-align:left;cursor:pointer}
+.step .bx{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--mute);flex:none;display:grid;place-items:center;font-size:12px}
+.step.on{border-color:rgba(46,230,254,.5);background:rgba(46,230,254,.06)}.step.on .bx{background:var(--cy);border-color:var(--cy);color:#04121a}
+.step.on .bx::after{content:"✓"}
+.tog{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0;font-size:14px;color:var(--mute)}
+.sw{width:48px;height:28px;border-radius:99px;border:1px solid var(--line);background:#1a2338;position:relative;cursor:pointer;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#c9d2e8;transition:.2s}
+.sw[aria-pressed=true]{background:var(--bad)}.sw[aria-pressed=true]::after{left:23px;background:#fff}
+.map{padding:0;overflow:hidden;position:relative;min-height:380px;background:#0a1120}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.rep .sum{font:700 15px Sora,sans-serif;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row em{font-style:normal;font-weight:600;white-space:nowrap}.row em.ok{color:var(--ok)}.row em.bad{color:var(--bad)}.row em.wait{color:var(--mute)}
+.empty{color:var(--mute);font-size:14px}
+@media(max-width:980px){.mb{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.map{grid-column:1/-1;order:-1;min-height:320px}}
+@media(max-width:600px){.mb{grid-template-columns:minmax(0,1fr)}.map{min-height:250px}}
+/* blocks */
+.tabs{display:flex;gap:8px;overflow-x:auto;margin-top:32px;padding-bottom:6px}
+.tab{flex:none;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:#c9d2e8;font:600 14px Inter,sans-serif;cursor:pointer}
+.tab[aria-selected=true]{background:var(--ink);color:#060a14;border-color:var(--ink)}
+.blk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:20px}
+.blk .panel p{color:var(--mute)}.blk h3{font-size:24px;margin-bottom:10px}
+.blk ul{margin:14px 0 0;padding:0;list-style:none}.blk li{padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.mock{font-size:14px}.mock .say{margin-top:14px;padding:14px;border-radius:14px;background:rgba(46,230,254,.08);border:1px solid rgba(46,230,254,.3);color:var(--ink)}
+@media(max-width:760px){.blk{grid-template-columns:minmax(0,1fr)}}
+/* grids */
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:36px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.card p{color:var(--mute);font-size:15px}
+.card .ic{width:44px;height:44px;border-radius:12px;background:rgba(46,230,254,.1);display:grid;place-items:center;color:var(--cy)}
+.card ul{margin:4px 0 0;padding-left:18px;color:#c9d2e8;font-size:14px}
+.plan.hot{border-color:rgba(46,230,254,.55);background:linear-gradient(180deg,rgba(46,230,254,.08),var(--card))}
+.plan .pr{font:700 20px Sora,sans-serif;margin-top:auto;padding-top:10px}
+@media(max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.g4{grid-template-columns:minmax(0,1fr)}}
+.incl{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.incl span{padding:10px 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:#c9d2e8}
+details{border-top:1px solid var(--line);padding:18px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font:600 17px Sora,sans-serif;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--cy);font-size:22px;line-height:1}details[open] summary::after{content:"–"}
+details p{color:var(--mute);margin-top:10px;max-width:70ch}
+.faq{max-width:860px;margin-top:28px}
+.close{text-align:center;background:radial-gradient(50% 80% at 50% 0%,rgba(46,230,254,.16),transparent 70%)}
+.close h2{font-size:clamp(34px,5vw,58px)}.close .cta{justify-content:center}
+.close .num{font:700 15px Inter;color:var(--mute);margin-top:16px}
+footer{padding:48px max(5vw,16px) 36px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+.fg{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:28px}
+footer h4{color:var(--ink);font:600 15px Sora,sans-serif;margin:0 0 10px}footer a{display:block;text-decoration:none;padding:4px 0}footer a:hover{color:var(--ink)}
+.legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:760px){.fg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.chip{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <a class="logo" href="index.html" aria-label="Rentobots home"><img src="assets/img/rentobots-logo.webp" alt="Rentobots" width="155" height="28"></a>
+  <div class="links"><a class="on" href="robot-models.html">Robots</a><a href="applications.html">Applications</a><a href="services.html">Services</a><a href="programs.html">Programs</a><a href="partner.html">Partner</a></div>
+  <a class="btn pri" href="hire.html">Book now</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hgrid">
+      <div>
+        <div class="crumb"><a href="robot-models.html">Robot models</a> / <span>Inspection Robo</span></div>
+        <h1>Inspection rounds, on four legs.</h1>
+        <p class="lede">Rent our quadruped Inspection Robo with a trained Rentobots operator. It walks your plant route, captures every gauge, valve, panel and fire door on camera, flags what looks wrong, and hands you a report the same day.</p>
+        <div class="cta">
+          <a class="btn pri" href="https://wa.me/917012230818?text=Hi%2C%20I%27d%20like%20to%20book%20an%20Inspection%20Robo%20pilot%20day" target="_blank" rel="noopener">Book a pilot day</a>
+          <a class="btn" href="#builder">Watch a round run ↓</a>
+        </div>
+      </div>
+      <div>
+        <div class="stage">
+          <img src="assets/img/d1.webp" alt="Inspection Robo, a quadruped robot for plant inspection rounds" width="1536" height="1024" fetchpriority="high" decoding="async">
+          <div class="chip" style="left:4%;top:8%"><i></i>Header PT-04 · 6.8 bar</div>
+          <div class="chip" style="right:4%;top:14%"><i></i>Valve V-13 · Closed</div>
+          <div class="chip b" style="left:5%;bottom:14%"><i></i>Fire door B2 · Open</div>
+          <div class="chip w" style="right:5%;bottom:22%"><i></i>Motor M3 · 71 °C</div>
+        </div>
+        <p class="note">Readings shown are sample data. Thermal checks need the thermal camera payload.</p>
+      </div>
+    </div>
+    <div class="facts">
+      <div><b>Operator on site</b><span>Every booking, start to finish</span></div>
+      <div><b>Day, week or month</b><span>Rent for a pilot or a full shutdown</span></div>
+      <div><b>Pan-India</b><span>Based in Kozhikode, Kerala</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="builder">
+  <div class="wrap">
+    <div class="kick">Try it</div>
+    <h2>Build the round. Watch it run.</h2>
+    <p class="lede">Pick the checkpoints, break something in the plant if you like, and press Run. The robot walks the route and fills the report as it goes.</p>
+    <div class="mb">
+      <div class="panel">
+        <h3>Checkpoints</h3>
+        <div id="steps"></div>
+        <div class="tog"><span>Put faults in the plant</span><button class="sw" id="fault" aria-pressed="false" aria-label="Put faults in the plant"></button></div>
+        <button class="btn pri" id="run" style="width:100%;justify-content:center">Run the round</button>
+      </div>
+      <div class="panel map"><svg id="plant" viewBox="0 0 600 400" role="img" aria-label="Plant floor map with the robot's route"></svg></div>
+      <div class="panel rep" aria-live="polite">
+        <h3>Round report</h3>
+        <div class="sum" id="sum">Ready</div>
+        <div id="rows"><p class="empty">Press Run to start the round.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kick">What it does on site</div>
+    <h2>A round, block by block.</h2>
+    <p class="lede">Every check flows into the same report. Anything urgent goes to your team on the spot, not at the end of the shift.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="blk" id="blk"></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kick">Who rents it</div>
+    <h2>For sites that run on rounds.</h2>
+    <div class="g4" id="sectors"></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kick">Rental</div>
+    <h2>Rent it the way your site works.</h2>
+    <p class="lede">No robot to buy, no team to train. You get the robot and the people who run it.</p>
+    <div class="g3" id="plans"></div>
+    <div class="incl"><span>Inspection Robo</span><span>Trained operator</span><span>Transport and setup</span><span>Route walk-through with your safety team</span><span>Photo and video record</span><span>Round report</span></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kick">More from Rentobots</div>
+    <h2>One fleet, more than one job.</h2>
+    <div class="g3">
+      <a class="card" href="applications.html" style="text-decoration:none"><h3>Events and launches</h3><p>Pachu the humanoid and our robot dogs as the live headline act, fully operated by our team.</p><span style="color:var(--cy);font-weight:600">Explore events →</span></a>
+      <a class="card" href="programs.html" style="text-decoration:none"><h3>Workshops and academy</h3><p>Hands-on robot operator workshops and college robotics programs.</p><span style="color:var(--cy);font-weight:600">See programs →</span></a>
+      <a class="card" href="services.html" style="text-decoration:none"><h3>Custom development</h3><p>Teleoperation, motion capture, datasets and R&amp;D for your own robot project.</p><span style="color:var(--cy);font-weight:600">Talk to us →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Questions sites ask us</h2>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+
+<section class="band close">
+  <div class="wrap">
+    <h2>Tell us what you need inspected.</h2>
+    <p class="lede" style="margin:16px auto 0">Send your site type, location and the checks you run today. We'll come back with a route plan and dates.</p>
+    <div class="cta"><a class="btn pri" href="https://wa.me/917012230818?text=Hi%20Rentobots%2C%20I%20need%20inspection%20rounds%20at%20my%20site" target="_blank" rel="noopener">Message us on WhatsApp</a><a class="btn" href="hire.html">Book now</a></div>
+    <p class="num">WhatsApp +91 70122 30818 · www.rentobots.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div><a class="logo" href="index.html" aria-label="Rentobots home"><img src="assets/img/rentobots-logo.webp" alt="Rentobots" width="133" height="24" style="height:24px"></a><p style="margin-top:16px;max-width:34ch">Robots for events, education and industry. Kozhikode · Hyderabad.</p></div>
+      <div><h4>Solutions</h4><a href="inspection.html">Industry</a><a href="applications.html">Events</a><a href="programs.html">Education</a><a href="services.html">Custom development</a></div>
+      <div><h4>Robots</h4><a href="d1.html">D1 quadruped</a><a href="robot-models.html#pachu">Pachu humanoid</a><a href="robot-models.html#kuttappan">Robot dogs</a></div>
+      <div><h4>Contact</h4><a href="https://wa.me/917012230818" target="_blank" rel="noopener">+91 70122 30818</a><a href="hire.html">Book a robot</a><a href="partner.html">Partner program</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Rentobots. All rights reserved.</span><span>Kozhikode · Hyderabad</span></div>
+  </div>
+</footer>
+
+<script>
+{
+const CP=[
+ {id:'p1',n:'Control panel P1',x:110,y:90,ok:'All lamps normal',bad:'Alarm lamp lit'},
+ {id:'pt',n:'Pressure header PT-04',x:290,y:70,ok:'6.8 bar · in range',bad:'9.4 bar · high'},
+ {id:'v13',n:'Valve V-13',x:470,y:100,ok:'Closed · as expected',bad:'Open · expected closed'},
+ {id:'m3',n:'Motor M3 (thermal)',x:500,y:250,ok:'54 °C · normal',bad:'71 °C · hot'},
+ {id:'fd',n:'Fire door B2',x:350,y:330,ok:'Closed',bad:'Propped open'},
+ {id:'ex',n:'Extinguisher E4',x:180,y:320,ok:'Present · tag valid',bad:'Missing from bracket'},
+ {id:'ai',n:'Aisle 7 walkway',x:80,y:220,ok:'Clear',bad:'Spill on floor'}
+];
+const FAULT=new Set(['pt','m3','fd']);
+const on=new Set(CP.map(c=>c.id));let faults=false,running=false;
+const $=s=>document.getElementById(s);
+const steps=$('steps'),svg=$('plant'),rows=$('rows'),sum=$('sum');
+function drawSteps(){steps.innerHTML=CP.map(c=>`<button class="step${on.has(c.id)?' on':''}" data-id="${c.id}" aria-pressed="${on.has(c.id)}"><span class="bx"></span>${c.n}</button>`).join('')}
+function route(){return CP.filter(c=>on.has(c.id))}
+function drawMap(done){
+ const r=route(),dock={x:60,y:360};
+ const pts=[dock,...r,dock].map(p=>p.x+','+p.y).join(' ');
+ const zones=[[30,30,200,130,'Control room'],[230,30,330,110,'Boiler house'],[400,170,170,140,'Motor bay'],[130,270,300,100,'Store · Block B']];
+ svg.innerHTML=`<defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="rgba(255,255,255,.05)"/></pattern></defs>
+ <rect width="600" height="400" fill="#0a1120"/><rect width="600" height="400" fill="url(#g)"/>
+ ${zones.map(z=>`<rect x="${z[0]}" y="${z[1]}" width="${z[2]}" height="${z[3]}" rx="10" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/><text x="${z[0]+10}" y="${z[1]+z[3]-10}" fill="#6f7c99" font-size="11" font-family="Inter">${z[4]}</text>`).join('')}
+ <rect x="36" y="342" width="48" height="36" rx="8" fill="rgba(46,230,254,.12)" stroke="#2EE6FE"/><text x="60" y="396" text-anchor="middle" fill="#2EE6FE" font-size="10" font-family="Inter">Dock</text>
+ <polyline points="${pts}" fill="none" stroke="#2EE6FE" stroke-opacity=".5" stroke-width="2.5" stroke-dasharray="6 7"/>
+ ${CP.map(c=>{const a=on.has(c.id),d=done&&done[c.id];const col=!a?'#3a4560':d==='bad'?'#ff5d6c':d==='ok'?'#3ddc97':'#c9d2e8';
+   return `<g opacity="${a?1:.45}"><circle cx="${c.x}" cy="${c.y}" r="13" fill="#0a1120" stroke="${col}" stroke-width="2.5"/><circle cx="${c.x}" cy="${c.y}" r="4.5" fill="${col}"/></g>`}).join('')}
+ <g id="bot" transform="translate(${dock.x},${dock.y})"><circle r="16" fill="#ffb547" opacity=".22"/><rect x="-11" y="-7" width="22" height="14" rx="5" fill="#ffb547" stroke="#fff" stroke-width="1.5"/></g>`;
+}
+function drawRep(res){
+ if(!res.length){rows.innerHTML='<p class="empty">Press Run to start the round.</p>';return}
+ rows.innerHTML=res.map(x=>`<div class="row"><span>${x.n}</span><em class="${x.s}">${x.t}</em></div>`).join('');
+}
+steps.addEventListener('click',e=>{const b=e.target.closest('.step');if(!b||running)return;const id=b.dataset.id;on.has(id)?on.delete(id):on.add(id);drawSteps();drawMap();})
+$('fault').addEventListener('click',e=>{if(running)return;faults=!faults;e.currentTarget.setAttribute('aria-pressed',faults)})
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function move(from,to){return new Promise(res=>{const bot=document.getElementById('bot');const d=Math.hypot(to.x-from.x,to.y-from.y),T=reduce?1:Math.max(300,d*4.5),t0=performance.now();
+ const f=t=>{const k=Math.min(1,(t-t0)/T),x=from.x+(to.x-from.x)*k,y=from.y+(to.y-from.y)*k;bot.setAttribute('transform',`translate(${x},${y})`);k<1?requestAnimationFrame(f):res()};requestAnimationFrame(f)})}
+$('run').addEventListener('click',async()=>{
+ if(running)return;const r=route();if(!r.length){sum.textContent='Pick at least one checkpoint';return}
+ running=true;$('run').textContent='Running…';const done={},res=[];let p={x:60,y:360};drawMap(done);
+ res.push(...r.map(c=>({n:c.n,s:'wait',t:'Queued'})));drawRep(res);
+ for(let i=0;i<r.length;i++){const c=r[i];sum.textContent=`Walking to ${c.n}…`;await move(p,c);p=c;
+  const bad=faults&&FAULT.has(c.id);done[c.id]=bad?'bad':'ok';res[i]={n:c.n,s:bad?'bad':'ok',t:bad?c.bad:c.ok};
+  const g=document.getElementById('bot').getAttribute('transform');drawMap(done);document.getElementById('bot').setAttribute('transform',g);drawRep(res);
+  if(bad)sum.textContent=`Alert sent to team: ${c.n}`;await new Promise(z=>setTimeout(z,reduce?0:350))}
+ await move(p,{x:60,y:360});
+ const f=res.filter(x=>x.s==='bad').length;sum.textContent=`${res.length} checks · ${res.length-f} OK · ${f} flagged`;
+ running=false;$('run').textContent='Run again';
+});
+drawSteps();drawMap();
+
+const B=[
+ {t:'Panel reading',h:'Reads the panels your team walks to.',p:'The robot stops square to each control panel and gauge on your route. The operator confirms every capture, so readings are logged with a photo, not a guess.',l:['Analog gauges and digital displays','Indicator lamps and alarm states','Valve positions against expected state'],s:'PT-04 reads 6.8 bar. Expected 6 to 7. Logged with photo.'},
+ {t:'Safety round',h:'Walks the safety checklist, every time.',p:'Fire doors, extinguishers, eyewash points and blocked exits are checked in the same order on every round, so nothing gets skipped on a busy shift.',l:['Fire doors open or closed','Extinguishers present and tagged','Exits and walkways clear'],s:'Fire door B2 is propped open. Team alerted.'},
+ {t:'PPE check',h:'Sees who is in the zone, and what they wear.',p:'In marked zones the robot records helmets, vests and goggles on camera. Your safety officer decides what happens next.',l:['Helmets and hi-vis vests','Restricted zone entries','Photo record for audits'],s:'Two people in Boiler house. One without helmet.'},
+ {t:'Thermal check',h:'Finds the motor running hot.',p:'With the thermal camera payload fitted, the robot captures heat images of motors, panels and joints, so hot spots show up before a breakdown does.',l:['Motors, bearings and pumps','Electrical panels and cable joints','Before and after comparison'],s:'Motor M3 at 71 °C. Last round 54 °C.'},
+ {t:'Night patrol',h:'Keeps walking after the shift ends.',p:'For shutdowns, night shifts and holidays, the robot runs patrol routes with the operator monitoring live video from a safe point.',l:['Perimeter and store rooms','Leaks, spills and smoke','Live video to the operator'],s:'Spill near Aisle 7. Photo sent to supervisor.'},
+ {t:'Team alerts',h:'Urgent findings go out on the spot.',p:'Anything flagged during the round is passed to the person you name, with a photo and location, while the round carries on.',l:['WhatsApp or call to your contact','Photo and location with every alert','Agreed escalation list'],s:'Alert: Valve V-13 open, expected closed.'},
+ {t:'Report',h:'Every round ends in one report.',p:'You get a clear report after each round: every checkpoint, its status, photos, and what was flagged. Easy to file for audits.',l:['PDF report with photos','Spreadsheet of all readings','Video record on request'],s:'15 checks · 12 OK · 3 flagged.'}
+];
+const tabs=$('tabs'),blk=$('blk');let cur=0;
+function drawB(){tabs.innerHTML=B.map((b,i)=>`<button class="tab" role="tab" id="t${i}" aria-selected="${i===cur}" data-i="${i}">${b.t}</button>`).join('');
+ const b=B[cur];blk.innerHTML=`<div class="panel"><h3>${b.h}</h3><p>${b.p}</p></div><div class="panel mock"><div style="color:var(--mute);font-weight:600">What it checks</div><ul>${b.l.map(x=>`<li>${x}</li>`).join('')}</ul><div class="say"><b style="color:var(--cy)">The robot says:</b> ${b.s}</div></div>`}
+tabs.addEventListener('click',e=>{const t=e.target.closest('.tab');if(!t)return;cur=+t.dataset.i;drawB();document.getElementById('t'+cur).focus()});
+tabs.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;cur=(cur+(e.key==='ArrowRight'?1:B.length-1))%B.length;drawB();document.getElementById('t'+cur).focus()});
+drawB();
+
+const ic='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">';
+const S=[
+ {h:'Factories and process plants',p:'Daily rounds of panels, valves and machinery.',l:['Chemical, food and rubber plants','Shutdown and turnaround checks'],i:ic+'<path d="M3 21V10l6 4V10l6 4V6h6v15z"/></svg>'},
+ {h:'Energy and utilities',p:'Pump rooms, substations and plant rooms.',l:['Thermal checks on equipment','Remote and hard-to-staff sites'],i:ic+'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>'},
+ {h:'Warehouses and logistics',p:'Fire doors, extinguishers and aisles.',l:['Night and holiday patrols','Spill and blockage checks'],i:ic+'<path d="M3 9l9-6 9 6v12H3z"/><path d="M8 21v-7h8v7"/></svg>'},
+ {h:'Construction sites',p:'PPE, safety and progress walk-throughs.',l:['Helmet and vest checks','Photo log for site reports'],i:ic+'<path d="M2 20h20"/><path d="M5 20V9l7-5 7 5v11"/><path d="M9 20v-6h6v6"/></svg>'}
+];
+$('sectors').innerHTML=S.map(s=>`<div class="card"><div class="ic">${s.i}</div><h3>${s.h}</h3><p>${s.p}</p><ul>${s.l.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+
+const P=[
+ {h:'Pilot day',p:'See the robot walk your own route before you commit.',l:['One site, one route','Operator and setup included','Sample round report'],c:''},
+ {h:'Weekly',p:'For shutdowns, audits and short projects.',l:['Daily rounds on agreed routes','Night patrol option','Daily reports'],c:' hot'},
+ {h:'Monthly',p:'Regular rounds without adding headcount.',l:['Fixed schedule of rounds','Routes updated as your site changes','Monthly summary'],c:''}
+];
+$('plans').innerHTML=P.map(p=>`<div class="card plan${p.c}"><h3>${p.h}</h3><p>${p.p}</p><ul>${p.l.map(x=>`<li>${x}</li>`).join('')}</ul><a class="pr" style="text-decoration:none;color:var(--cy)" href="https://wa.me/917012230818?text=Hi%2C%20please%20share%20an%20Inspection%20Robo%20${p.h}%20quote" target="_blank" rel="noopener">Get a quote →</a></div>`).join('');
+
+const Q=[
+ ['Does the robot run on its own?','It walks the agreed route and a trained Rentobots operator stays on site for every booking, supervising the robot and confirming each capture. You never have to operate it yourself.'],
+ ['What do you need from our site?','A walk-through with your safety team to fix the route and checkpoints, a safe spot to park and charge the robot, and the name of the person who should get alerts.'],
+ ['Can it handle stairs and outdoor areas?','It walks on uneven floors, ramps and stairs. We check your route on the pilot day and tell you upfront if any part needs a different plan.'],
+ ['Who keeps the photos and data?','Your round reports, photos and videos are handed to you. We do not share your site data with anyone.'],
+ ['Where do you operate?','We are based in Kozhikode, Kerala, with a team in Hyderabad, and travel across India for bookings.']
+];
+$('faq').innerHTML=Q.map(q=>`<details><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('');
+}
+</script>
+</body>
+</html>

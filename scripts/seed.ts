@@ -206,6 +206,44 @@ const robotIds: Record<string, number> = {
   }
 }
 
+// ---------- Inspection Robo (added Nov 2026; edit it in the admin afterwards) ----------
+{
+  const found = await payload.find({ collection: 'robots', where: { slug: { equals: 'inspection-robo' } }, limit: 1 })
+  if (found.docs[0]) {
+    payload.logger.info('Robot model Inspection Robo already there — skipped.')
+  } else {
+    await payload.create({
+      collection: 'robots',
+      data: {
+        name: 'Inspection Robo',
+        kind: 'Inspection robot',
+        model: 'D1 quadruped',
+        slug: 'inspection-robo',
+        photo: await media('assets/img/d1.webp', 'Inspection Robo, a quadruped robot for plant inspection rounds', 50),
+        description:
+          'Walks your plant route with a trained Rentobots operator, captures every gauge, valve, panel and fire door on camera, flags what looks wrong and hands you a report the same day.',
+        capabilities: [
+          { text: 'Reads panels, gauges, lamps and valve positions' },
+          { text: 'Safety rounds: fire doors, extinguishers, exits' },
+          { text: 'PPE checks in marked zones' },
+          { text: 'Thermal checks with the thermal camera payload' },
+          { text: 'Night patrols with live video to the operator' },
+        ],
+        greatFor: 'factories, warehouses, energy sites and construction sites.',
+        bestMoment: 'Daily plant inspection rounds',
+        detailsLink: '/inspection',
+        detailsLabel: 'View details',
+        isNew: true,
+        showOnModelsPage: true,
+        bookable: true,
+        sortOrder: 40,
+      },
+      context: ctx(),
+    })
+    payload.logger.info('Robot model added: Inspection Robo')
+  }
+}
+
 // ---------- programs ----------
 if ((await payload.count({ collection: 'programs' })).totalDocs === 0) {
   const html = site('programs.html')
