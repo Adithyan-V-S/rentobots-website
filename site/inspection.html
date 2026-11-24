@@ -52,8 +52,8 @@ nav{position:sticky;top:12px;z-index:20;margin:12px max(3vw,10px) 0;padding:12px
 .hero h1{font-size:clamp(40px,5.6vw,68px);letter-spacing:-.035em}
 .hero .lede{font-size:18px;margin-top:20px}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.stage{position:relative;border-radius:28px;overflow:hidden;background:radial-gradient(70% 60% at 55% 40%,#7d7f86,#2a2d33 70%,#15171c);aspect-ratio:900/645;border:1px solid var(--line);box-shadow:0 40px 80px rgba(0,0,0,.5)}
-.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-mask:radial-gradient(85% 85% at 55% 45%,#000 60%,transparent 100%);mask:radial-gradient(85% 85% at 55% 45%,#000 60%,transparent 100%)}
+.stage{position:relative;border-radius:28px;overflow:hidden;background:#fff;aspect-ratio:900/645;border:1px solid var(--line);box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,transparent,var(--cy),transparent)}
 .chip{position:absolute;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:rgba(6,10,20,.78);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);font-size:13px;font-weight:600;white-space:nowrap;animation:bob 5s ease-in-out infinite}
 .chip i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px currentColor;flex:none}
@@ -143,7 +143,7 @@ footer h4{color:var(--ink);font:600 15px Sora,sans-serif;margin:0 0 10px}footer 
       </div>
       <div>
         <div class="stage">
-          <img src="assets/img/d1.webp" alt="Inspection Robo, a quadruped robot for plant inspection rounds" width="1536" height="1024" fetchpriority="high" decoding="async">
+          <img src="assets/img/d1-white.webp" alt="Inspection Robo, a quadruped robot for plant inspection rounds" width="1536" height="1024" fetchpriority="high" decoding="async">
           <div class="chip" style="left:4%;top:8%"><i></i>Header PT-04 · 6.8 bar</div>
           <div class="chip" style="right:4%;top:14%"><i></i>Valve V-13 · Closed</div>
           <div class="chip b" style="left:5%;bottom:14%"><i></i>Fire door B2 · Open</div>
